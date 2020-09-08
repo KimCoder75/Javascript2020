@@ -47,8 +47,8 @@ Questo repository è pensato per l'apprendimento di Javascript, in modo modulare
 * **Valori**
 
 * **Cicli specifici**
-* *ForEach
-* *For of
+* *ForEach*
+* *For of*
 
 ## Funzioni
 * **Funzioni classiche**
