@@ -1,6 +1,7 @@
 # Javascript2020
 
-Questo repository è pensato per l'apprendimento di Javascript, in modo modulare verranno affrontati approfonditamente i concetti tramite spiegazione, esempi ed esercizi.
+Questo repository è pensato per l'apprendimento di Javascript, in modo modulare.
+Verranno affrontati approfonditamente i concetti tramite spiegazione, esempi ed tanti esercizi.
 
 ## Abituarsi a pensare da programmatore *...pensiamo alla logica, il linguaggio verrà dopo*
 * *Come arrivo alla soluzione del problema?*
