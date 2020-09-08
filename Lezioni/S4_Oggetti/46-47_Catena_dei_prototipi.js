@@ -1,4 +1,9 @@
 //Catena dei prototipi
+
+/* Gli oggetti ereditano Proprietà
+e Metodi nella catena dei Prototipi
+*/
+
 let ferrari = {
 marchio:"Ferrari \u{1F3CE}",
 dal: 1921,

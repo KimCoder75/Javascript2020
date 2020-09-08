@@ -12,6 +12,10 @@ let user3={
  descrivimi: () =>`Nome: ${this.name}`
 };
 
+/* Gli oggetti ereditano Proprietà
+e Metodi nella catena dei Prototipi
+*/
+
 //Factory Function
 function user(nome){
 let obj={
