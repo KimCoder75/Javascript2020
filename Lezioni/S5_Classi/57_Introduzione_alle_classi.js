@@ -1,6 +1,7 @@
 /* Gli oggetti ereditano Proprietà
 e Metodi nella catena dei Prototipi
 */
+//ES2015
 /* con ES6 viene introdotto il concetto di classe
 per avvicinare Javascript agli altri linguaggi di programmazione
 */
