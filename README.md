@@ -20,13 +20,16 @@ Verranno affrontati approfonditamente i concetti tramite spiegazione, esempi ed 
 
 ## Variabili
 * **let e var**
-* *Confusione tra let e var, semplifichiamoci la vita, più avanti capiremo nel dettaglio.*
+* *Confusione tra let e var* 
+* *semplifichiamoci la vita, più avanti capiremo nel dettaglio.*
 * **const**
 
 ## Dati primari
 * **Stringhe**
+* *Sintassi classica e template literals*
 * **Numeri**
-* *iniziamo a vedere i metodi*
+* *Limiti della virgola mobile*
+* **Metodi**
 
 ## Operatori
 * **Unari**
@@ -42,15 +45,18 @@ Verranno affrontati approfonditamente i concetti tramite spiegazione, esempi ed 
 * **For**
 * **While**
 * **do-while**
+* **Cicli for specifici - introduzione**
+* *ForEach*
+* *For of*
 
 ## Array
 * **Chiavi**
 * **Valori**
 * **Array multidimensionali**
-
-* **Cicli specifici**
+* **Cicli specifici - Introduzione**
 * *ForEach*
 * *For of*
+* *For in*
 
 ## Funzioni
 * **Funzioni classiche**
