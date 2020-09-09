@@ -20,7 +20,7 @@ Verranno affrontati approfonditamente i concetti tramite spiegazione, esempi ed 
 
 ## Variabili
 * **let e var**
-* *Confusione tra let e var* 
+* *Confusione tra let e var*
 * *semplifichiamoci la vita, più avanti capiremo nel dettaglio.*
 * **const**
 
@@ -68,8 +68,7 @@ Verranno affrontati approfonditamente i concetti tramite spiegazione, esempi ed 
 * **Oggetti letterari**
 * **Proprietà**
 * **Prototipi**
-* **Catena dei prototipi**
-* **Ereditarità**
+* **Ereditarietà e catena dei prototipi**
 * **Factory Functions**
 * **Constructor Functions**
 * **Cicli specifici**

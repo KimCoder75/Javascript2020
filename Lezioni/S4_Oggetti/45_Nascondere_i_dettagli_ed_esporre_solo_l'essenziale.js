@@ -28,26 +28,31 @@ function Utente(nome,altezza){
   this.altezza=altezza;
   this.pesoIdeale = `Il peso ideale di ${nome} è ${(altezza - 100 * 0.95)} Kg.`;
   this.type = "Utente Standard";
-  this.prototype ="Oggetto Utente";
+  this.prototype ={genere:"Umano",etnia:"Varia"};
 }
 let utente1 = new Utente("Simone",175);
 let utente2 = new Utente("Marco",180);
 utente2.type="Super User";
 let utente3 = new Utente("Giorgio",192);
-utente3.prototype="Nuovo Oggetto Utente";
+utente3.prototype={tipologia:"Nuovo Oggetto Utente"};
+let utente4 = Object.create(utente3); // crea un oggetto utente4 con ferrari come prototipo
+//utente4.prototype={tipologia:"Oggetto creato da utente4"};
+
 const utenti=[
 utente1,
 utente2,
-utente3
+utente3,
+utente4
 ]
 
+
 for (var ut of utenti) {
-  console.log(ut.pesoIdeale);
-  console.log("La catena dei prototipi è la seguente:");
+  // console.log(ut.pesoIdeale);
+  // console.log("La catena dei prototipi è la seguente:");
   console.log(ut.prototype);
   console.log(ut.__proto__);
-  console.log(ut.__proto__.__proto__);
-  console.log(ut.__proto__.__proto__.__proto__);
+  // console.log(ut.__proto__.__proto__);
+  // console.log(ut.__proto__.__proto__.__proto__);
 }
 
 // stare attenti a maiuscole e minuscole.
