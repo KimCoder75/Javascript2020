@@ -13,6 +13,7 @@ function Ferrari(){
 }
 Ferrari.prototype.marchio = `\u{00A9} Ferrari`;
 let ferrari_458 = new Ferrari();
+ferrari_458.cilindrata=1600;
 let ferrari_458speciale = Object.create(ferrari_458);
 console.log(Ferrari);
 console.log(ferrari_458)

@@ -45,7 +45,6 @@ utente3,
 utente4
 ]
 
-
 for (var ut of utenti) {
   // console.log(ut.pesoIdeale);
   // console.log("La catena dei prototipi è la seguente:");
