@@ -43,9 +43,10 @@ Verranno affrontati approfonditamente i concetti tramite spiegazione, esempi ed 
 * **While**
 * **do-while**
 
-## Array mono e multidimensionali
+## Array
 * **Chiavi**
 * **Valori**
+* **Array multidimensionali**
 
 * **Cicli specifici**
 * *ForEach*
@@ -53,20 +54,21 @@ Verranno affrontati approfonditamente i concetti tramite spiegazione, esempi ed 
 
 ## Funzioni
 * **Funzioni classiche**
+* **Factory functions**
 * **Arrow functions**
+* **Constructor functions - Introduzione**
 
-## Oggetti
-
+## Oggetti, Prototipi e Classi
 * **Oggetti letterari**
 * **Proprietà**
-* **Factory Functions**
 * **Prototipi**
-* **Ereditarità**
 * **Catena dei prototipi**
+* **Ereditarità**
+* **Factory Functions**
 * **Constructor Functions**
 * **Cicli specifici**
 * *For in*
-
-## Classi *Usare le funzioni per avvicinarsi agli altri linguaggi di programmazione*
+* **Le classi**
+* *Usare le funzioni per avvicinarsi agli altri linguaggi di programmazione*
 * *Le classi*
 * *Le Istanze*
