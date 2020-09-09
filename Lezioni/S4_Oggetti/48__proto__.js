@@ -13,9 +13,12 @@ function Ferrari(){
 }
 Ferrari.prototype.marchio = `\u{00A9} Ferrari`;
 let ferrari_458 = new Ferrari();
-let ferrari_458_speciale = Object.create(ferrari_458);
+let ferrari_458speciale = Object.create(ferrari_458);
+console.log(Ferrari);
+console.log(ferrari_458)
 console.log(ferrari_458.__proto__== Ferrari.prototype);
-console.log(ferrari_458_speciale.__proto__== ferrari_458.prototype);
+console.log(ferrari_458speciale)
+console.log(ferrari_458speciale.__proto__== ferrari_458);
 
 
 
