@@ -9,19 +9,22 @@
 
   http://www.imparareaprogrammare.it
 */
-// 'use strict'
 
 function Automobili(marca,modello){
   this.marca = marca;
   this.modello = modello;
-  //#this.descrizione = ()=>`Marca: ${this.marca}, Modello: ${this.modello}`
-}
+  this.descrizione = ()=>`${this.marca} ${this.modello}`
+};
+
 let auto1 = new Automobili("Fiat","Punto");
 let auto2 = new Automobili("Kia","Ceed");
 let auto3 = new Automobili("Ford","Fiesta");
-let auto4 = new Automobili("Citroen","C3");
-let auto5 = new Automobili("Fiat","Tipo");
-let auto6 = new Automobili("Fiat","Panda");
+let auto4 = new Automobili("Fiat","Panda");
+let auto5 = new Automobili("Citroen","C3");
+let auto6 = new Automobili("Fiat","Tipo");
+
 let lista =[auto1,auto2,auto3,auto4,auto5,auto6];
-// trovare un modo per estrarre le Marche
-console.table(lista);
+for (let valore of lista) {
+  (valore.marca=="Fiat")?console.log(valore.descrizione()):"Nessun modello presente della marca richiesta";
+  };
+
