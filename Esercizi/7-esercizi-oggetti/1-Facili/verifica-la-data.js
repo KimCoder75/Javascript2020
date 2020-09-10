@@ -41,12 +41,13 @@ let dateV = {day:18,month:19,year:2025}
 if(dateV.year%400==0){bisestile=true}
 else if(dateV.year%4==0 && dateV.year%100!=0){bisestile=true}else{bisestile=false}
 (bisestile)?days[2]=29:days[2]=28;
-//if(dateV.month=2 && dateV.day>days[2]){
-//console.log(errore())
-//}
 
-if(dateV.month>12 || dateV.year<0 || (dateV.month=2 && dateV.day>days[2])){console.log(errore())}
-else if (dateV.day>days[dateV.month]){console.log(errore())}else{console.log(`dateV.day,dateV.month,dateV.year`)};
+if(dateV.month>12 || dateV.year<0 || (dateV.month==2 && dateV.day>days[2]))
+{console.log(errore())}
+if(dateV.day>days[dateV.month])
+{console.log(errore())}
+else
+{console.log(dateV.day,dateV.month,dateV.year)};
   
   
 
