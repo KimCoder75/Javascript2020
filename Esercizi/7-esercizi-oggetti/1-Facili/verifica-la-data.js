@@ -44,7 +44,7 @@ else if(dateV.year%4==0 && dateV.year%100!=0){bisestile=true}else{bisestile=fals
 
 if(dateV.month>12 || dateV.year<0 || (dateV.month==2 && dateV.day>days[2]))
 {console.log(errore())}
-if(dateV.day>days[dateV.month])
+else if(dateV.day>days[dateV.month])
 {console.log(errore())}
 else
 {console.log(dateV.day,dateV.month,dateV.year)};
