@@ -34,17 +34,24 @@ se sì bisestile=true
 function errore(){
 return "La data non è valida!"
 }*/
-
+let days = {1:31,2:28,3:31,4:30,5:31,6:30,7:31,8:31,9:30,10:31,11:30,12:31};
 let errore=()=>"La data non è valida!"
 let dateV = {day:18,month:19,year:2025}
-if(dateV.month>12){console.log(errore())};
+if(dateV.month>12){console.log(errore())}
+else{
+  if
+  days[dateV.month]
+
+
+
 if(dateV.year%400==0){
 bisestile=true}
 else if(dateV.year%4==0 && dateV.year%100!=0){
 bisestile=true}else{bisestile=false}
-(bisestile)?febbraio=29:febbraio=28;
-if(dateV.month=2 && dateV.day>febbraio){
+(bisestile)?days[2]=29:days[2]=28;
+if(dateV.month=2 && dateV.day>days[2]){
 console.log(errore())
 }
+if dateV.day
 
 //inserire la parte relativa al giorno ed al mese
