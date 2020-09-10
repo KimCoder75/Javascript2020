@@ -48,7 +48,7 @@ else if(dateV.day>days[dateV.month])
 {console.log(errore())}
 else
 {console.log(dateV.day,dateV.month,dateV.year)};
-(bisestile)?{console.log("L'anno è bisestile!")}:{console.log("L'anno non è bisestile!")};
+(bisestile)?console.log("L'anno è bisestile!"):console.log("L'anno non è bisestile!");
   
 
 
