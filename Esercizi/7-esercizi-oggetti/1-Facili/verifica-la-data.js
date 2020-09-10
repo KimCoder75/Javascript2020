@@ -36,6 +36,7 @@ return "La data non è valida!"
 }*/
 let days = {1:31,2:28,3:31,4:30,5:31,6:30,7:31,8:31,9:30,10:31,11:30,12:31};
 let errore=()=>"La data non è valida!"
+let bis=()=>"L'anno è bisestile!" | "L'anno non è bisestile!"
 let dateV = {day:18,month:19,year:2025}
 
 if(dateV.year%400==0){bisestile=true}
@@ -48,7 +49,7 @@ else if(dateV.day>days[dateV.month])
 {console.log(errore())}
 else
 {console.log(dateV.day,dateV.month,dateV.year)};
-(bisestile)?"L'anno è bisestile":"L'anno non è bisestile";
+if(bisestile){console.log(bis())};
   
 
 
