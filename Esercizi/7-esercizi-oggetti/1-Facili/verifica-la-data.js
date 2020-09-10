@@ -15,9 +15,9 @@
 
 /*
 parti dall'anno e verifica se è bisestile
-Per vedere se un anno è bisestile dobbiamo dividerlo per 400; 
-se è divisibile allora è sicuramente un anno bisestile; 
-altrimenti saranno bisestili solo quegli anni che si possono dividere per 4 ma non per 100. 
+Per vedere se un anno è bisestile dobbiamo dividerlo per 400;
+se è divisibile allora è sicuramente un anno bisestile;
+altrimenti saranno bisestili solo quegli anni che si possono dividere per 4 ma non per 100.
 
 
 è divisibile per 400?
@@ -34,26 +34,31 @@ se sì bisestile=true
 function errore(){
 return "La data non è valida!"
 }*/
-let days = {1:31,2:28,3:31,4:30,5:31,6:30,7:31,8:31,9:30,10:31,11:30,12:31};
-let errore=()=>"La data non è valida!"
-let dateV = {day:29,month:2,year:2000}
+//array contenente i giorni dei mesi
+let days = [31,28,31,30,31,30,31,31,30,31,30,31];
 
-if(dateV.year%400==0){bisestile=true}
-else if(dateV.year%4==0 && dateV.year%100!=0){bisestile=true}else{bisestile=false}
-(bisestile)?days[2]=29:days[2]=28;
+let errore="La data non è valida!";
+let dateV = {day:29,month:5,year:2000}
+let bis="l'anno non è bisestile";
 
-if(dateV.month>12 || dateV.year<0 || (dateV.month==2 && dateV.day>days[2]))
-{console.log(errore())}
-else if(dateV.day>days[dateV.month])
-{console.log(errore())}
-else
-{console.log(dateV.day,dateV.month,dateV.year)};
-(bisestile)?console.log("L'anno è bisestile!"):console.log("L'anno non è bisestile!");
-  
+//Blocco di verifica anno bisestile
+if(dateV.year%400==0){
+  bisestile=true;
+  }
+else if(dateV.year%4==0 && dateV.year%100!=0){
+  bisestile=true;
+  }
+if(bisestile){
+days[1]=29;
+bis="l'anno è bisestile";
+}
 
-
-
-
-
-
-//inserire la parte relativa al giorno ed al mese
+//Blocco di verifica presenza errori di input
+if((dateV.month>12) || (dateV.year<0) || (dateV.month==2 && dateV.day>days[1])){
+  console.log(errore);//output errore inserimento
+}
+else if(dateV.day>days[dateV.month-1]){
+  console.log(errore);//outupt errore inserimento
+}
+else{
+  console.log(dateV.day,dateV.month,dateV.year,bis)};//Output
