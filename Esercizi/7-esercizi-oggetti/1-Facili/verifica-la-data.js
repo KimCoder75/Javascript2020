@@ -36,7 +36,7 @@ return "La data non è valida!"
 }*/
 let days = {1:31,2:28,3:31,4:30,5:31,6:30,7:31,8:31,9:30,10:31,11:30,12:31};
 let errore=()=>"La data non è valida!"
-let dateV = {day:18,month:19,year:2025}
+let dateV = {day:29,month:2,year:2000}
 
 if(dateV.year%400==0){bisestile=true}
 else if(dateV.year%4==0 && dateV.year%100!=0){bisestile=true}else{bisestile=false}
