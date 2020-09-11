@@ -11,29 +11,32 @@
       "La data non è valida!"
   http://www.imparareaprogrammare.it
 */
+
 //array contenente i giorni dei mesi
-let days = [31,28,31,30,31,30,31,31,30,31,30,31],
-    errore="La data non è valida!",
-    dateV = { day:29, month:11, year:1604},
-    bis="l'anno non è bisestile",
-    cond;
+let days = [31,28,31,30,31,30,31,31,30,31,30,31];
+
+let errore="La data non è valida!";
+let dateV = {day:29,month:5,year:2000}
+let bis="l'anno non è bisestile";
 
 //Blocco di verifica anno bisestile
-if(dateV.year % 400 == 0 || ( dateV.year % 4 == 0 && dateV.year % 100 !=0 ) ) {
-    days[1]=29;
-    bis="l'anno è bisestile";
+if(dateV.year%400==0){
+  bisestile=true;
+  }
+else if(dateV.year%4==0 && dateV.year%100!=0){
+  bisestile=true;
+  }
+if(bisestile){
+days[1]=29;
+bis="l'anno è bisestile";
 }
 
 //Blocco di verifica presenza errori di input
-cond = [
-    dateV.month > 12,
-    dateV.year < 0,
-    dateV.month == 2 && dateV.day > days[1],
-    dateV.day>days[dateV.month-1]
-];
-// if( cond.includes(true) ) {
-//    console.log(errore);
-// } else {
-//     console.log(dateV.day,dateV.month,dateV.year,bis)
-// }
-( cond.includes(true) )?console.log(errore):console.log(dateV.day,dateV.month,dateV.year,bis)
+if((dateV.month>12) || (dateV.year<0) || (dateV.month==2 && dateV.day>days[1])){
+  console.log(errore);//output errore inserimento
+}
+else if(dateV.day>days[dateV.month-1]){
+  console.log(errore);//outupt errore inserimento
+}
+else{
+  console.log(dateV.day,dateV.month,dateV.year,bis)};//Output
