@@ -12,28 +12,6 @@
   http://www.imparareaprogrammare.it
 */
 
-
-/*
-parti dall'anno e verifica se è bisestile
-Per vedere se un anno è bisestile dobbiamo dividerlo per 400;
-se è divisibile allora è sicuramente un anno bisestile;
-altrimenti saranno bisestili solo quegli anni che si possono dividere per 4 ma non per 100.
-
-
-è divisibile per 400?
-se sì bisestile=true
-è divisibile per 4 e non per 100
-se sì bisestile=true
-
-*/
-
-
-
-
-/*
-function errore(){
-return "La data non è valida!"
-}*/
 //array contenente i giorni dei mesi
 let days = [31,28,31,30,31,30,31,31,30,31,30,31];
 
