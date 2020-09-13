@@ -1,25 +1,32 @@
 /*
   La mia rubrica
   Scrivi un programma per la gestione di una rubrica telefonica.
-
-  Definisci un oggetto che rappresenti un contatto e, visto che stai diventando bravo/a, le proprietà dell'oggetto sono a tua discrizione.
-  L'unico vincolo che hai è di inserire almeno il nome e il numero di telefono come stringhe.
-
-  Definisci un altro oggetto che rappresenti la lista dei contatti, quindi sarà formato da un array di contatti.
-  Implementa i metodi dell'oggetto per le seguenti operazioni:
-      - Visualizzazione dell'intera lista contatti
-      - Inserimento di un nuovo contatto
-      - Modifica di uno contatto passando in input l'indice dell'array
-      - Cancellazione di un contatto passando in input l'indice dell'array
-      - Ricerca passando il nome e restituendo il singolo contatto.
-
-  Variante:
-  Migliora i metodi di Modifica e Cancellazione, al posto di prendere in input l'indice dell'array passa in input il nome
-  e ricava l'indice sul quale applicare l'operazione.
-
-  http://www.imparareaprogrammare.it
 */
+//Array contenente i nomi da trasformare in oggetti
+let namesList = ["Kim", "Matteo Gabriele", "Erika Valentina", "Rebecca", "Camilla","Matteo", "Stefano","Marco"],
+    addressBook=[]; //array contenente gli oggetti nomi
 
-// 1)
-// Definisci un oggetto che rappresenti un contatto e, visto che stai diventando bravo/a, le proprietà dell'oggetto sono a tua discrizione.
-// L'unico vincolo che hai è di inserire almeno il nome e il numero di telefono come stringhe.
+//constructor function generazione utenti
+function User(name, phoneNumber){
+   this.nome=name,
+   this.telefono=phoneNumber,
+   this.summary = () => console.log(this.nome, this.telefono)
+ }
+
+//inserimento di type nel prototype di User
+User.prototype.type="Familiari e amici";
+
+//funzione generante rubrica dal lista nomi e generatore di numero telefonico
+function userFromArray(){
+  for (var us of namesList) {
+    let id=0,
+        pn = Math.floor(Math.random()*4000)+7530000,
+        phone=("02"+pn),
+        namesList[id]=new User(us,phone);
+        addressBook.push(generatedUser);
+        console.log(addressBook[id].summary());
+        id+=1
+  }
+}
+userFromArray();
+console.table(addressBook);
