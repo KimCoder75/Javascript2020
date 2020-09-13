@@ -14,7 +14,7 @@ function User(name, phoneNumber){
  }
 
 //inserimento di type nel prototype di User
-User.prototype.type="Familiari e amici";
+User.prototype.type="Familiari e Amici";
 
 //funzione generante rubrica dal lista nomi e generatore di numero telefonico
 function userFromArray(){
