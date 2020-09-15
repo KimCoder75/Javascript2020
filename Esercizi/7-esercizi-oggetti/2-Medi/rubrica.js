@@ -25,7 +25,7 @@ function userFromArray(){
         namesList[id]=new User(us,phone);
         addressBook.push(generatedUser);
         console.log(addressBook[id].summary());
-        id+=1
+        id+=2
   }
 }
 userFromArray();
