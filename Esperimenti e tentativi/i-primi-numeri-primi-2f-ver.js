@@ -101,8 +101,6 @@ let n=2
 };
 };
 showPrimes(howManyPrimes);
-
-
 const howManyPrimes=+prompt("Quanti numeri Primi vuoi vedere?");
 let primeCounter=0,isPrime;
 while (primeCounter<howManyPrimes){
