@@ -9,12 +9,11 @@ const tv = [
 { marca:"LG", dimensioni:"50 pollici", prezzo: 580}
 ];
 
-const prezzi = tv.map(p =>p.prezzo)
-console.table(prezzi)
+console.table(tv);
+const prezzi = tv.map(p => p.prezzo);
+console.table(prezzi);
 
-const numeri =[40,50,60,89,60,50,70,50,20,40];
-diviso2= numeri.map(function(x,i,arr){
-  return x/2;
-});
+const numeri = [40,50,60,89,60,50],
+      diviso2 = numeri.map(x => x/2);
 console.log(numeri);
 console.log(diviso2);
