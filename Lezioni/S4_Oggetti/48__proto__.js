@@ -1,4 +1,4 @@
-/* __proto__*/
+/* array.__proto__ = Object.getPrototypeOf(array)*/
 /*
 CATENA DEI PROTOTIPI
 null

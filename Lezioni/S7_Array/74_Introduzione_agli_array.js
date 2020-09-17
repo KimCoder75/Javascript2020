@@ -21,6 +21,7 @@ let a = new Array(10,20,30);
 a.concessionaria="Kimauto"
 console.dir(a);
 console.log(Object.getPrototypeOf(a) == Array.prototype);
+console.log(a.__proto__ == Array.prototype);
 console.dir(Array);
 console.log(a.__proto__);
 
