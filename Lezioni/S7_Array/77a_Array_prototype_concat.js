@@ -8,16 +8,17 @@ N.B. Concat concatena gli elementi passati sempre alla fine dell'array sul quale
 non sarà quindi possibile inserire elementi in posizioni da noi definite,
 cosa che vedremo con il metodo splice.
 */
-const numeri = [1,2,3,4,5],
+const numeriC = [1,2,3,4,5],
       a = "[10,20,30]",
       b = 12,
       c = `${b*100} è sicuramente maggiore di ${b}`,
       d = true,
       e = "Ciao",
       f = [10,20,30],
-      f1 = 1.88*20*1.22;
+      f1 = 1.88*20*1.22,
+      g = numeriC.concat(a,b,c,d,e,f,f1);
 
-const g = numeri.concat(a,b,c,d,e,f,f1);
 g.definizione="Stiamo utilizzando il metodo concat su un'array."
-console.table(numeri);
+console.log(numeriC);
 console.log(g);
+console.log(g.definizione);

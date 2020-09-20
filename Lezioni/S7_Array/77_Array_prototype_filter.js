@@ -1,5 +1,6 @@
 /* filter - filtrare gli elementi di un array
-array.filter(elemento => elemento che restituisca il valore true alla condizione)
+array.filter(elemento => elemento che restituisca il valore true
+alla condizione)
 
 */
 
@@ -18,6 +19,7 @@ tv.negozio = "Mediaworld";
 const economici = tv.filter(elemento => elemento.prezzo<800 && elemento.disponibile);
 console.table(economici);
 
-const numeri = [21,40,13,1,10];
-const dispari = numeri.filter(numero => numero%2==1);
+const numeri = [21,40,13,1,10],
+      dispari = numeri.filter(numero => numero%2==1);
+console.log(numeri);
 console.log(dispari);
