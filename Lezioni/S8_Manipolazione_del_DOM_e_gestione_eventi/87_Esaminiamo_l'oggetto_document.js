@@ -1,1 +1,1 @@
-console.log(windows.document);
+console.log(document);
