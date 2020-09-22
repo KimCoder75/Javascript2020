@@ -33,18 +33,22 @@ const sezione = document.getElementById('section1');
 // }
 // console.dir(info);
 //
-let info = sezione.childNodes;
-for (let i = 0; i < info.length; i++) {
-   if(info[i].tagName!='DIV'){
-      info[i].textContent="Ciao";
-}  else{
-      info[i].className='c2';
-      info[i].textContent='Arrivederci';
-}
-}
-console.dir(info);
+// let info = sezione.childNodes;
+// for (let i = 0; i < info.length; i++) {
+//    if(info[i].tagName!='DIV'){
+//       info[i].textContent="Ciao";
+// }  else{
+//       info[i].className='c2';
+//       info[i].textContent='Arrivederci';
+// }
+// }
+// console.dir(info);
 
-
+//const sezione = document.getElementById('section1');
+let info = Array.from(sezione.children);
+info.forEach((item, i) => {
+    item.textContent = 'Ciao';
+});
 
 
 //
