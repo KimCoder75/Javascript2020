@@ -5,6 +5,7 @@ const sezione = document.getElementById('section1');
 // info = sezione.childElementCount;
 // info = sezione.childNodes;
 // info = sezione.children;
+// info = sezione.tagName;
 // sezione.children[1].className = 'c2';
 // info = sezione.clientHeight;
 // info = sezione.clientWidth;
@@ -45,10 +46,10 @@ const sezione = document.getElementById('section1');
 // console.dir(info);
 
 //const sezione = document.getElementById('section1');
-let info = Array.from(sezione.children);
-info.forEach((item, i) => {
-    item.textContent = 'Ciao';
-});
+// let info = Array.from(sezione.children);
+// info.forEach((item, i) => {
+//     item.textContent = 'Ciao';
+// });
 
 
 //
@@ -60,3 +61,11 @@ info.forEach((item, i) => {
 // }
 // }
 // console.dir(sectionNodes);
+
+// const sezione = document.getElementById('section1');
+// let info = Array.from(sezione.childNodes);
+// info.map((item) => {
+//     if(item.nodeType === 3) {
+//         item.textContent = 'Ciao';
+//     }
+// });
