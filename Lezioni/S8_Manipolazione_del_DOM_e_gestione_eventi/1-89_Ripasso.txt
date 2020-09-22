@@ -1,27 +1,50 @@
-Il dom è una rappresentazione ad albero
+Il DOM è una rappresentazione ad albero
 della pagina html
-è suddivisa in tre tipologie di nodi
-1 Elementi (i tag)
-2 Attributi (id, class, charset, style..)
-3 Testi (qualsiasi elemento testuale, compresi gli spazi vuoti e gli a capo tra un tag e un altro)
-Gli elementi del dom possono essere
-racchiusi in
-Nodelist (rimangono fissi anche al variare della pagina)
+è suddivisa in varie tipologie di nodi
+tipo 1 Elementi (i tag)
+tipo 2 Attributi (id, class, charset, style..)
+tipo 3 Testi (qualsiasi elemento testuale, compresi gli spazi vuoti e gli a capo tra un tag e un altro)
+tipo 8 Commenti
+tipo 9 Document
+
+Gli elementi del DOM possono essere racchiusi in:
+
+Nodelist (somo i nodi della pagina orginale html)
 HTMLCollection (Variano dinamicamente al variare della pagina)
-A tutti gli oggetti presenti nel dom di può accedere
+
+A tutti gli oggetti presenti nel DOM di può accedere
 in modo verticale(dal basso verso l'alto e viceversa)
 in modo orizzontale(da dinistra a destra e viceversa)
-per tutti gli elementi
-c'è sempre la parola Node o Nodes (childNodes...)
-per gli gli Elementi tag
-si usano i legami di parentela
-in verticale
-(firstChild, child, children, parent...)
-in orizzontale
-Sibbling(nextSibbling, previousSibbling)
-Per accedere ad elementi specifici si aggiungono [] come negli array
+
+Per riferirsi agli tutti oggetti (Elementi, attributi, testi)
+
+  in verticale
+    si usano proprietà dove è presente la parola Node o Nodes (childNodes...)
+
+  in orizzontale
+    si usa previousSibling e nextSibling
+
+Per riferirsi agli Elementi (tag)
+
+  in verticale
+    si usano i legami di parentela (firstChild, child, children, parent...)
+
+  in orizzontale
+    si usa previouseElementSibling e nextElementSibling
+
+Per accedere ad elementi specifici si aggiungono le parentesi quadre [] come negli array
 children[0],children[2] etc.
-L'albero è riferito sempre a Document che ha solo un nodo figlio: HTML
+
+innerHTML inserisce codice all'interno dell'elemento selezionato
+innerText inserisce testo all'interno dell'elemento selezionato
+
+
+
+
+
+
+
+L'albero è riferito sempre a Document che ha solo un nodo elemento figlio: HTML
 HTML ha sempre solo due nodi figli
 Head e Body e poi parte la ramificazione con gli altri tag
 Ogni riga ed ogni elemento della riga è accessibile.
