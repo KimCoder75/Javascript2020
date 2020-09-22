@@ -11,11 +11,10 @@ info = sezione.clientWidth;
 // sezione.style.backgroundColor = "#da12da";
 sezione.style.padding ="25px";
 
-let div1 = sezione.children[0];
-div1.innerText ="Primo Blocco";
-div1.innerHTML = "Primo Blocco con <a href='index.html'>link1</a>";
+// div1.innerText ="Primo Blocco";
+// div1.innerHTML = "Primo Blocco con <a href='index.html'>link1</a>";
 // console.log(info);
-console.log(div1);
+// console.log(numero);
 
 // Var 1
 // const sezione = document.getElementById('section1');
@@ -27,11 +26,10 @@ console.log(div1);
 // console.dir(info);
 
 // Var 2
-// const sezione = document.getElementById('section1');
-// let info = sezione.childNodes;
-// for (let i = 0; i < childNodes.length; i++) {
-//    if(i%2==0){
-//      info[i].textContent="Ciao";
-// }
-// }
-// console.dir(info);
+let sectionNodes = document.getElementById('section1').childNodes;
+for (let i = 0; i < sectionNodes.length; i++) {
+   if(i%2==0){
+     sectionNodes[i].innerText="Ciao";
+}
+}
+console.dir(sectionNodes);
