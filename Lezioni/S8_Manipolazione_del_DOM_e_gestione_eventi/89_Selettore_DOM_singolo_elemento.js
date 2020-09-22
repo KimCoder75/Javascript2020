@@ -8,12 +8,13 @@ info = sezione.children;
 sezione.children[1].className = 'c2';
 info = sezione.clientHeight;
 info = sezione.clientWidth;
-sezione.style.backgroundColor = "#da12da";
+// sezione.style.backgroundColor = "#da12da";
 sezione.style.padding ="25px";
 
 let div1 = sezione.children[0];
 div1.innerText ="Primo Blocco";
-div1.innerHTML = "Blocco con <a href='index.html'>link1</a>";
+div1.innerHTML = "Primo Blocco con <a href='index.html'>link1</a>";
+// console.log(info);
 console.log(div1);
 
 // Var 1
