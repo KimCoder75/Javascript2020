@@ -1,0 +1,29 @@
+Il dom è una rappresentazione ad albero
+della pagina html
+è suddivisa in tre tipologie di nodi
+1 Elementi (i tag)
+2 Attributi (id, class, charset, style..)
+3 Testi (qualsiasi elemento testuale, compresi gli spazi vuoti e gli a capo tra un tag e un altro)
+Gli elementi del dom possono essere
+racchiusi in
+Nodelist (rimangono fissi anche al variare della pagina)
+HTMLCollection (Variano dinamicamente al variare della pagina)
+A tutti gli oggetti presenti nel dom di può accedere
+in modo verticale(dal basso verso l'alto e viceversa)
+in modo orizzontale(da dinistra a destra e viceversa)
+per tutti gli elementi
+c'è sempre la parola Node o Nodes (childNodes...)
+per gli gli Elementi tag
+si usano i legami di parentela
+in verticale
+(firstChild, child, children, parent...)
+in orizzontale
+Sibbling(nextSibbling, previousSibbling)
+Per accedere ad elementi specifici si aggiungono [] come negli array
+children[0],children[2] etc.
+L'albero è riferito sempre a Document che ha solo un nodo figlio: HTML
+HTML ha sempre solo due nodi figli
+Head e Body e poi parte la ramificazione con gli altri tag
+Ogni riga ed ogni elemento della riga è accessibile.
+Per accedere agli elementi si puà utilizzare querySelector('')
+tra le parentesi si possono passare gli elementi ed i sotto elementi o le pseudo classi dei class
