@@ -64,6 +64,6 @@ Altre proprietà:
 
     innerHTML inserisce codice all'interno dell'elemento selezionato
     innerText inserisce testo all'interno dell'elemento selezionato
+    nodeValue restituisce il valore del nodo
     nodeType restituisce il tipo di nodo
     nodeName restituisce il nome del nodo
-    nodeValue restituisce il valore del nodo
