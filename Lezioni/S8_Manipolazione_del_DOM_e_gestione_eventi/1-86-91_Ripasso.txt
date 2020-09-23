@@ -66,3 +66,4 @@ Altre proprietà:
     innerText inserisce testo all'interno dell'elemento selezionato
     nodeType restituisce il tipo di nodo
     nodeName restituisce il nome del nodo
+    nodeValue restituisce il valore del nodo
