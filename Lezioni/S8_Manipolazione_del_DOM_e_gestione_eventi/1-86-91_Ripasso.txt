@@ -67,3 +67,21 @@ Altre proprietà:
     nodeValue restituisce il valore del nodo
     nodeType restituisce il tipo di nodo
     nodeName restituisce il nome del nodo
+
+Rappresentazione dei nodi in una Nodelist:
+Volendo identificare un elemento comprensivo ti tutti gli attributi
+
+utilizziamo
+
+elemento#id.classe
+
+# per riferirci all'ID
+. per riferirci alla classe (dei css)
+
+per cui
+
+section#section1.section
+
+corrisponde a:
+
+<section id="section1" class = "section">
