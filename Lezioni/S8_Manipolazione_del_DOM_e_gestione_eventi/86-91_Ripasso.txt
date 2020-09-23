@@ -1,0 +1,68 @@
+Il DOM è una rappresentazione ad albero della pagina html suddivisa in varie tipologie di NODI
+
+tipo 1 Elementi (i tag)
+tipo 2 Attributi (id, class, charset, style..)
+tipo 3 Testi (qualsiasi elemento testuale, compresi gli spazi vuoti tra un tag e un altro)
+tipo 8 Commenti
+tipo 9 Document
+tipo 10 Doctype
+
+Esiste una gerarchia precisa di elementi:
+WINDOW
+  DOCUMENT
+    HTML
+      Head
+      Body
+
+head e body hanno a loro volta nodi figlio
+
+A tutti gli oggetti presenti nel DOM di può accedere
+
+  in modo verticale (dal basso verso l'alto (parentElement/parentNode) e viceversa
+  in modo orizzontale (da sinistra a destra e viceversa)
+
+Per riferirsi ai nodi (Elementi, attributi, testi...)
+
+  in verticale
+    si usano proprietà dove è presente la parola Node o Nodes (childNodes...) dal basso verso l'alto si usa parentNode
+
+Quando accedo ai nodi tramite children riceverò una Nodelist contenente tutti i nodi figli
+
+  in orizzontale
+    si usa previousSibling e nextSibling
+
+Per riferirsi ai nodi Elementi
+
+  in verticale
+    si usano i legami figli: (child, children, firstChild, lastChild...) dal basso verso l'alto si usa parentElement
+
+Quando accedo ai nodi Elementi tramite childNodes riceverò una HTMLCollection contenente tutti i nodi Elementi figlio
+
+  nelle proprietà parent e Sibling è presente la parola Element
+
+  in orizzontale
+    si usa previousElementSibling e nextElementSibling
+
+Per accedere ad elementi specifici si aggiungono le parentesi quadre [] come negli array
+children[0],children[2] etc.
+
+Modi di selezione dei nodi:
+
+si possono selezionare:
+
+  nodi singoli
+    getElementById('id')
+    querySelector('Nodi Elemento > Nodi Elemento figlio > Nodo:nth-child(even)'... )
+    querySelector('Nodi Elemento')
+
+  nodi multipli:
+    getElementsByTagName, getElementsByClassName, getElementsByName
+    querySelectorAll('Nodo Elemento')
+    querySelectorAll('Nodo Elemento:nth-className(b1)')
+
+Altre proprietà:
+
+    innerHTML inserisce codice all'interno dell'elemento selezionato
+    innerText inserisce testo all'interno dell'elemento selezionato
+    nodeType restituisce il tipo di nodo
+    nodeName restituisce il nome del nodo
