@@ -1,3 +1,5 @@
+DOM da 86 a 93
+
 Il DOM è una rappresentazione ad albero della pagina html suddivisa in varie tipologie di NODI
 
 tipo 1 Elementi (i tag)
