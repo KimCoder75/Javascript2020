@@ -1,10 +1,12 @@
-let sectionDivInnerText=[],
-    blocchi = document.getElementById('ElencoBlocchi').children,
+// let sectionDivInnerText=[],
+let blocchi = document.getElementById('ElencoBlocchi').children,
     blocchiElenco = Array.from(blocchi);
 
-    blocchiElenco.forEach((item, i) => {
-        console.log(item.innerText);
-        sectionDivInnerText.push(item.innerText);
-        item.innerText=`Blocco con indice ${i}`;
-        console.log(`l'innerText è stato cambiato da '${sectionDivInnerText[i]}' a '${item.innerText}'`)
+blocchiElenco.forEach((item, i) => {
+    // console.log(item.innerText);
+    // sectionDivInnerText.push(item.innerText);
+    let vecchioContenuto = item.innerText,
+        nuovoContenuto = (item.innerText = `Blocco con indice ${i}`);
+    console.log(`${vecchioContenuto}
+l'innerText è stato cambiato da '${vecchioContenuto}' a '${nuovoContenuto}'`)
     });
