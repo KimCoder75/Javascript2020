@@ -45,7 +45,7 @@ const sezione = document.getElementById('section1');
 // }
 // console.dir(info);
 
-//const sezione = document.getElementById('section1');
+// const sezione = document.getElementById('section1');
 // let info = Array.from(sezione.children);
 // info.forEach((item, i) => {
 //     item.textContent = 'Ciao';

@@ -1,0 +1,37 @@
+div {
+padding:20px;
+margin: 5px; /*importante per spaziare gli elementi */
+background-color:rgba(255, 128, 64, 0.6);
+color: rgba(0, 0, 255, 1);
+font-size: 25px;
+}
+section {
+margin: 5px;
+}
+nav {
+margin: 5px;
+padding: 5px;
+color: white;
+}
+
+#Testata{
+  background-color: black;
+
+}
+
+#ElencoBlocchi{
+  font-family: sans-serif;
+  font-size: 25px;
+  color: rgba(20, 50, 20, 1);
+  text-align: center;
+  padding:10px;
+}
+.VerticaleConSfondo{
+  background-color: grey;
+}
+.b1{
+  font-family: fantasy;
+  font-size: 35px;
+  color: rgba(20, 50, 20, 1);
+  text-align: center;
+}

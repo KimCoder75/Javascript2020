@@ -87,3 +87,18 @@ section#section1.section
 corrisponde a:
 
 <section id="section1" class = "section">
+
+Nodelist e HTMLCollection
+
+L'oggetto HTML Collection è sempre dinamico mentre Nodelist dipende da che istruzione è invocata
+
+Le istruzioni getElementById, getElementsByName, getElementsByTagName, getElementsByClassName...
+restituiscono liste dinamiche
+
+Quelle invocate tramite querySelector e querySelectorAll
+restituiscono liste statiche
+
+Iterare più nodi figlio Array.from(Figli)
+
+le liste di figli sono oggetty arraylike ma per poterli manipolare più agevolmente
+è necessario trasformarli in array veri e propri tramite Array.from(Figli)
