@@ -8,5 +8,5 @@ blocchiElenco.forEach((item, i) => {
     let vecchioContenuto = item.innerText,
         nuovoContenuto = (item.innerText = `Blocco con indice ${i}`);
     console.log(`${vecchioContenuto}
-l'innerText è stato cambiato da '${vecchioContenuto}' a '${nuovoContenuto}'`)
+l'innerText è stato cambiato da '${vecchioContenuto}' a '${nuovoContenuto}'`);
     });
