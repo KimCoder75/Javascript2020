@@ -1,0 +1,12 @@
+Un oggetto HTMLCollection è un elenco di elementi HTML simile a un array.
+
+Metodi come getElementsByTagName() restituiscono una HTMLCollection.
+
+Proprietà e metodi
+Le seguenti proprietà e metodi possono essere utilizzati su un oggetto HTMLCollection:
+
+Proprietà e Descrizione del metodo
+
+item() Restituisce l'elemento all'indice specificato in una HTMLCollection
+length() Restituisce il numero di elementi in una collezione HTMLCollection
+namedItem() Restituisce l'elemento con l'ID, o il nome specificato, in una collezione HTMLCollection

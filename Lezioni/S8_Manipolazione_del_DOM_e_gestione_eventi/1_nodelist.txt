@@ -1,0 +1,67 @@
+L'oggetto HTML DOM NodeList
+Un oggetto NodeList è una lista (raccolta) di nodi estratti da un documento.
+
+Un oggetto NodeList è quasi lo stesso di un oggetto HTMLCollection.
+
+Alcuni browser (più vecchi) restituiscono un oggetto NodeList invece di una HTMLCollectionollection per metodi come getElementsByClassName().
+
+Tutti i browser restituiscono un oggetto NodeList per la proprietà childNodes.
+
+La maggior parte dei browser restituisce un oggetto NodeList per il metodo querySelectorAll().
+
+Il codice seguente seleziona tutti i nodi <p> di un documento:
+
+Esempio
+
+var myNodeList = document.querySelectorAll("p");
+The elements in the NodeList can be accessed by an index number.
+
+Per accedere al secondo nodo <p> puoi scrivere:
+
+y = myNodeList[1];
+Nota: Gli indici partono sempre da 0.
+
+Lunghezza dell'elenco dei nodi HTML DOM
+La proprietà length definisce il numero di nodi in una NodeList:
+
+Esempio
+var myNodeList = document.querySelectorAll("p");
+document.getElementById("demo").innerHTML = myNodeList.length;
+Esempio spiegato:
+
+Creare una lista di tutti gli elementi <p>
+Visualizzare la lunghezza della lista
+La proprietà length è utile quando si vuole fare un loop attraverso i nodi di una NodeList:
+
+Esempio
+Cambiare il colore di tutti gli elementi <p> in una NodeList:
+
+var myNodeList = document.querySelectorAll("p");
+var i;
+for (i = 0; i < myNodeList.length; i++) {
+  myNodeList[i].style.color = "red";
+}
+La differenza tra una HTMLCollection e una NodeList
+Una HTMLCollection è una collezione di elementi HTML.
+Una NodeList è una collezione di nodi del documento.
+
+Una NodeList e una HTMLCollection sono simili.
+
+Sia un oggetto HTMLCollection che un oggetto NodeList è una lista (collezione) di oggetti simile ad un array.
+
+Entrambi hanno una proprietà length che definisce il numero di oggetti nella lista (collezione).
+
+Entrambi forniscono un indice (0, 1, 2, 3, 4, ...) per accedere ad ogni elemento come un array.
+
+Gli oggetti della HTMLCollection sono accessibili tramite il nome, id o numero di indice.
+
+Gli elementi di NodeList sono accessibili solo tramite il numero di indice.
+
+Solo l'oggetto NodeList può contenere nodi attributi e nodi testo.
+
+
+Una NodeList può sembrare un array, ma non lo è.
+
+Si può fare un loop attraverso la NodeList e fare riferimento ai suoi nodi come ad un array utilizzando il metodo forEach()
+
+ma non si possono usare altri metodi degli array come, ad esempio: valueOf(), push(), pop(), o join().

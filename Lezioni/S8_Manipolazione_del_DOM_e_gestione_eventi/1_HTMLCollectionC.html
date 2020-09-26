@@ -1,0 +1,43 @@
+<!-- Un oggetto HTMLCollection è un elenco di elementi HTML simile a un array.
+
+Metodi come getElementsByTagName() restituiscono una HTMLCollection.
+
+Proprietà e metodi
+Le seguenti proprietà e metodi possono essere utilizzati su un oggetto HTMLCollection:
+
+Proprietà e Descrizione del metodo
+
+item() Restituisce l'elemento all'indice specificato in una HTMLCollection
+length() Restituisce il numero di elementi in una collezione HTMLCollection
+namedItem() Restituisce l'elemento con l'ID, o il nome specificato, in una collezione HTMLCollection -->
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>L'oggetto HTMLCollection</h1>
+
+<p>Itera tutti gli elementi HTML element di questa pagina, e scrive il nome del Tag:</p>
+<p class="code">
+
+  <code><font color="#000066">
+    let x, i, l; <br>
+    x = document.getElementsByTagName("*"); <br>
+    l = x.length; <br>
+    for (i = 0; i < l; i++) { <br>
+      document.write(x[i].tagName + "&ltbr&gt");<br>
+    }<br>
+
+  </font></code>
+</p>
+
+<script>
+var x, i, l;
+x = document.getElementsByTagName("*");
+l = x.length;
+for (i = 0; i < l; i++) {
+  document.write(x[i].tagName + "<br>");
+}
+</script>
+
+</body>
+</html>
