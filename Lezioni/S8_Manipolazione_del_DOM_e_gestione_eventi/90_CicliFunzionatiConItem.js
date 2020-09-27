@@ -18,9 +18,27 @@ for (let index in nodiFiglio) {
 console.log(nodiFiglio.item(index));
 };
 
+/*
+Il for..in itera sulle proprietà enumerabili proprie ed ereditate dell'oggetto:
+
 console.log("Ciclo for in, utilizzo di item su childNodes");
 for (let index in nodiElemento) {
+    console.log(index);
+};
+Se esegui questo codice vedrai che index non è un indice che puoi utilizzare con
+il metodo item(), ma contiene di volta in volta una proprietà.
+*/
+
+console.log("Ciclo for in, utilizzo di item su childNodes");
+for (let index in nodiElemento) {
+if (index/index==1) {
 console.log(nodiElemento.item(index));
+}
+};
+
+console.log("Gianluca, Ciclo for in, utilizzo di item su childNodes");
+for (let index in nodiElemento) {
+    console.log(index);
 };
 
 //non funzionanti
