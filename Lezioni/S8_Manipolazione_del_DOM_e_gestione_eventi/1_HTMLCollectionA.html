@@ -15,21 +15,56 @@ namedItem() Restituisce l'elemento con l'ID, o il nome specificato, in una colle
 <html>
 <body>
 
+
 <h1>L'oggetto HTMLCollection</h1>
 
-<p>Usa il metodo getElementsByTagName() per restituire il numero di elementi P una HTMLCollection</p>
+  <p>Un oggetto HTMLCollection è un elenco di elementi HTML simile a un array.</p>
+  <p>Metodi come <b>getElementsByTagName()</b> restituiscono una HTMLCollection.</p>
+
+<h3>Proprietà e metodi:</h3>
+  <p>Le seguenti proprietà e metodi possono essere utilizzati su un oggetto HTMLCollection:</p>
+  <ul>
+    <li><strong>item()</strong> Restituisce l'elemento all'indice specificato in una HTMLCollection</li>
+    <li><strong>length()</strong> Restituisce il numero di elementi in una collezione HTMLCollection</li>
+    <li><strong>namedItem() </strong>Restituisce l'elemento con l'ID, o il nome specificato, in una collezione HTMLCollection</li>
+  </ul>
+
+<h3>Esempio</h3>
+<p id="giorgio">Uso dell metodo <b>getElementsByTagName()</b> per restituire una <b>HTMLCollection</b> di tutti gli elementi p contenuti in document ed<br>
+  il numero di elementi contenuti nella <b>HTMLCollection</b></p>
+<p>
+<code>
+<font color="#000066">
+&ltscript&gt <br>
+  let x = document.getElementsByTagName("P");<br>
+  document.write("I tag &ltp&gt contenuti fanno parte di :"+x+<br>
+  "&ltbr&gt"+"il loro numero è: "+x.length+"&ltbr&gt"+"Il testo contenuto nel primo elemento accessibile tramite item(0).innerText è: "+<br>
+  "&ltbr&gt"+x.item(0).innerText+"+x.length+"&ltbr&gt"+"Il testo contenuto nel secondo elemento accessibile tramite item(1).innerText è: "+<br>
+  "&ltbr&gt"+x.item(1).innerText);<br>
+&lt/script&gt
+</font>
+</code>
+</p>
+<p><b>Nota Bene:</b> i "&ltbr&gt" sono necessari solo se lo script è incorporatoto nella pagina HTML, come in questo caso,<br>qualora fossere scritti in un file javascript esterno al documento, per andarare a capo si userebbe \n, in questo modo:</p>
 <p>
 <code>
 <font color="#000066">
   let x = document.getElementsByTagName("P");<br>
-  document.write(x.length);
+  document.write("I tag &ltp&gt contenuti fanno parte di :"+x+\n <br>
+  "il loro numero è: "+x.length+\n+<br>
+  "Il testo contenuto nel primo elemento accessibile tramite item(0).innerText è: "+\n <br>
+  x.item(0).innerText+\n<br>
+  "Il testo contenuto nel secondo elemento accessibile tramite item(1).innerText è: "+\n <br>
+  x.item(1).innerText);
 </font>
 </code>
 </p>
-
 <script>
-let x = document.getElementsByTagName("P");
-document.write(`Il numero di tag &ltP&gt nella pagina è: ${x.length}`);
+  let x = document.getElementsByTagName("P");
+  document.write("I tag &ltp&gt contenuti fanno parte di :"+x+
+  "<br>"+"Il loro numero è: "+x.length+"<br>"+"Il testo contenuto nel primo elemento accessibile tramite item(0).innerText è: "+
+  "<br>"+x.item(0).innerText+"<br>"+"Il testo contenuto nel secondo elemento accessibile tramite item(1).innerText è: "+
+  "<br>"+x.item(1).innerText);
 </script>
 
 </body>
