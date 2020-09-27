@@ -31,11 +31,10 @@ il metodo item(), ma contiene di volta in volta una proprietà.
 
 console.log("Ciclo for in, utilizzo di item su childNodes");
 for (let index in nodiElemento) {
-if (index/index==1) {
+if (index/index==1 || index == 0) {
 console.log(nodiElemento.item(index));
 }
 };
-
 
 console.log("Gianluca, Ciclo for in, utilizzo di item su childNodes");
 for (let index in nodiElemento) {
