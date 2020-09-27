@@ -36,6 +36,7 @@ console.log(nodiElemento.item(index));
 }
 };
 
+
 console.log("Gianluca, Ciclo for in, utilizzo di item su childNodes");
 for (let index in nodiElemento) {
     console.log(index);
