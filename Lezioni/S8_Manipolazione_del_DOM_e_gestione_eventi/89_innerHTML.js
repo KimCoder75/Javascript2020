@@ -1,6 +1,6 @@
 
-let nuoviBocchi = document.getElementById('section1');
-nuoviBocchi.innerHTML =(`
+let nuoviBlocchi = document.getElementById('section1');
+nuoviBlocchi.innerHTML =(`
         <div class="b1">BLOCCO 1</div>
         <div class="b1">BLOCCO 2</div>
         <div class="b1">BLOCCO 3</div>
@@ -22,7 +22,7 @@ nuovaNavBar.innerHTML =(`
       <a href="Contatti.html">Contatti</a>
   `);
 
-console.dir(nuoviBocchi.childNodes);
-console.dir(nuoviBocchi.children);
+console.dir(nuoviBlocchi.childNodes);
+console.dir(nuoviBlocchi.children);
 console.dir(nuovaNavBar.childNodes);
 console.dir(nuovaNavBar.children);
