@@ -1,13 +1,13 @@
 //file di diferimento indexNew.html
 //createElement
 //appendChild
-let sezione = document.getElementById('ElencoBlocchi');
-sezione.innerHTML='0
+let sezione = document.getElementById('section1');
+sezione.innerHTML=(`0
         <div class="b1">BLOCCO 1</div>0
         <div class="b1">BLOCCO 2</div>0
         <div class="b1">BLOCCO 3</div>0
         <div class="b1">BLOCCO 4</div>0
-    ';
+    `);
 
 // // creo un nuovo div in document
 // const nuovoDiv = document.createElement('div');
