@@ -44,20 +44,25 @@ scroll100 = scrollHeight-clientHeight
 
 */
 
-
-
-
-
 let PB = {};
-document.addEventListener('DOMContentLoaded',()=>{
+document.addEventListener('DOMContentLoaded', () => {
     PB.barra = document.getElementById('progress');
     PB.html = document.documentElement;
-    PB.barra.style.width ='0%';
+    PB.barra.style.width = "0%";
 });
 
 window.addEventListener('scroll', progressFn);
-
-function progressFn(){
+function progressFn() {
   const scroll100 = (PB.html.scrollHeight - PB.html.clientHeight);
-  PB.barra.style.width = (+(((PB.html.scrollTop)*100)/scroll100).toFixed(2))+"%";
-}
+  let rapporto = ((PB.html.scrollTop)/scroll100),
+      rapportoFixed =+(rapporto*100).toFixed(2);
+
+  console.clear();
+  console.log(`scrollHeight: ${PB.html.scrollHeight}`);
+  console.log(`clientHeight: ${PB.html.clientHeight}`);
+  console.log(`scroll100: ${scroll100}`);
+  console.log(`scrollTop: ${PB.html.scrollTop}`);
+  console.log(`rapporto: ${rapportoFixed}%`);
+
+  PB.barra.style.width = `${rapportoFixed}%`;
+};
