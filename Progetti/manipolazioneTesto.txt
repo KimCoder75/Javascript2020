@@ -1,0 +1,172 @@
+Gestire le stringhe con Javascript
+
+Manipolazione di stringhe
+In occasione della lezione dedicata alle variabili, abbiamo già visto cosa sono
+le stringhe e come si definisce una variabile di tipo stringa in Javascript.
+Nel corso di questa lezione vedremo come manipolare la strighe attraverso le
+proprietà ed i metodi che Javascript mette a disposizione degli sviluppatori.
+
+E' bene ricordare, infatti, che l'interprete Javascript, quando ha a che fare
+con una stringa, la trasforma dinamicamente in un oggetto e, pertanto, come tale
+può essere gestita.
+
+La proprietà length
+
+Esiste una sola proprietà utile par la manipolazione delle stringhe, si tratta
+di length che, come la sua traduzione dall'inglese lascia ad intendere, calcola
+la lunghezza della stringa, nello specifico il numero di caratteri che la compone:
+
+let miaStringa = "Kim Malcaus";
+document.write("La stringa è composta da " + miaStringa.length + " caratteri.");
+
+Il suo impiego torna utile, ad esempio, in fase di validazione dei form per
+calcolare il numero di caratteri presenti in un campo input o in una textarea.
+
+I metodi utili per la manipolazione delle stringhe sono tantissimi, in questa
+lezione esamineremo i principali tra i metodi standard mentre tralasceremo
+volutamente tutti i metodi "non standard" (come blink(), bold(), ecc.).
+
+Tutti i metodi delle stringhe seguono la forma sintattica:
+
+variabile.metodo()
+
+pertanto non riporterò esempi per tutti i metodi essendo il costrutto identico
+per ognuno di essi.
+
+Vediamo ora i metodi più utilizzati:
+
+chartAt() - restituisce il carattere corispondente all'indice numerico specificato;
+
+// Esempio
+
+let miaStringa = "Kim Malcaus";
+document.write(miaStringa.charAt(0)); // stampa a video: M
+
+concat() - equivale all'operatore + per concatenare all'oggetto la stringa
+passata in argomento;
+
+indexOf() - restituisce la posizione della prima occorrenza di uno specifico
+valore all'interno dell'oggetto stringa (restituisce -1 se non trovato);
+
+// Esempio
+
+let miaStringa = "Kim Malcaus";
+let trova = miaStringa.indexOf("M");
+if (trova != -1) alert("Il carattere è presente");
+else alert("Il carattere non è presente");
+
+lastIndexOf() - restituisce la posizione dell'ultima occorrenza di uno specifico
+valore all'interno dell'oggetto stringa (restituisce -1 se non trovato);
+è possibile specificare, come secondo argomento del metodo, il carattere di
+partenza, ciò da che elemento deve partire.
+
+// Esempio
+
+let miaStringa = "Kim Malcaus";
+miaStringa.lastIndexOf("a"); // Inizia dall'ultimo carattere
+miaStringa.lastIndexOf("a", 6); // Inizia dall'ottavo carattere
+
+match() - effettua una ricerca all'interno dell'oggetto stringa attraverso
+l'espressione regolare passata come parametro; restituisce i risultati sotto
+forma di array; Da utilizzare preferibilmente con espressioni regolari
+
+// Esempio
+
+const miaStringa = 'The quick brown fox jumps over the lazy dog. It barked.',
+      regex = /[A-Z]/g,
+      found = miaStringa.match(regex);
+console.log(found);
+/*
+output: Array ["T", "I"]
+restituisce una array con gli elementi che corrispendono alla ricerca e le propietà ereditate: length, __proto__
+*/
+
+// Esempio con stringhe semplici
+
+let miaStringa = "Visita Google"
+// traforma la stringa in un array di un elemento.
+let miaStringaArray = miaStringa.match('Google');
+console.log(miaStringaArray);
+console.log(miaStringaArray[0]);
+console.log(miaStringaArray.index);
+console.log(miaStringaArray.input);
+console.log(miaStringaArray.length);
+console.log(miaStringaArray.groups);
+console.log(miaStringaArray.__proto__);
+/*
+output: ["Google", index: 7, input: "Visita Google", groups: undefined]
+0: "Google"
+groups: undefined
+index: 7
+input: "Visita Google"
+length: 1
+__proto__: Array(0)
+// Se viene utilizzata con un testo semplice e non un espressione regolare.
+// restituisce un array con un unico elemeto e le propietà proprie: groups, index, input ed ereditate: length, __proto__
+
+*/
+
+replace() - sostituisce all'interno dell'oggetto la stringa passata come primo
+argomento con quella passata come secondo; come secondo argomento può essere
+passata anche una espressione regolare; vediamo due esempi:
+
+// Esempio
+
+let miaStringa = "Visita Google"
+// effettuo una sostituzione semplice
+document.write(miaStringa.replace('Google','Kim Malcaus'));
+
+// Esempio tramite espressioni regolari il parametro g permette di effettuare
+// l'operazione a livello globale, ovvero su tutto il testo.
+
+let miaStringa = "Ho un giubbotto blu, un maglione rosso e un cappello blu";
+// effettuo una sostituzione attraverso espressione regolare sulla prima occorrenza
+document.write(miaStringa.replace(/blu/, "giallo"));
+
+let miaStringa = "Ho un giubbotto blu, un maglione rosso e un cappello blu";
+// effettuo una sostituzione attraverso espressione regolare a livello globale
+//cioè su tutte le occorrenze
+document.write(miaStringa.replace(/blu/g, "verde"));
+
+search() - effettua una ricerca della stringa passata in argomento all'interno
+dell'oggetto e ne restituisce la posizione (restituisce -1 se non trovata);
+come argomento può essere passata anche una espressione regolare; vediamo un
+
+// Esempio
+
+let miaStringa = "Evviva Kim Malcaus"
+document.write(miaStringa.search('Kim Malcaus')); // restuirà: 7
+
+slice() - consente di tagliare la stringa specificando il carattere di partenza
+e quello finale (che sono compresi)
+// Esempio
+
+
+
+let miaStringa = "Kim Malcaus";
+document.write(miaStringa.slice(3,5)); // Verrà visualizzato ".We"
+
+split() - divide una stringa sulla base di un separatore e restituisce un array
+// Esempio
+
+
+
+let miaStringa = "divido la stringa in base agli spazi vuoti!";
+document.write(miaStringa.split(" "));
+
+substr() - consente di estrarre dall'oggetto una sottostringa specificando il
+carattere di partenza (che verrà incluso) ed il numero di caratteri da estrarre
+// Esempio
+
+
+
+let miaStringa = "Kim Malcaus";
+document.write(miaStringa.substr(3,5)); // Verrà visualizzato ".Webm"
+
+substring() - consente di estrarre dall'oggetto una sottostringa specificando il carattere di partenza (che verrà incluso) ed il carattere finale (che non verrà incluso nella sottostringa)// Esempio
+
+let miaStringa = "Kim Malcaus";
+document.write(miaStringa.substr(3,5)); // Verrà visualizzato ".W"
+
+toLowerCase() - converte una stringa in minuscolo;
+toUpperCase() - converte una stringa in maiuscolo;
