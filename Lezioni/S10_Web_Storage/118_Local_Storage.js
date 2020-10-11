@@ -1,0 +1,4 @@
+/*
+* window.localStorage
+* window.sessionStorage
+*/
