@@ -1,0 +1,108 @@
+I moduli sono introdutti da ES6 (EcmaScript 2015),
+ci sono due modi di exportare un modulo da un file:
+
+1) named export
+2) default export
+
+I moduli servono ad avere un file unico di riferimento e a rendere pubbliche solo le informazioni necessarie
+
+
+come sempre ci deve essere corrispondenza tra html e js
+
+Il file .js
+
+Se si utilizza una esportazione nominale (named export):
+Si aggiunge il prefisso export ad ogni elemento che si vuole esportare (esempio 1) oppure,
+alla fine del file, si aggiunge il prefisso export alle parentesi graffe
+contenenti tutti gli elementi separati da virgola (esempio 2).
+
+esempio 1
+
+export const quadri = [2,4,5,6,7,8];
+export function fn_1(){
+  ...contenuto della funzione
+};
+export obj = {
+  p1:"Alberto",
+  p2:"Romani"
+};
+
+esempio 2
+
+const quadri = [2,4,5,6,7,8];
+function fn_pubblica(){
+  ...contenuto della funzione...
+};
+
+obj = {
+  p1:"Alberto",
+  p2:"Romani"
+};
+
+export {quadri, fn_1, obj}
+
+il file .html
+
+Nel tag script si indica come type='module' e si utilizza import {} from, cioè
+si importa ciò che è reso disponibile dal modulo recchiuso tra parentesi graffe.
+quindi:
+
+import {a,b,c,d} from './nomeDelModulo.js'
+
+esempio 1
+
+<script type="module" charset="utf-8">
+
+  import {quadri, fn_1, obj} from './nomeDelModulo.js';
+
+  console.log(quadri); // mostra il contenuto dell'array quadri
+  console.log(obj); // mostra il contenuto dell'oggetto obj
+  fn_pubblica();// esegue la funzione fn_pubblica
+
+</script>
+
+E' possibile importare tutti gli elementi disponibili tramite *
+
+import * from './nomeDelModulo.js'
+
+esempio 2
+
+<script type="module" charset="utf-8">
+
+  import * from './nomeDelModulo.js';
+
+  console.log(quadri); // mostra il contenuto dell'array quadri
+  console.log(obj); // mostra il contenuto dell'oggetto obj
+  fn_pubblica();// esegue la funzione fn_pubblica
+
+</script>
+
+Utilizzo degli alias
+
+Al modulo ed ai suoi elementi si possono attribuire degli alias,
+
+import {quadri as lista, fn_1 as funzione, obj as oggetto} from './nomeDelModulo.js';
+
+<script type="module" charset="utf-8">
+
+import {quadri as lista, fn_1 as funzione, obj as oggetto} from './nomeDelModulo.js';
+
+console.log(lista); // mostra il contenuto dell'array quadri
+console.log(oggetto); // mostra il contenuto dell'oggetto obj
+funzione();// esegue la funzione fn_pubblica
+
+</script>
+
+
+in questo caso libreria utilizzando as
+
+import * as libreria from './nomeDelModulo.js';
+
+<script type="module" charset="utf-8">
+
+import * as libreria from './nomeDelModulo.js';
+  console.log(libreria.quadri); // mostra la il contenuto del array quadri
+  console.log(libreria.obj); // mostra la il contenuto dell'oggetto obj
+  libreria.fn_pubblica();// esegue la funzione fn_pubblica
+
+</script>
