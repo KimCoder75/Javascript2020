@@ -1,8 +1,6 @@
 I moduli sono introdutti da ES6 (EcmaScript 2015),
 ci sono due modi di exportare un modulo da un file:
 
-
-
 1) named export (tanti elementi)
 2) default export (un solo elemento, quello fondamentale)
 
@@ -11,7 +9,7 @@ solo gli elementi necessari.
 
 Ci deve essere corrispondenza tra html e js, export nel file js e import nel file html
 
-Il file .js
+**Il file .js
 
 1) named export (tanti elementi)
 
@@ -54,8 +52,7 @@ cioè si importa ciò che è reso disponibile dal modulo recchiuso tra parentesi
 
 i.e.
 
-import {a,b,c,d} from 'nomeDelModulo'
-equivale a import {a,b,c,d} from 'nomeDelModulo.js'
+import {a,b,c,d} from './nomeDelModulo.js'
 
 Senza estensione, viene interpretato come file js
 
@@ -63,7 +60,7 @@ esempio 1
 
 <script type="module" charset="utf-8">
 
-  import {quadri, fn_1, obj} from 'nomeDelModulo';
+  import {quadri, fn_1, obj} from './nomeDelModulo.js';
 
   console.log(quadri); // mostra il contenuto dell'array quadri
   console.log(obj); // mostra il contenuto dell'oggetto obj
@@ -73,13 +70,13 @@ esempio 1
 
 E' possibile importare tutti gli elementi disponibili tramite *
 
-import * from 'nomeDelModulo'
+import * from './nomeDelModulo.js'
 
 esempio 2
 
 <script type="module" charset="utf-8">
 
-  import * from 'nomeDelModulo';
+  import * from './nomeDelModulo.js';
 
   console.log(quadri); // mostra il contenuto dell'array quadri
   console.log(obj); // mostra il contenuto dell'oggetto obj
@@ -91,11 +88,11 @@ Utilizzo degli alias
 
 Al modulo ed ai suoi elementi si possono attribuire degli alias,
 
-import {quadri as lista, fn_1 as funzione, obj as oggetto} from 'nomeDelModulo';
+import {quadri as lista, fn_1 as funzione, obj as oggetto} from './nomeDelModulo.js';
 
 <script type="module" charset="utf-8">
 
-import {quadri as lista, fn_1 as funzione, obj as oggetto} from 'nomeDelModulo';
+import {quadri as lista, fn_1 as funzione, obj as oggetto} from './nomeDelModulo.js';
 
 console.log(lista); // mostra il contenuto dell'array quadri
 console.log(oggetto); // mostra il contenuto dell'oggetto obj
@@ -106,11 +103,11 @@ funzione();// esegue la funzione fn_pubblica
 Anche per l'importazione totale è possibile utilizzare un alias che diventerà
 un oggetto
 
-import * as libreria from 'nomeDelModulo';
+import * as libreria from './nomeDelModulo.js';
 
 <script type="module" charset="utf-8">
 
-import * as libreria from 'nomeDelModulo';
+import * as libreria from './nomeDelModulo.js';
   console.log(libreria.quadri); // mostra la il contenuto del array quadri
   console.log(libreria.obj); // mostra la il contenuto dell'oggetto obj
   libreria.fn_pubblica();// esegue la funzione fn_pubblica
@@ -131,11 +128,12 @@ export default class User {
     this.anni = anni;
   }
 }
-
 in fase di import l'oggetto può essere rinominato senza as
 
 <script type="module" charset="utf-8"> // tipo modulo
-  import Utente from 'nomeFile'; // importa la classe User rinominandola Utente
+  import Utente from './nomeDelModulo.js'; // importa la classe User rinominandola Utente
   const anna = new Utente ('Anna',21);
   console.log(anna);
 </script>
+
+E' possibile importare da altri moduli ed estendere l'esportazione
