@@ -11,20 +11,7 @@ window.localStorage.setItem('anni','45');
 window.localStorage.setItem('passioneA','Programmazione');
 window.localStorage.setItem('passioneB','Disegno');
 
-window.sessionStorage.setItem('Nome','Kim');
-window.sessionStorage.setItem('Cognome','Malcaus');
-window.sessionStorage.setItem('anni','45');
-window.sessionStorage.setItem('passioneA','Programmazione');
-window.sessionStorage.setItem('passioneB','Disegno');
-
-console.log(localStorage.getItem('passioneA'));
 console.log(localStorage);
 localStorage.removeItem('anni');
 localStorage.removeItem('nome');
 console.log(localStorage);
-
-localStorage.clear();
-sessionStorage.clear();
-
-console.log(localStorage);
-console.log(sessionStorage);

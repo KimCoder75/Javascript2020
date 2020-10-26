@@ -1,0 +1,17 @@
+[
+  {
+    'nome': 'Sara',
+    'anni': 22,
+    'lavoro':'Grafica'
+  },
+  {
+    'nome': 'Kim',
+    'anni': 45,
+    'lavoro':'Manager'
+  }
+  {
+    'nome': 'Gianluca',
+    'anni': 27,
+    'lavoro':'Web Dev'
+  }
+]

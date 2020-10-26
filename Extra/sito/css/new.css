@@ -1,0 +1,52 @@
+div {
+padding:20px;
+margin: 10px; /*importante per spaziare gli elementi */
+background-color:rgba(255, 128, 64, 0.6);
+color: rgba(0, 0, 255, 1);
+font-size: 25px;
+border-width: medium;
+border-style: solid;
+border-color: black;
+
+}
+section {
+margin: 5px;
+}
+nav {
+margin: 5px;
+padding: 20px;
+text-align: center;
+}
+a {
+padding: 10px;
+font-style: oblique;
+font-family: sans-serif;
+color: white;
+}
+#header1{
+  background-color: black;
+
+}
+
+#section1{
+  font-family: sans-serif;
+  font-size: 25px;
+  color: rgba(20, 50, 20, 1);
+  text-align: center;
+  padding:10px;
+}
+.VerticaleConSfondo{
+  background-color: grey;
+}
+.b1{
+  font-family: fantasy;
+  font-size: 35px;
+  color: rgba(20, 50, 20, 1);
+  text-align: center;
+}
+.b2{
+  font-family:fantasy;
+  font-style: oblique;
+  text-align: center;
+  color: rgba(20, 20, 20, 0.5);
+}

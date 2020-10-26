@@ -8,4 +8,4 @@ document.cookie ="Anni=45";
 document.cookie ="Sesso=Maschio";
 console.log(document.cookie);
 // Chrome non li mostra
-// Set-Cookie: flavor=choco; SameSite=None; Secure
+// Set-Cookie: Nome=Kim; SameSite=None; Secure

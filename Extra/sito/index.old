@@ -26,10 +26,7 @@
         <div class="b1">BLOCCO 3</div>
     </section>
 
-    <a href="" style="color: black">Link5</a>
-
-    <!-- <script src="Lezioni\S4_Oggetti\45_Nascondere_i_dettagli_ed_esporre_solo_l'essenziale.js" charset="utf-8"></script> -->
-    <script src="Lezioni\S10_Web_Storage\119_Memorizzare_dati_complessi_in_una_singola_chiave.js" charset="utf-8"></script>
+    <script src="lezione123.js" charset="utf-8"></script>
 
   </body>
 </html>
