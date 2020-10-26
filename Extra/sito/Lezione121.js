@@ -38,16 +38,15 @@ console.log(1);
 // XMLHttpRequest
 const xhr = new XMLHttpRequest(); // crea un'istanza XHR(XMLHttpRequest)
 
-// uso il metodo GET per gestire il file e lo faccio in modo asincrono
-// 2) cosa voglio ricevere?
-// il file1.text
-// 3) che metodo vuoi utilizzare?
-// GET
-// 4) la richiesta è asincrona?
-// true
-xhr.open('GET','file1.txt', true); // apro tramite il metodo GET, il file file1.txt, in modo asincrono(true, false sincrono)
-// 5) manda la richiesta
-xhr.send(); // invio la richiesta
+// apro un a connessione con il server
+// 2) di che tipo? GET (prendi informazioni)
+// 3) che risorsa riguarda? il file1.text
+// 4) la richiesta è asincrona? true
+
+xhr.open('GET','file1.txt', true); // apro una connessione con il serveretramite il metodo GET, il file file1.txt, in modo asincrono(true, false sincrono)
+
+// 5) invio la richiesta
+xhr.send();
 
 // come faccio a visulizzare il contenuto della risposta?
 // tramite l'event handler
