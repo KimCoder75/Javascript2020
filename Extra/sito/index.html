@@ -4,23 +4,19 @@
     <meta charset="utf-8">
     <title>Corso Javascript</title>
     <link rel="stylesheet" href="css/new.css">
+    <style media="screen">
+      section{
+        border: 1px solid #333;
+        margin-top: 10px;
+        padding: 10px
+      }
+    </style>
   </head>
 
   <body>
-    <script type="module" charset="utf-8"> // tipo modulo
-      import Utente from './70.js'; // importa classe dal modulo
+    <button id='btn'>Mostra Utenti</button>
+    <section id='utentiSection'></section>
+    <script src="123.js" charset="utf-8"></script>
 
-      const anna = new Utente ('Anna',21);
-      const gianluca = new Utente ('Gianluca',26);
-
-      console.log(anna.descrivimi());
-      console.log(gianluca.descrivimi());
-      const differenzaAnni = `Gianluca e Anna hanno ${Math.abs(gianluca.anni - anna.anni)} anni di differenza`
-
-      console.log(differenzaAnni);
-
-      console.log(gianluca.saluta()); // funzione estesa di UserBase
-    </script>
   </body>
-
 </html>
