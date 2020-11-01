@@ -4,16 +4,19 @@ const btn = document.getElementById('btn'),
 btn.addEventListener('click', function() {
 
   const xhr = new XMLHttpRequest();
+  // let valoreRandomUnico = Math.random();
+  // xhr.open('GET','utenti.json?v=valoreRandomUnico', true);
   xhr.open('GET','utenti.json', true);
+  xhr.setRequestHeader('Cache-Control', 'no-cache');
   xhr.send();
 
   xhr.onload = function (){
 
-    if (xhr.status===200 && xhr.readyState ===4) {
-        console.log('');
+    if (xhr.status===200 && xhr.readyState === 4) {
         let utentiJSON = xhr.responseText,
             utenti = JSON.parse(utentiJSON);
         console.clear();
+        // console.log(valoreRandomUnico);
         console.log(utentiJSON);
         console.log(utenti);
         showUtenti(utenti);
@@ -34,7 +37,7 @@ function showUtenti(utenti){
 
 function showUtente(utente) {
   let newUserDiv = document.createElement('div');
-  newUserDiv.style.border = "1 px solid #999";
+  newUserDiv.style.border = "1px solid #999";
   newUserDiv.style.marginTop = "10px";
   newUserDiv.style.padding = "10px";
   newUserDiv.innerHTML = `
