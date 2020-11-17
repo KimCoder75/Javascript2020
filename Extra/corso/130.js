@@ -3,25 +3,26 @@
 * https://jsonplaceholder.typicode.com/posts/1/comments
 */
 /*
-  * Promise
+  * Promise all
 */
 
-import httpRequest from './129httpRequest.js';
+import httpRequest from './130httpRequest.js';
 
 function request(type, url){
   return new Promise((resolve, reject) => {
     httpRequest(type, url, resolve, reject);
-  })
+  });
 }
 
-const url = 'https://jsonplaceholder.typicode.com';
+const f1 = request ('GET', '130f1.txt');
+const f2 = request ('GET', '130f12.txt');
 
-request('GET', `${url}/posts/1`).then((risp)=>{
-  console.log(risp);
-  return request('GET', `${url}/posts/1/comments`);
-})
-.then((risp)=>{
-  console.log(risp);
+Promise.all([f1,f2])
+.then((risposte)=>{
+  risposte.forEach((risposta, i) => {
+    console.log(risposta);
+  });
+  ;
 })
 .catch((err)=>{
   console.log(err);
