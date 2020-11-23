@@ -9,7 +9,7 @@ function *generaRandomUser(nomi, cognomi){
     const nomeIndex = (Math.random()*nomi.length) | 0,
           cognomeIndex = (Math.random()*cognomi.length) | 0,
           nome = nomi[nomeIndex],
-          cognome= cognomi[cognomeIndex];
+          cognome = cognomi[cognomeIndex];
           // console.log(nomeIndex,cognomeIndex,nome,cognome);
 
     nomi.splice(nomeIndex, 1);
