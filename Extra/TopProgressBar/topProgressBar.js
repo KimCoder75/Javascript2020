@@ -10,25 +10,25 @@ completamente caricato e analizzato, senza attendere che i fogli di stile,
 le immagini e i subframe finiscano di essere caricati.
 
 2) document.documentElement
-Restituisce il nodo html, è un riferimento al nodo dell'elemento radice del documento.
-
-La proprietà documentElement viene utilizzata principalmente per calcolare la
-dimensione dell'area client del browser.
+Restituisce tutti gli elementi di document, è un riferimento al nodo dell'elemento radice del documento.
 
 3) scroll
 
 L'evento scroll si attiva quando un elemento viene fatto scorrere,
 solitamente si applica agli oggetti frame e window
 
-4) html.clientHeight
-Restituisce l'altezza dell'area client.
+4) document.documentElement.clientHeight
+Restituisce l'altezza visibile del client.
 
-  html.clientWidth
-  Restituisce la larghezza dell'area client.
+  document.documentElement.clientWidth
+  Restituisce la larghezza visibile del client.
 
 5) scrollHeight
 
-scrollHeight è l'altezza totale dell'elemento incluso il padding.
+scrollHeight è l'altezza totale dell'elemento incluso il padding,
+in buona sostanza la pagina completa:
+parte visibile = clientHeight +
+parte non visibile: scrollHeight-clientHeight
 
 6) scrollTop
 
@@ -47,22 +47,27 @@ scroll100 = scrollHeight-clientHeight
 let PB = {};
 document.addEventListener('DOMContentLoaded', () => {
     PB.barra = document.getElementById('progress');
-    PB.html = document.documentElement;
     PB.barra.style.width = "0%";
 });
 
 window.addEventListener('scroll', progressFn);
 function progressFn() {
-  const scroll100 = (PB.html.scrollHeight - PB.html.clientHeight);
-  let rapporto = ((PB.html.scrollTop)/scroll100),
-      rapportoFixed =+(rapporto*100).toFixed(2);
+	let scrollHeight, clientHeight, scrollTop;
+	( { scrollHeight, clientHeight, scrollTop } = document.documentElement)
+  const scroll100 = (scrollHeight - clientHeight);
+  let rapporto = (scrollTop/scroll100),
+      rapportoFixed =+(rapporto*100).toFixed(2),
+			pagina = Math.floor(scrollTop/clientHeight);
+
 
   console.clear();
-  console.log(`scrollHeight: ${PB.html.scrollHeight}`);
-  console.log(`clientHeight: ${PB.html.clientHeight}`);
+  console.log(`scrollHeight: ${scrollHeight}`);
+  console.log(`clientHeight: ${clientHeight}`);
   console.log(`scroll100: ${scroll100}`);
-  console.log(`scrollTop: ${PB.html.scrollTop}`);
+  console.log(`scrollTop: ${scrollTop}`);
   console.log(`rapporto: ${rapportoFixed}%`);
+	console.log(`rapporto: ${scrollTop/clientHeight}`);
+	console.log(`rapporto: ${pagina}`);
 
   PB.barra.style.width = `${rapportoFixed}%`;
 };
