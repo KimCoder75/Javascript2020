@@ -1,0 +1,14 @@
+{
+    "sala" : 1,
+    "numero-tavoli" : 8,
+    "tavoli" : [
+        { "posti" : 6, "libero" : true, "numero" : 1 },
+        { "posti" : 4, "libero" : true, "numero" : 2 },
+        { "posti" : 4, "libero" : true, "numero" : 3 },
+        { "posti" : 6, "libero" : false, "numero" : 4 },
+        { "posti" : 6, "libero" : true, "numero" : 5 },
+        { "posti" : 4, "libero" : true, "numero" : 6 },
+        { "posti" : 4, "libero" : false, "numero" : 7 },
+        { "posti" : 6, "libero" : true, "numero" : 8 }
+    ]
+}

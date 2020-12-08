@@ -1,5 +1,7 @@
-function checkReading () {
-  if (checkReading.read) { return; }
+function checkReading() {
+  if (checkReading.read) {
+    return;
+  }
   checkReading.read = this.scrollHeight - this.scrollTop === this.clientHeight;
   document.registration.accept.disabled = document.getElementById("nextstep").disabled = !checkReading.read;
   checkReading.noticeBox.innerHTML = checkReading.read ?
@@ -7,7 +9,7 @@ function checkReading () {
     "Please, scroll and read the following text.";
 }
 
-onload = function () {
+onload = function() {
   var oToBeRead = document.getElementById("rules");
   checkReading.noticeBox = document.createElement("span");
   document.registration.accept.checked = false;
@@ -16,4 +18,4 @@ onload = function () {
   oToBeRead.parentNode.insertBefore(document.createElement("br"), oToBeRead);
   oToBeRead.onscroll = checkReading;
   checkReading.call(oToBeRead);
-}
+};

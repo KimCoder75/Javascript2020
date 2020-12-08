@@ -1,0 +1,101 @@
+/*
+	* 1. stile di base
+	* 2. header e tipo prenotazione
+	* 3. main
+*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
+/* STILE DI BASE */
+	:root {
+		--color-bg: #181d23;
+		--color-green: #d8fb9b;
+		--color-green-soft: #d6e8b7;
+		--color-red: #cd5b5b;
+		--color-text: rgb(194,195,195);
+		--color-white: rgb(245,245,245);
+		--color-transparent-white-20: rgba(255,255,255,0.2);
+		--color-grey-dark: #333;
+		--margin-small: 20px;
+		--margin-big: 50px;
+		--fontsize-base: 22px;
+		--fontsize-medium: 1.2rem;
+		--fontsize-big: 1.45rem;
+	}
+
+	body {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		box-sizing: border-box;
+		background-color: var(--color-bg);
+		color: var(--color-white);
+		font-size: var(--fontsize-base);
+		font-family: 'Open Sans', sans-serif;
+		padding: 0 30px;
+	}
+
+	header, main, footer {
+		width: 100%;
+	}
+
+	a, a:hover {
+		text-decoration: none;
+		color: inherit;
+	}
+
+	header > h1 {
+		color: var(--color-green);
+		font-size: var(fontsize-medium);
+		text-align: center;
+		margin-bottom: var(--margin-small);
+	}
+	.btn {
+		background: none;
+		color: inherit;
+		padding: 4px 12px;
+		border: 1px solid var(--color-white);
+		transition: all .4s ease-in;
+	}
+	.btn:hover {
+		color: var(--color-green);
+		border: 1px solid var(--color-green);
+
+	}
+ section#info-w {
+	 display: flex;
+	 flex-direction: row;
+	 justify-content: space-around;
+	 border: 1px solid var(--color-transparent-white-20);
+	 padding: 6px 0;
+	 margin-bottom: var(--margin-big);
+ }
+ section#tavoli-w {
+	 display: flex;
+	 flex-basis: 100%;
+	 margin-bottom: var(--margin-big);
+	 justify-content: space-around;
+ }
+	section#tavoli-w > div.tavolo {
+		flex-grow: 1;
+		text-align: center;
+		margin: 10px;
+		height: 60px;
+		line-height: 60px;
+		color: var(--color-grey-dark);
+		/* transition: all .3s ease-in-out; */
+	}
+	section#tavoli-w > div.tavolo.x6 {
+		flex-grow: 1.5;
+	}
+	section#tavoli-w > div.tavolo.libero {
+		background-color: var(--color-green);
+	}
+	section#tavoli-w > div.tavolo.occupato {
+		background-color: var(--color-red);
+	}
+	section#tavoli-w > div.tavolo:not(.occupato):hover {
+		transform: scale(1.2);
+		transition: all .1s ease-in-out;
+	}
+	form > div.form-item {
+		margin: var(--margin-small) 0;
+	}

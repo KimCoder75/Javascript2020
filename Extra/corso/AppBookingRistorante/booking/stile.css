@@ -1,0 +1,312 @@
+/*
+ * 1. STILE DI BASE
+ * 2. HEADER E INFO PRENOTAZIONE
+ * 3. TAVOLI
+ * 4. FORM
+*/
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+/* STILE DI BASE */
+:root {
+    --color-bg: #181d23;
+    --color-green: #d8fb9b;
+    --color-green-soft: #1a8743;
+    --color-red : #cd5b5b;
+    --color-black: rgb(24,25,25);
+    --color-gray: rgb(124,125,125);
+    --color-white : rgb(255,255,255);
+    --margin-small : 20px;
+    --margin-medium : 35px;
+    --margin-big : 50px;
+    --fontsize-base : 18px;
+    --fontsize-small : 0.9rem;
+    --fontsize-medium : 1.2rem;
+    --fontsize-big : 1.45rem;
+}
+
+/* STILE DI BASE */
+* {
+    margin:0;
+    padding:0;
+}
+html {
+    width:100vw;
+    height: 100vh;
+    position: relative;
+}
+body {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    box-sizing: border-box;
+    font-size: var(--fontsize-base);
+    font-family: 'Lato', sans-serif;
+    color: var(--color-black);
+}
+
+a, a:hover {
+    text-decoration: none;
+}
+
+header, main, footer {
+    width: 100%;
+}
+main {
+    display:flex;
+    height: 100vh;
+}
+div#left {
+    z-index: 1;
+    background-color: var(--color-white);
+    padding: 20px;
+    position: relative;
+}
+@media screen and (min-width: 768px) {
+    div#left {        
+        flex-basis: 25%;   
+        padding: 20px;
+    }
+    div#right {
+        flex-basis: 75%;    
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background: url('img/slide5.jpg');
+        background-size: cover;
+    }
+    div#right > #riquadro {
+        width: 96%;
+        height: 96%;
+        border: 1px solid var(--color-white);
+    }
+}
+@media screen and (min-width: 1170px) {
+    div#left {        
+        flex-basis: 20%;   
+    }
+    div#right {
+        flex-basis: 80%;    
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background: url('img/slide5.jpg');
+        background-size: cover;
+    }
+}
+@media screen and (max-width: 767px) {
+    div#left {
+        background-color: var(--color-white);
+        flex-basis: 100%;
+        background-color: #fff;
+    }
+    div#right {
+        display: none;
+        background: none;
+    }
+}
+.btn {
+    background: none;
+    border:1px solid #000;
+    font-size: var(--fontsize-small);
+    letter-spacing: 1px;
+    padding:8px 12px;
+    transition: all .3s ease-in;
+    width:100%;
+}
+.btn:hover {
+    cursor:pointer;
+    color: var(--color-green-soft);
+    border:1px solid var(--color-green-soft);
+}
+/* STILE DI BASE fine */
+
+
+/* HEADER E INFO PRENOTAZIONE */
+div#left > h3 {
+    font-size: var(--fontsize-medium);
+    font-variant: small-caps;
+    text-align: center;
+    font-weight: 400;
+    margin-bottom: var(--margin-medium);
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+p#message-status {
+    text-align: center;
+    color: var(--color-gray);
+}
+
+section#info-w {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: var(--margin-medium);
+}
+section#info-w > div {    
+    margin-bottom: var(--margin-small);
+}
+/* HEADER E INFO PRENOTAZIONE fine */
+
+
+/* TAVOLI */
+section#section-tavoli-w {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top:45%;
+    left: 10px;
+    right: 10px;
+    transform: translateY(-50%);
+}
+section#section-tavoli-w {
+    display: flex;
+    justify-content: space-evenly;     
+}
+section#section-tavoli-w > p {
+    text-align: center;
+}
+div.tavoli-row-w {
+    display: flex;
+    flex-wrap: nowrap;
+}
+div.tavolo:hover {
+    cursor: pointer;
+}
+div.tavoli-row-w > div.tavolo {  
+    height: 40px;
+    line-height: 40px;   
+    margin:10px;
+    background-color: #333;  
+    text-align: center;
+    color: var(--color-white);
+    border-radius: 4px;
+    transition: all .5s ease-in;
+}
+div.tavoli-row-w > div.tavolo.libero {
+    background-color: transparent; 
+    border:1px solid var(--color-green-soft);
+    color: var(--color-green-soft);
+}
+div.tavoli-row-w > div.tavolo.libero:hover {
+    background-color: var(--color-green-soft);
+    color: var(--color-white);
+}
+div.tavoli-row-w > div.tavolo.libero.selezionato {
+    background-color: var(--color-green-soft);
+    color: var(--color-white);
+}
+div.tavoli-row-w > div.tavolo.occupato {
+    background-color: transparent; 
+    border:1px solid var(--color-red);
+    color: var(--color-red);
+}
+div.tavoli-row-w > div.tavolo.x4 {
+    flex-grow: 1;
+}
+div.tavoli-row-w > div.tavolo.x6 {
+    flex-grow : 1.5;
+}
+/* TAVOLI fine */
+
+
+/* FORM */
+form {
+    position: absolute;
+    bottom:20px;
+    left: 20px;
+    right: 20px;
+    --text-color: #afafaf;
+}
+
+.form-item {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    border-bottom: 1px solid rgb(188,188,188);
+    margin: 1rem auto 1.8rem;
+    transition: 500ms;
+}
+.form-item-multi {
+    display: flex;
+}
+.form-item-multi > div:nth-child(1) {
+    margin-right: 8px;
+}
+
+
+.form-item::after {
+    content: "";
+    position: relative;
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: var(--color-green-soft);
+    transform: scaleX(0);
+    transform-origin: 0%;
+    opacity: 0;
+    transition: all 500ms ease;
+    top: 2px;
+}
+
+.form-item:focus-within {
+    border-color: transparent;
+}
+
+.form-item:focus-within::after {
+    transform: scaleX(1);
+    opacity: 1;
+}
+
+.form-item:focus-within .label,
+.input:not(:placeholder-shown) + .label {
+    transform: scale(0.75) translateY(-4rem);
+    opacity: 1;
+}
+
+.input {
+    outline: none;
+    border: none;
+    overflow: hidden;
+    margin: 0;
+    width: 100%;
+    padding: 0.25rem 0;
+    background: none;
+    color: var(--color-green-soft);
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: border 500ms;
+}
+input:focus {
+    border:none;
+    outline: none;
+}
+
+.label {
+    color:var(-color--black);
+    font-size: 1.2rem;
+}
+.label {
+    z-index: -1;
+    position: absolute;
+    transform: translateY(-1.5rem);
+    transform-origin: 0%;
+    transition: transform 400ms;
+    color: var(--color-gray);
+}
+
+label {
+    display: block;
+}
+
+input, select {
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0.4em;
+    margin: 0 0 0.5em 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+}
+
+/* FORM fine */

@@ -1,0 +1,47 @@
+
+nav {
+width: 100%;
+left: 0;
+top:16px;
+position: fixed;
+
+height: 50px;
+text-align: center;
+text-vertical-align: middle;
+background-color: black;
+}
+a {
+font-style: oblique;
+font-family: sans-serif;
+color: white;
+text-align: center;
+}
+
+#section1{
+  font-family: sans-serif;
+  font-size: 25px;
+  color: rgba(20, 50, 20, 1);
+  text-align: center;
+  padding:10px;
+}
+.b1{
+  font-family: fantasy;
+  font-size: 35px;
+  color: rgba(20, 50, 20, 1);
+  text-align: center;
+  padding:20px;
+  margin: 10px; /*importante per spaziare gli elementi */
+  background-color:rgba(255, 128, 64, 0.6);
+  border-width: medium;
+  border-style: solid;
+  border-color: black;
+}
+div#progress {
+		width: 0%;
+		height: 16px;
+		position: fixed;
+		left: 0;
+		top:0;
+		z-index: 1030;
+		background-color: #e84b3c;
+}
