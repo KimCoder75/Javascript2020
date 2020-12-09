@@ -17,12 +17,26 @@ async function initBlog(){
 }
 
 //TODO: si basa tutto su currentPage, impostare bene currentPage
+
 function showPosts(){
   let start, currentPage, itemPerPage, posts;
   ({currentPage, itemPerPage, posts} = blog);
   start = currentPage*itemPerPage;
   for (var i = start; i < start + itemPerPage; i++) {
-    console.log(posts[i]);
+    let DOM_post = document.createElement('article');
+  	DOM_post.setAttribute('class', 'blog-post');
+  	let DOM_postH3 = document.createElement('h3');
+  	DOM_postH3.setAttribute('class', 'title');
+  	let DOM_postDiv1 = document.createElement('div');
+  	DOM_postDiv1.setAttribute('class', 'body');
+  	let DOM_postDiv2 = document.createElement('div');
+  	DOM_postDiv2.setAttribute('class', 'info');
+
+  	blog.blogWrapper.appendChild(DOM_post);
+
+  	DOM_post.appendChild(DOM_postH3);
+  	DOM_post.appendChild(DOM_postDiv1);
+  	DOM_post.appendChild(DOM_postDiv2);
   }
 
 
