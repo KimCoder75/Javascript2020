@@ -22,7 +22,7 @@ async function initBlog() {
 function initBookmarks() {
   for (let i = 0; i < blog.totalPages; i++) {
     let classes = 'position';
-    (i == blog.currentPageKeyVar) ? classes += ' active' : '';
+    (i == blog.currentPageKeyVar) ? classes += ' active': '';
     let span = document.createElement('span');
     span.setAttribute('class', classes);
     blog.pagePositionWrapper.appendChild(span);
