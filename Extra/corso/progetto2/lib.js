@@ -37,20 +37,20 @@ function checkCodeBlocks() {
   } = blog);
   console.clear();
   console.log(`Debug:
-		scrollTop: ${scrollTop}
-		scrollHeight: ${scrollHeight}
-		clientHeight: ${clientHeight}
-		scrollTopMax: ${scrollTopMax}
-		scrollHeight - clientHeight: ${scrollHeight - clientHeight}
-		(scrollHeight - clientHeight) === scrollTopMax: ${(scrollHeight - clientHeight) === scrollTopMax}
-		temporaryPage: ${temporaryPage}
-		totalPages-1: ${totalPages-1}
-		areAllpostsShown: ${areAllpostsShown}
-		altezza pagina: ${((scrollTopMax)/(totalPages-1))}
-		altezza pagina2: ${((scrollHeight-36)/(temporaryPage+1))}
-		altezza pagina3: ${(scrollHeight-36)/5}
-		altezza pagina4: ${((scrollTop)/5)-36}
-		`);
+	scrollTop: ${scrollTop}
+	scrollHeight: ${scrollHeight}
+	clientHeight: ${clientHeight}
+	scrollTopMax: ${scrollTopMax}
+	scrollHeight - clientHeight: ${scrollHeight - clientHeight}
+	(scrollHeight - clientHeight) === scrollTopMax: ${(scrollHeight - clientHeight) === scrollTopMax}
+	temporaryPage: ${temporaryPage}
+	totalPages-1: ${totalPages-1}
+	areAllpostsShown: ${areAllpostsShown}
+	altezza pagina: ${((scrollTopMax)/(totalPages-1))}
+	altezza pagina2: ${((scrollHeight-36)/(temporaryPage+1))}
+	altezza pagina3: ${(scrollHeight-36)/5}
+	altezza pagina4: ${((scrollTop)/5)-36}
+	`);
 }
 
 function initBookmarks() {
