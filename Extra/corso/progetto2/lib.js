@@ -1,131 +1,148 @@
-/*jshint -W030, -W033, -W119, -W104*/
+// this.scrollHeight - this.scrollTop === this.clientHeight
+/*jshint -W030,-W033,-W119,-W104*/
 /*jshint expr:true*/
-const blog = {
-  itemPerPage: 5,
-  temporaryPage: 0,
-  totalPages: 0,
-  blogWrapper: document.getElementById('blog-w'),
-  pagePositionWrapper: document.getElementById('page-position-w'),
-  posts: [],
-  areAllpostsShown: false
+
+// TODO: inserire la paginazione
+
+const pagina = {
+	attiva: 0,
+	altezza: 0,
+	margineInferiore: 90,
+	listaNodiIndicatori: []
 };
 
-window.addEventListener('scroll', setBookmarkPosition);
+const gestioneScrollContenuti = {
+	posts: [],
+	numeroTotalePosts: 25,
+	postsPerBlocco: 5,
+	numeroTotaleBlocchi: 0,
+	inizioCaricamentoBlocchi: 0,
+	numeroBlocchiCaricati: 1
+};
 
-async function initBlog() {
-  const postData = await fetch('https://jsonplaceholder.typicode.com/posts');
-  blog.posts = await postData.json();
-  blog.posts.length = 25;
-  blog.totalPages = Math.ceil(blog.posts.length / blog.itemPerPage);
-  initBookmarks();
-  showPosts();
-  checkCodeBlocks()
+window.addEventListener('scroll', () => {
+	riconoscimentoPaginaAttiva();
+	controllo();
+});
+
+async function importaPost() {
+	const postImportati = await fetch('https://jsonplaceholder.typicode.com/posts');
+	let numeroTotalePosts, postsPerBlocco;
+	({
+		numeroTotalePosts,
+		postsPerBlocco
+	} = gestioneScrollContenuti);
+	gestioneScrollContenuti.posts = await postImportati.json();
+	gestioneScrollContenuti.posts.length = numeroTotalePosts;
+	gestioneScrollContenuti.numeroTotaleBlocchi = (numeroTotalePosts / postsPerBlocco);
+	definisciPagina();
+	creaIndicatoriDOM();
+	creaElementiDOM();
+	controllo();
 }
 
-function checkCodeBlocks() {
-  let scrollTop, scrollHeight, scrollTopMax, clientHeight, temporaryPage, totalPages, areAllpostsShown;
-  ({
-    scrollTop,
-    scrollHeight,
-    scrollTopMax,
-    clientHeight
-  } = document.documentElement);
-  ({
-    temporaryPage,
-    totalPages,
-    areAllpostsShown
-  } = blog);
-  console.clear();
-  console.log(`Debug:
-	scrollTop: ${scrollTop}
-	scrollHeight: ${scrollHeight}
-	clientHeight: ${clientHeight}
-	scrollTopMax: ${scrollTopMax}
-	scrollHeight - clientHeight: ${scrollHeight - clientHeight}
-	(scrollHeight - clientHeight) === scrollTopMax: ${(scrollHeight - clientHeight) === scrollTopMax}
-	temporaryPage: ${temporaryPage}
-	totalPages-1: ${totalPages-1}
-	areAllpostsShown: ${areAllpostsShown}
-	altezza pagina: ${((scrollTopMax)/(totalPages-1))}
-	altezza pagina2: ${((scrollHeight-36)/(temporaryPage+1))}
-	altezza pagina3: ${(scrollHeight-36)/5}
-	altezza pagina4: ${((scrollTop)/5)-36}
-	`);
+function creaIndicatoriDOM() {
+	const contenitoreIndicatori = document.getElementById('page-position-w');
+	for (let i = 0; i < Math.ceil(gestioneScrollContenuti.numeroTotaleBlocchi); i++) {
+		let span = document.createElement('span');
+		settaIndicatore(span, i);
+		contenitoreIndicatori.appendChild(span);
+	}
+	pagina.listaNodiIndicatori = document.querySelectorAll('span');
 }
 
-function initBookmarks() {
-  for (let i = 0; i < blog.totalPages; i++) {
-    let classes = 'position';
-    (i == blog.temporaryPage) ? classes += ' active': '';
-    let span = document.createElement('span');
-    span.setAttribute('class', classes);
-    blog.pagePositionWrapper.appendChild(span);
-  }
+function creaElementiDOM() {
+	const contenitoreContenuti = document.getElementById('blog-w');
+	let numeroTotalePosts, postsPerBlocco, inizioCaricamentoBlocchi, numeroBlocchiCaricati, posts;
+	({
+		numeroTotalePosts,
+		postsPerBlocco,
+		inizioCaricamentoBlocchi,
+		numeroBlocchiCaricati, posts
+	} = gestioneScrollContenuti);
+	for (let i = 0; i < numeroTotalePosts; i++) {
+
+		const article = document.createElement('article'),
+			h3 = document.createElement('h3'),
+			div1 = document.createElement('div'),
+			div2 = document.createElement('div');
+
+		article.setAttribute('class', 'contenuti-post');
+		h3.setAttribute('class', 'title');
+		div1.setAttribute('class', 'body');
+		div2.setAttribute('class', 'id');
+
+		popolaContenitori(i, h3, div1, div2, posts);
+
+		article.appendChild(h3);
+		article.appendChild(div1);
+		article.appendChild(div2);
+
+		contenitoreContenuti.appendChild(article);
+	}
 }
 
-function setBookmarkPosition() {
-  let scrollTop, scrollTopMax, temporaryPage, totalPages;
-  ({
-    scrollTop,
-    scrollTopMax
-  } = document.documentElement);
-  ({
-    temporaryPage,
-    totalPages
-  } = blog);
-  if ((scrollTop >= scrollTopMax) && (temporaryPage < (totalPages - 1))) {
-    blog.temporaryPage++;
-    showPosts();
-  }
-  checkCodeBlocks();
+function popolaContenitori(i, h3, div1, div2, posts) {
+	h3.innerText = posts[i].title;
+	div1.innerText = posts[i].body;
+	div2.innerText = posts[i].id;
 }
 
-//TODO: si basa tutto su temporaryPage, impostare bene temporaryPage
-function showPosts() {
-  let start, temporaryPage, itemPerPage, blogWrapper, posts, areAllpostsShown, totalPages;
-  ({
-    temporaryPage,
-    itemPerPage,
-    blogWrapper,
-    posts,
-    areAllpostsShown,
-    totalPages
-  } = blog);
-  start = temporaryPage * itemPerPage;
-  for (let i = start; i < start + itemPerPage; i++) {
-
-    let DOM_post = document.createElement('article'),
-      DOM_postH3 = document.createElement('h3'),
-      DOM_postDiv1 = document.createElement('div'),
-      DOM_postDiv2 = document.createElement('div');
-
-    DOM_post.setAttribute('class', 'blog-post');
-    DOM_postH3.setAttribute('class', 'title');
-    DOM_postDiv1.setAttribute('class', 'body');
-    DOM_postDiv2.setAttribute('class', 'id');
-
-    addPosts(i, DOM_postH3, DOM_postDiv1, DOM_postDiv2, posts);
-
-    DOM_post.appendChild(DOM_postH3);
-    DOM_post.appendChild(DOM_postDiv1);
-    DOM_post.appendChild(DOM_postDiv2);
-
-    blogWrapper.appendChild(DOM_post);
-  }
-  if (temporaryPage === (totalPages - 1)) {
-    blog.areAllpostsShown = true;
-    // setCurrentPage();
-  }
+function definisciPagina() {
+	pagina.altezza = (document.documentElement.clientHeight - pagina.margineInferiore);
 }
 
-// setCurrentPage() {
-//
-// }
+// TODO: impostare altezza pagina 930, ScrollMax/(pagine totali -1), sviluppare bene la logica che funzioni indipendentemente da clientHeight.
+// TODO: rigidità struttura elementi
 
-function addPosts(i, h3, div1, div2, posts) {
-  h3.innerText = posts[i].title;
-  div1.innerText = posts[i].body;
-  div2.innerText = posts[i].id;
+
+
+function riconoscimentoPaginaAttiva() {
+	pagina.attiva = Math.floor(document.documentElement.scrollTop / pagina.altezza);
+	impostalistaNodiIndicatoriDiPagina();
 }
 
-initBlog();
+function impostalistaNodiIndicatoriDiPagina() {
+	pagina.listaNodiIndicatori.forEach((nodo, i) => {
+		settaIndicatore(nodo, i);
+	});
+}
+
+importaPost();
+
+function settaIndicatore(item, i) {
+	let classi = 'position';
+	(i == pagina.attiva) ? classi += ' active' : ''; item.setAttribute('class', classi)
+}
+
+function controllo() {
+	let scrollTop, scrollTopMax, scrollHeight, clientHeight, altezza, attiva, innerHeight;
+	({
+		scrollTop,
+		scrollTopMax,
+		scrollHeight,
+		clientHeight
+	} = document.documentElement);
+	({
+		altezza,
+		attiva
+	} = pagina);
+	({
+		innerHeight
+	} = window);
+	console.clear();
+	console.log(`
+ScrollTop: ${scrollTop}
+ScrollTopMax: ${scrollTopMax}
+ScrollTop === ScrollTopMax: ${scrollTop === scrollTopMax}
+ScrollHeight: ${scrollHeight}
+ScrollHeight-ScrollTopMax: ${scrollHeight-scrollTopMax}
+Altezza Pagina: ${altezza}
+Altezza Finestra: ${innerHeight}
+ClientHeight: ${clientHeight}
+Altezza Finestra === ClientHeight: ${innerHeight === clientHeight}
+innerHeight === clientHeight: ${innerHeight === clientHeight}
+Pagina attiva: ${attiva}`);
+	console.log(pagina);
+	console.log(gestioneScrollContenuti);
+}

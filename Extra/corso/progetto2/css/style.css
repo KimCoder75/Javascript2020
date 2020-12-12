@@ -20,10 +20,10 @@ body {
 
 section#blog-w {
   padding: 30px 30px 0px 80px;
-  margin-bottom: 36px;
+  margin-bottom: 90px;
 }
 
-article.blog-post {
+article.contenuti-post {
   position: relative;
   padding: 20px 10px;
   border: 1px solid var(--color-black30);
@@ -31,11 +31,11 @@ article.blog-post {
   margin-bottom: 30px;
 }
 
-article.blog-post>h3.title {
+article.contenuti-post>h3.title {
   margin-bottom: 16px;
 }
 
-article.blog-post>div.id {
+article.contenuti-post>div.id {
   position: absolute;
   width: 30px;
   height: 30px;
