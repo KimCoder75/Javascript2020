@@ -19,11 +19,11 @@ body {
 }
 
 section#blog-w {
-  padding: 30px 30px 0px 80px;
-  margin-bottom: 36px;
+  padding: 30px 30px 10px 80px;
+  margin-bottom: 0px;
 }
 
-article.contenuti-post {
+article.blog-post {
   position: relative;
   padding: 20px 10px;
   border: 1px solid var(--color-black30);
@@ -31,11 +31,11 @@ article.contenuti-post {
   margin-bottom: 30px;
 }
 
-article.contenuti-post>h3.title {
+article.blog-post>h3.title {
   margin-bottom: 16px;
 }
 
-article.contenuti-post>div.id {
+article.blog-post>div.id {
   position: absolute;
   width: 30px;
   height: 30px;
