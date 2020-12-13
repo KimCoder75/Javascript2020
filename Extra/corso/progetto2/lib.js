@@ -12,7 +12,7 @@ const blog = {
 
 window.addEventListener('scroll', scrollManager);
 
-function scrollManager(e) {
+function scrollManager() {
 	let scrollTop, scrollTopMax, clientHeight;
 	({
 		scrollTop,
