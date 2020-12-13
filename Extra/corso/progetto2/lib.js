@@ -23,7 +23,8 @@ function scrollManager() {
 		blog.posts.splice(0, 5);
 		initPages();
 	}
-	blog.activeBookmark = Math.floor(scrollTop / (clientHeight - 40)); // 40 è la somma del padding-top e padding-bottom
+	// 40 è la somma del padding-top e padding-bottom
+	blog.activeBookmark = Math.floor(scrollTop / (clientHeight - 40));
 	setBookmarks();
 }
 
