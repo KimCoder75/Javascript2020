@@ -13,26 +13,18 @@ const blog = {
 window.addEventListener('scroll', scrollManager);
 
 function scrollManager() {
-	let scrollTop, scrollTopMax, clientHeight, scrollHeight;
+	let scrollTop, scrollTopMax, clientHeight;
 	({
 		scrollTop,
 		scrollTopMax,
-		clientHeight,
-		scrollHeight
+		clientHeight
 	} = document.documentElement);
 	if (blog.posts.length > 0 && scrollTop / scrollTopMax >= 1) {
-		// blog.posts.splice(0, 5);
-		// console.log('scrollTop:',scrollTop,'scrollTopMax:',scrollTopMax,'scrollHeight:',scrollHeight, 'activeBookmark:',blog.activeBookmark);
-		// console.log('clientHeight:',clientHeight,'Top/Max:',(scrollTop/scrollTopMax),'Top/sHeight:',(scrollTop/scrollHeight));
-		// console.log('Max-top:',(scrollTopMax-scrollTop),'Top/sHeight:',(scrollTop/scrollHeight));
+		blog.posts.splice(0, 5);
 		initPages();
 	}
 	// 40 è la somma del padding-top e padding-bottom
 	blog.activeBookmark = Math.floor(scrollTop / (clientHeight - 40));
-			console.log('scrollTop:',scrollTop,'scrollTopMax:',scrollTopMax,'scrollHeight:',scrollHeight, 'activeBookmark:',blog.activeBookmark);
-			console.log('clientHeight:',clientHeight,'Top/Max:',(scrollTop/scrollTopMax),'Top/sHeight:',(scrollTop/scrollHeight));
-			console.log('Max-top:',(scrollTopMax-scrollTop),'Top/sHeight:',(scrollTop/scrollHeight));
-	// console.log('scrollTop:',scrollTop, 'clientHeight:',clientHeight, 'activeBookmark:',blog.activeBookmark);
 	setBookmarks();
 }
 
