@@ -1,95 +1,64 @@
 /*jshint -W030,-W033,-W119,-W104*/
 /*jshint expr:true*/
 const blog = {
-	postPerPage: 5,
-	totalPages: 0,
-	bookmarksW: document.getElementById('page-position-w'),
-	postsW: document.getElementById('blog-w'),
-	posts: [],
-	totalPosts: 25,
-	activeBookmark: 0
+	itemsPerPage : 5,
+	currentPage: 0,
+	totalePage: 0,
+	blogWrapper : document.getElementById('blog-w'),
+	pagePositionWrapper : document.getElementById('page-position-w')
 }
 
-window.addEventListener('scroll', scrollManager);
-
-function scrollManager() {
-	let scrollTop, scrollTopMax, clientHeight, scrollHeight;
-	({
-		scrollTop,
-		scrollTopMax,
-		clientHeight,
-		scrollHeight
-	} = document.documentElement);
-	if (blog.posts.length > 0 && scrollTop / scrollTopMax >= 1) {
-		// blog.posts.splice(0, 5);
-		// console.log('scrollTop:',scrollTop,'scrollTopMax:',scrollTopMax,'scrollHeight:',scrollHeight, 'activeBookmark:',blog.activeBookmark);
-		// console.log('clientHeight:',clientHeight,'Top/Max:',(scrollTop/scrollTopMax),'Top/sHeight:',(scrollTop/scrollHeight));
-		// console.log('Max-top:',(scrollTopMax-scrollTop),'Top/sHeight:',(scrollTop/scrollHeight));
-		initPages();
+window.addEventListener('scroll', (e)=>{
+	let scrollHeight, clientHeight, scrollTop, scrollTopMax;
+	({scrollHeight, clientHeight, scrollTop, scrollTopMax} = document.documentElement);
+	console.log(scrollTopMax);
+	if ((scrollTop >= scrollTopMax - 1) && (blog.currentPage < blog.totalPage -1)) {
+		blog.currentPage++
+		showPosts();
+		setIndicatoreAttivo();
 	}
-	// 40 è la somma del padding-top e padding-bottom
-	blog.activeBookmark = Math.floor(scrollTop / (clientHeight - 40));
-			console.log('scrollTop:',scrollTop,'scrollTopMax:',scrollTopMax,'scrollHeight:',scrollHeight, 'activeBookmark:',blog.activeBookmark);
-			console.log('clientHeight:',clientHeight,'Top/Max:',(scrollTop/scrollTopMax),'Top/sHeight:',(scrollTop/scrollHeight));
-			console.log('Max-top:',(scrollTopMax-scrollTop),'Top/sHeight:',(scrollTop/scrollHeight));
-	// console.log('scrollTop:',scrollTop, 'clientHeight:',clientHeight, 'activeBookmark:',blog.activeBookmark);
-	setBookmarks();
-}
+});
 
-async function initBlog() {
-	const importedPosts = await fetch('https://jsonplaceholder.typicode.com/posts');
-	blog.posts = await importedPosts.json();
-	blog.posts.length = blog.totalPosts;
-	blog.totalPages = Math.ceil(blog.totalPosts / blog.postPerPage);
-
-	initBookmark();
-	initPages();
-}
-
-function bookmarkActivator(index, ref, anchor) {
-	(index === ref) ? anchor.setAttribute('class', 'position active'): anchor.setAttribute('class', 'position');
-}
-
-function initBookmark() {
-	for (let i = 0; i < blog.totalPages; i++) {
-		let span = document.createElement('span');
-		bookmarkActivator(i, 0, span);
-		blog.bookmarksW.appendChild(span)
-	}
-}
-
-function setBookmarks() {
-	let bookmarks = document.querySelectorAll('span.position')
-	bookmarks.forEach((bookmark, i) => {
-		bookmarkActivator(i, blog.activeBookmark, bookmark);
+function setIndicatoreAttivo(){
+	let indicatori = document.querySelectorAll('span.position');
+	indicatori.forEach((indicatore, i) => {
+		(i === blog.currentPage)? indicatore.setAttribute('class','position active'):indicatore.setAttribute('class','position');
 	});
 }
 
-function initPages() {
-	if (blog.posts.length !== 0) {
-		for (let i = 0; i < blog.postPerPage; i++) {
+async function initBlog(){
+	const postData = await fetch('https://jsonplaceholder.typicode.com/posts');
+	blog.posts = await postData.json();
+	blog.posts.splice(25,75);
+	blog.totalPage = Math.ceil(blog.posts.length/blog.itemsPerPage);
+	initIndicatoriPaginazione();
+	showPosts();
+}
 
-			const article = document.createElement('article'),
-				h3 = document.createElement('h3'),
-				div1 = document.createElement('div'),
-				div2 = document.createElement('div');
-
-			article.setAttribute('class', 'blog-post');
-			h3.setAttribute('class', 'title');
-			div1.setAttribute('class', 'body');
-			div2.setAttribute('class', 'id');
-
-			h3.innerText = blog.posts[i].title;
-			div1.innerText = blog.posts[i].body;
-			div2.innerText = blog.posts[i].id;
-
-			article.appendChild(h3);
-			article.appendChild(div1);
-			article.appendChild(div2);
-
-			blog.postsW.appendChild(article);
-		}
+function initIndicatoriPaginazione(){
+	for (let i = 0; i < blog.totalPage; i++) {
+		let pagination = document.createElement('span');
+		(i === 0)? pagination.setAttribute('class','position active'):pagination.setAttribute('class','position');
+		blog.pagePositionWrapper.appendChild(pagination);
 	}
 }
+
+function showPosts(){
+	let start = blog.currentPage * blog.itemsPerPage;
+	for (let i = start; i < start + blog.itemsPerPage; i++) {
+		let DOM_post = document.createElement('article');
+		DOM_post.setAttribute('class', 'blog-post');
+		DOM_post.innerHTML = createPostHTML(blog.posts[i]);
+		blog.blogWrapper.appendChild(DOM_post);
+	}
+}
+
+function createPostHTML({ id, title, body }){
+	return `<h3 class='title'>${title}</h3>
+	<div class ='body'>${body}</div>
+	<div class ='id'>${id}</div>`
+}
+
+
 
 initBlog();
