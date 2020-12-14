@@ -5,7 +5,9 @@ const blog = {
 	currentPage: 0,
 	totalePage: 0,
 	blogWrapper : document.getElementById('blog-w'),
-	pagePositionWrapper : document.getElementById('page-position-w')
+	pagePositionWrapper : document.getElementById('page-position-w'),
+	arePostCharged : false,
+	flag : 0
 }
 
 window.addEventListener('scroll', (e)=>{
@@ -14,10 +16,19 @@ window.addEventListener('scroll', (e)=>{
 	console.log(scrollTopMax);
 	if ((scrollTop >= scrollTopMax - 1) && (blog.currentPage < blog.totalPage -1)) {
 		blog.currentPage++
-		showPosts();
+		showPosts(scrollHeight, clientHeight, scrollTop, scrollTopMax);
+		// logs();
 		setIndicatoreAttivo();
 	}
 });
+
+// function logs(scrollHeight, clientHeight, scrollTop, scrollTopMax){
+// 	if (blog.currentPage === (blog.totalPage -1)) {
+// 		blog.arePostCharged = true;
+// 		blog.flag = (scrollTop/scrollTopMax);
+// 		console.log('scrollTop:',scrollTop,'scrollTopMax:',scrollTopMax,'Flag:',blog.flag);
+// 	}
+// }
 
 function setIndicatoreAttivo(){
 	let indicatori = document.querySelectorAll('span.position');
