@@ -8,7 +8,9 @@ const blog = {
 	posts: [],
 	totalPosts: 25,
 	activeBookmark: 0,
-  isScrollable: false
+  isScrollable: false,
+	delta : 0,
+	newBottomPadding: ''
 }
 
 window.addEventListener('scroll', scrollManager);
@@ -99,9 +101,11 @@ function scrollCheck(){
   if (document.documentElement.scrollTopMax > 0) {
     blog.isScrollable = true;
   }else {
-    document.getElementById('blog-w').style.paddingBottom = `${+document.documentElement.clientHeight}px`;
+		blog.delta = (window.screen.height-document.documentElement.clientHeight);
+    blog.newBottomPadding = document.getElementById('blog-w').style.paddingBottom = `${blog.delta}px`;
   }
-  console.log('Is scrollable?',blog.isScrollable);
+  console.log('Is scrollable?',blog.isScrollable,'added:',blog.delta,'px');
+
 }
 
 initBlog();
