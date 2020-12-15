@@ -7,7 +7,8 @@ const blog = {
 	postsW: document.getElementById('blog-w'),
 	posts: [],
 	totalPosts: 25,
-	activeBookmark: 0
+	activeBookmark: 0,
+  isScrollable: false
 }
 
 window.addEventListener('scroll', scrollManager);
@@ -87,7 +88,20 @@ function initPages() {
 
 			blog.postsW.appendChild(article);
 		}
+    scrollCheck();
 	}
+}
+
+function scrollCheck(){
+  console.log('ScrollTopMax:',document.documentElement.scrollTopMax);
+  console.log('clientHeight:',document.documentElement.clientHeight);
+  console.log('scrollHeight:',document.documentElement.scrollHeight);
+  if (document.documentElement.scrollTopMax > 0) {
+    blog.isScrollable = true;
+  }else {
+    document.getElementById('blog-w').style.paddingBottom = `${+document.documentElement.clientHeight}px`;
+  }
+  console.log('Is scrollable?',blog.isScrollable);
 }
 
 initBlog();
