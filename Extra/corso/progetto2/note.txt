@@ -1,0 +1,4 @@
+1. Verificare che clientHeight sia maggiore di scrollHeight
+2. Se non lo è impostare clientHeight ad 1 pixel maggiore di clientHeight
+se scrollHeight > clientHeight ok
+altrimenti aumentare paddindg dell differenza
