@@ -8,7 +8,7 @@ const blog = {
 	posts: [],
 	totalPosts: 25,
 	activeBookmark: 0,
-  isScrollable: false,
+  isScrollFixed: false,
 	delta : 0,
 	newBottomPadding: ''
 }
@@ -95,17 +95,15 @@ function initPages() {
 }
 
 function scrollCheck(){
-  console.log('ScrollTopMax:',document.documentElement.scrollTopMax);
-  console.log('clientHeight:',document.documentElement.clientHeight);
-  console.log('scrollHeight:',document.documentElement.scrollHeight);
-  if (document.documentElement.scrollTopMax > 0) {
-    blog.isScrollable = true;
-  }else {
+	console.log('Is it scrollable?',blog.isScrollFixed);
+  console.log('scrollHeight:',document.documentElement.scrollHeight,'clientHeight:',document.documentElement.clientHeight);
+  if (document.documentElement.scrollTopMax == 0) {
 		blog.delta = (window.screen.height-document.documentElement.clientHeight);
     blog.newBottomPadding = document.getElementById('blog-w').style.paddingBottom = `${blog.delta}px`;
+		blog.isScrollFixed = true;
+  	console.log('Set the padding bottom to:',blog.delta,'px, now it is scrollable! ScrollHeight:',document.documentElement.scrollHeight,'clientHeight:',document.documentElement.clientHeight);
+		console.log('Is it scrollable?',blog.isScrollFixed);
   }
-  console.log('Is scrollable?',blog.isScrollable,'added:',blog.delta,'px');
-
 }
 
 initBlog();

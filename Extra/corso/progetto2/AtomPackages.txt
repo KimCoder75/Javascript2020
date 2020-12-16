@@ -1,0 +1,18 @@
+todo 0.6.0 reergymerey
+pigments 0.40.6 abe33
+open-in-browser 0.5.2 magbicaleman
+minimap-pigments 0.2.2 abe33
+minimap 4.35.7 atom-minimap
+linter-ui-default 2.2.1 stellbrain
+linter-jshint 3.1.19 AtomLinter
+linter 3.1.1 steelbrain
+intentions 1.1.5 stellbrain
+file-icons 2.1.46 file-icons
+emmet 2.4.3 emmetio
+css-color-name 0.4.0 adarra
+color-picker 2.3.0 thomaslindstrom
+busy-signal 2.0.1 steelbrain
+autosave-oncharge 1.5.1 ChexWarrior
+atom-live-server 2.3.0 jas-chen
+atom-beautify 0.33.4 Glavin001
+
