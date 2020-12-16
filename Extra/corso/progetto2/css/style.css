@@ -29,8 +29,8 @@ article.blog-post {
   border: 1px solid var(--color-black30);
   border-radius: 20px;
   margin-bottom: 30px;
-  width: 630px;
-  height: 186px;
+  /* width: 630px;
+  height: 186px; */
 }
 
 article.blog-post>h3.title {

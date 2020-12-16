@@ -17,7 +17,6 @@ window.addEventListener('scroll', scrollManager);
 
 function scrollManager() {
   let scrollTop, scrollTopMax, clientHeight, scrollHeight;
-	blog.activeBookmark = Math.floor(scrollTop/4320*4);
   ({
     scrollTop,
     scrollTopMax,
@@ -33,8 +32,8 @@ function scrollManager() {
   }
   // 40 è la somma del padding-top e padding-bottom
   // blog.activeBookmark = Math.floor(scrollTop / (clientHeight - 40));
-  console.clear();
-  console.log('ScrollTop:', scrollTop,'T/M:', ((scrollTop / (scrollTopMax-144)) * 4),'pagina:', Math.floor(scrollTop/4320*4));
+	console.clear();
+  console.log('ScrollTop:', scrollTop,'T/M:', Math.floor((scrollTop / (scrollTopMax-blog.delta)) * 4));
 	console.log('Scroll Y:', window.scrollY );
 	console.log(scrollTop === window.scrollY);
 	console.log('scrollTopMax:', scrollTopMax,'scrollHeight:', scrollHeight);
@@ -95,6 +94,8 @@ function initPages() {
       blog.postsW.appendChild(article);
     }
     scrollingAdjustment();
+  }else {
+  	blog.activeBookmark = Math.floor((scrollTop / (scrollTopMax-blog.delta)) * 4);
   }
 }
 
