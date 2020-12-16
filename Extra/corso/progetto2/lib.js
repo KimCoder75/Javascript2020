@@ -90,11 +90,11 @@ function initPages() {
 
 			blog.postsW.appendChild(article);
 		}
-    scrollCheck();
+    scrollingAdjustment();
 	}
 }
 
-function scrollCheck(){
+function scrollingAdjustment(){
 	console.log('Is it scrollable?',blog.isScrollFixed);
   console.log('scrollHeight:',document.documentElement.scrollHeight,'clientHeight:',document.documentElement.clientHeight);
   if (document.documentElement.scrollTopMax == 0) {
