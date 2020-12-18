@@ -27,6 +27,8 @@ function scrollManager() {
 		blog.posts.splice(0, 5);
 		blog.activeBookmark++
 	//TODO: controllare come mai il bookmark arriva a 5
+	//TODO: impostare un riporzionamento basato su 2450/4680*scroll height
+	// TODO: verificare differenza tra 966 e 960 di clientHeight
 		initPages();
 	}
 	// 40 è la somma del padding-top e padding-bottom
@@ -35,6 +37,7 @@ function scrollManager() {
 	console.log('ScrollTop:', scrollTop, 'T/M:', Math.floor(((scrollTop) / (scrollTopMax - blog.delta)) * 4));
 	console.log('Scroll Y:', window.scrollY);
 	console.log(scrollTop === window.scrollY);
+	console.log('clientHeight:',clientHeight);
 	console.log('scrollTopMax:', scrollTopMax, 'scrollHeight:', scrollHeight);
 	console.log(blog.activeBookmark);
 	setBookmarks();
