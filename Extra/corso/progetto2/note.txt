@@ -1,4 +1,5 @@
 1. Verificare che clientHeight sia maggiore di scrollHeight
-2. Se non lo è impostare clientHeight ad 1 pixel maggiore di clientHeight
-se scrollHeight > clientHeight ok
-altrimenti aumentare paddindg dell differenza
+2. Se non lo è impostare clientHeight ad un valore maggiore di clientHeight
+	Se scrollHeight > clientHeight ok
+	altrimenti
+	aumentare padding pari alla differenza tra window.outerHeight e document.documentElement.clientHeight
