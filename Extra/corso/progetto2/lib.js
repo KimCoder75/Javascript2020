@@ -26,7 +26,6 @@ function scrollManager() {
 	if (blog.posts.length > 0 && ((scrollTop / scrollTopMax) >= 1) && blog.activeBookmark<4) {
 		blog.posts.splice(0, 5);
 		blog.activeBookmark++
-	//TODO: controllare come mai il bookmark arriva a 5
 	//TODO: impostare un riporzionamento basato su 2450/4680*scroll height
 	// TODO: verificare differenza tra 966 e 960 di clientHeight
 		initPages();
