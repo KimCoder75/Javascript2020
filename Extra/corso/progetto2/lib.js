@@ -10,7 +10,8 @@ const blog = {
 	activeBookmark: 0,
 	isScrollFixed: false,
 	delta: 0,
-	newBottomPadding: ''
+	newBottomPadding: '',
+	cip:''
 }
 
 window.addEventListener('scroll', scrollManager);
