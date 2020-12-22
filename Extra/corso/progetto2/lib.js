@@ -10,10 +10,17 @@ const blog = {
   activeBookmark: 0,
   isScrollFixed: false,
   delta: 0,
-  newBottomPadding: ''
+  newBottomPadding: '',
+	tempScrollHeight:[930]
 }
 
 window.addEventListener('scroll', scrollManager);
+
+function scrollHeightUpdate(scrollHeight, clientHeight){
+	if (scrollHeight-clientHeight >=clientHeight/2) {
+		blog.tempScrollHeight.push(scrollHeight-30);
+	}
+}
 
 function scrollManager() {
   let scrollTop, scrollTopMax, clientHeight, scrollHeight;
@@ -26,6 +33,7 @@ function scrollManager() {
   if (blog.posts.length > 0 && ((scrollTop / scrollTopMax) >= 1) && blog.activeBookmark < 4) {
     blog.posts.splice(0, 5);
     blog.activeBookmark++
+		scrollHeightUpdate(scrollHeight, clientHeight);
     // TODO: uniformare la logica per la gestione del selettore di pagina
     initPages();
   }
@@ -43,6 +51,7 @@ function debug(scrollTop, scrollTopMax, clientHeight, scrollHeight) {
   console.log('(H-30)/5:',((scrollHeight-30)/5));
   console.log(blog.activeBookmark);
   console.log(blog.newBottomPadding);
+	console.log(blog.tempScrollHeight);
 }
 
 async function initBlog() {
