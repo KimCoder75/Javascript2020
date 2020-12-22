@@ -26,11 +26,10 @@ function scrollManager() {
   if (blog.posts.length > 0 && ((scrollTop / scrollTopMax) >= 1) && blog.activeBookmark < 4) {
     blog.posts.splice(0, 5);
     blog.activeBookmark++
-    // TODO: verificare differenza tra 966 e 960 di clientHeight
     initPages();
   }
   debug(scrollTop, scrollTopMax, clientHeight, scrollHeight)
-  setBookmarks();
+  setBookmarks(scrollTop, scrollTopMax);
 }
 
 function debug(scrollTop, scrollTopMax, clientHeight, scrollHeight) {
@@ -66,10 +65,15 @@ function initBookmark() {
   }
 }
 
-function setBookmarks() {
+function setBookmarks(scrollTop, scrollTopMax) {
   let bookmarks = document.querySelectorAll('span.position')
   bookmarks.forEach((bookmark, i) => {
-    bookmarkActivator(i, blog.activeBookmark, bookmark);
+    if (blog.posts.length > 0 && blog.activeBookmark != 4) {
+      bookmarkActivator(i, blog.activeBookmark, bookmark);
+    } else {
+      let newActiveBookmark = Math.floor(((scrollTop) / (scrollTopMax - blog.delta)) * 4)
+      bookmarkActivator(i, newActiveBookmark, bookmark);
+    }
   });
 }
 
@@ -121,7 +125,7 @@ function scrollingAdjustment() {
     console.log('Padding bottom set to:', blog.delta, 'px, now it is scrollable! ScrollHeight:', scrollHeight, 'clientHeight:', clientHeight);
     console.log('Is it scrollable?', blog.isScrollFixed);
   } else {
-    blog.delta = 0
+    blog.delta = 0;
     blog.newBottomPadding = document.getElementById('blog-w').style.paddingBottom = `${blog.delta}px`;
     blog.isScrollFixed = false;
 
