@@ -120,16 +120,14 @@ function scrollingAdjustment() {
 
   if (scrollTopMax == 0 && blog.posts.length != 0) {
     blog.delta = (window.outerHeight - clientHeight);
-    blog.newBottomPadding = document.getElementById('blog-w').style.paddingBottom = `${blog.delta}px`;
     blog.isScrollFixed = true;
-    console.log('Padding bottom set to:', blog.delta, 'px, now it is scrollable! ScrollHeight:', scrollHeight, 'clientHeight:', clientHeight);
-    console.log('Is it scrollable?', blog.isScrollFixed);
   } else {
     blog.delta = 0;
-    blog.newBottomPadding = document.getElementById('blog-w').style.paddingBottom = `${blog.delta}px`;
     blog.isScrollFixed = false;
-
   }
+  blog.newBottomPadding = document.getElementById('blog-w').style.paddingBottom = `${blog.delta}px`;
+  console.log('Padding bottom set to:', blog.delta, 'px, now it is scrollable! ScrollHeight:', scrollHeight, 'clientHeight:', clientHeight);
+  console.log('Is it scrollable?', blog.isScrollFixed);
 }
 
 initBlog();
