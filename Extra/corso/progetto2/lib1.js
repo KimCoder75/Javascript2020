@@ -8,15 +8,18 @@ const blog = {
   posts: [],
   totalPosts: 25,
   activeBookmark: 0,
+  isScrollFixed: false,
   delta: 0,
   newBottomPadding: '',
-	pageYCoordinates:[]
+	tempScrollHeight:[930]
 }
 
 window.addEventListener('scroll', scrollManager);
 
-function setYCoordinates(scrollHeight){
-	blog.pageYCoordinates.push(scrollHeight-30-blog.delta);
+function scrollHeightUpdate(scrollHeight, clientHeight){
+	if (scrollHeight-clientHeight >=clientHeight/2) {
+		blog.tempScrollHeight.push(scrollHeight-30);
+	}
 }
 
 function scrollManager() {
@@ -30,7 +33,7 @@ function scrollManager() {
   if (blog.posts.length > 0 && ((scrollTop / scrollTopMax) >= 1) && blog.activeBookmark < 4) {
     blog.posts.splice(0, 5);
     blog.activeBookmark++
-		setYCoordinates(scrollHeight);
+		scrollHeightUpdate(scrollHeight, clientHeight);
     // TODO: uniformare la logica per la gestione del selettore di pagina
     initPages();
   }
@@ -48,8 +51,7 @@ function debug(scrollTop, scrollTopMax, clientHeight, scrollHeight) {
   console.log('(H-30)/5:',((scrollHeight-30)/5));
   console.log(blog.activeBookmark);
   console.log(blog.newBottomPadding);
-	console.log(blog.pageYCoordinates);
-	console.log(blog.delta);
+	console.log(blog.tempScrollHeight);
 }
 
 async function initBlog() {
@@ -115,16 +117,28 @@ function initPages() {
 }
 
 function scrollingAdjustment() {
-  let scrollHeight, clientHeight, scrollTopMax, delta = 0;
+  let scrollHeight, clientHeight, scrollTopMax;
   ({
     scrollHeight,
     clientHeight,
     scrollTopMax
   } = document.documentElement);
 
-  (scrollHeight > clientHeight && scrollTopMax == 0 && blog.posts.length != 0) ? delta : delta =(window.outerHeight - clientHeight) ;
-	blog.delta = delta;
-  blog.newBottomPadding = document.getElementById('blog-w').style.paddingBottom = `${delta}px`;
+  (scrollHeight > clientHeight) ? blog.isScrollFixed = true: blog.isScrollFixed;
+
+  console.log('Is it scrollable?', blog.isScrollFixed);
+  console.log('scrollHeight:', scrollHeight, 'clientHeight:', clientHeight);
+
+  if (scrollTopMax == 0 && blog.posts.length != 0) {
+    blog.delta = (window.outerHeight - clientHeight);
+    blog.isScrollFixed = true;
+  } else {
+    blog.delta = 0;
+    blog.isScrollFixed = false;
+  }
+  blog.newBottomPadding = document.getElementById('blog-w').style.paddingBottom = `${blog.delta}px`;
+  console.log('Padding bottom set to:', blog.delta, 'px, now it is scrollable! ScrollHeight:', scrollHeight, 'clientHeight:', clientHeight);
+  console.log('Is it scrollable?', blog.isScrollFixed);
 }
 
 initBlog();
