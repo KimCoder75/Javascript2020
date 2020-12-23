@@ -11,19 +11,21 @@ const blog = {
   delta: 0,
   newPaddingBottom: document.getElementById('blog-w'),
   paddingTop: 30,
-  pageYCoordinates: [10000000000000]
+  firstPageYCoordinate: [Infinity]
 }
 
 window.addEventListener('scroll', scrollManager);
 
 function setYCoordinates(scrollHeight) {
-  let delta, paddingTop, coords;
+  let delta, paddingTop, coordsY;
   ({
     delta,
     paddingTop
   } = blog);
-  coords = (scrollHeight - paddingTop - delta);
-  blog.pageYCoordinates[0]=(coords);
+  coordsY = (scrollHeight - paddingTop - delta);
+  (blog.firstPageYCoordinate[0]===Infinity) ?
+  blog.firstPageYCoordinate[0]=(coordsY):
+  blog.firstPageYCoordinate.push(coordsY);
 }
 
 function scrollManager() {
@@ -37,7 +39,7 @@ function scrollManager() {
   if (blog.posts.length > 0 && ((scrollTop / scrollTopMax) >= 1) && blog.activeBookmark < 4) {
     blog.posts.splice(0, 5);
     blog.activeBookmark++
-    // TODO: passare active bookmark come (Math.floor(scrollTop/(blog.pageYCoordinates[0])))
+    // TODO: passare active bookmark come (Math.floor(scrollTop/(blog.firstPageYCoordinate[0])))
     setYCoordinates(scrollHeight);
     // TODO: uniformare la logica per la gestione del selettore di pagina
     initPages();
@@ -56,10 +58,10 @@ function debug(scrollTop, scrollTopMax, clientHeight, scrollHeight) {
   console.log('(H-30)/5:', ((scrollHeight - 30) / 5));
   console.log(blog.activeBookmark);
   console.log(blog.newPaddingBottom);
-  console.log(blog.pageYCoordinates);
+  console.log(blog.firstPageYCoordinate[0]);
+  console.log(blog.firstPageYCoordinate);
   console.log(blog.delta);
-  console.log(Math.floor(scrollTop/(blog.pageYCoordinates[0])));
-  // TODO: Mettere a posto il NaN iniziale
+  console.log(Math.floor(scrollTop/(blog.firstPageYCoordinate[0])));
 }
 
 async function initBlog() {
@@ -131,7 +133,6 @@ function scrollingAdjustment() {
     clientHeight,
     scrollTopMax
   } = document.documentElement);
-  // TODO: controllare la logica per la creazione dell'extra padding
   (scrollHeight == clientHeight && blog.posts.length != 0) ? delta = (window.outerHeight - clientHeight): delta;
   blog.delta = delta;
   blog.newPaddingBottom.style.paddingBottom = `${delta}px`;
