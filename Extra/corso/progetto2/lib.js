@@ -23,9 +23,9 @@ function setYCoordinates(scrollHeight) {
     paddingTop
   } = blog);
   coordsY = (scrollHeight - paddingTop - delta);
-  (blog.firstPageYCoordinate[0]===Infinity) ?
-  blog.firstPageYCoordinate[0]=(coordsY):
-  blog.firstPageYCoordinate.push(coordsY);
+  (blog.firstPageYCoordinate[0] === Infinity) ?
+  blog.firstPageYCoordinate[0] = (coordsY):
+    blog.firstPageYCoordinate.push(coordsY);
 }
 
 function scrollManager() {
@@ -36,12 +36,10 @@ function scrollManager() {
     clientHeight,
     scrollHeight
   } = document.documentElement);
-  if (blog.posts.length > 0 && ((scrollTop / scrollTopMax) >= 1) && blog.activeBookmark < 4) {
+  blog.activeBookmark = Math.floor(+((scrollTop / (blog.firstPageYCoordinate[0])).toFixed(1)));
+  if (blog.posts.length > 0 && ((scrollTop / scrollTopMax) >= 1)) {
     blog.posts.splice(0, 5);
-    blog.activeBookmark++
-    // TODO: passare active bookmark come (Math.floor(scrollTop/(blog.firstPageYCoordinate[0])))
     setYCoordinates(scrollHeight);
-    // TODO: uniformare la logica per la gestione del selettore di pagina
     initPages();
   }
   debug(scrollTop, scrollTopMax, clientHeight, scrollHeight)
@@ -50,18 +48,14 @@ function scrollManager() {
 
 function debug(scrollTop, scrollTopMax, clientHeight, scrollHeight) {
   console.clear();
-  console.log('T/M*4:', Math.floor(((scrollTop) / (scrollTopMax - blog.delta)) * 4));
-  console.log('T/M:', Math.floor(((scrollTop) / (scrollTopMax - blog.delta))));
   console.log('clientHeight:', clientHeight, 'scrollHeight:', scrollHeight);
   console.log('ScrollTop:', scrollTop, 'scrollTopMax:', scrollTopMax);
-  console.log('TM/H:', (scrollTopMax / scrollHeight), 'T/H:', (scrollTop / scrollHeight));
-  console.log('(H-30)/5:', ((scrollHeight - 30) / 5));
-  console.log(blog.activeBookmark);
-  console.log(blog.newPaddingBottom);
-  console.log(blog.firstPageYCoordinate[0]);
-  console.log(blog.firstPageYCoordinate);
-  console.log(blog.delta);
-  console.log(Math.floor(scrollTop/(blog.firstPageYCoordinate[0])));
+  console.log('Padding Bottom:', blog.newPaddingBottom);
+  console.log('Padding Bottom', blog.delta);
+  console.log('Y Page Reference:', blog.firstPageYCoordinate[0]);
+  console.log('All Pages References:', blog.firstPageYCoordinate);
+  console.log('Active bookmark:', blog.activeBookmark);
+  console.log('(scrollTop/(blog.firstPageYCoordinate[0])):', +((scrollTop / (blog.firstPageYCoordinate[0])).toFixed(1)));
 }
 
 async function initBlog() {
@@ -89,12 +83,7 @@ function initBookmark() {
 function setBookmarks(scrollTop, scrollTopMax) {
   let bookmarks = document.querySelectorAll('span.position')
   bookmarks.forEach((bookmark, i) => {
-    if (blog.posts.length > 0 && blog.activeBookmark != 4) {
-      bookmarkActivator(i, blog.activeBookmark, bookmark);
-    } else {
-      let newActiveBookmark = Math.floor(((scrollTop) / (scrollTopMax - blog.delta)) * 4)
-      bookmarkActivator(i, newActiveBookmark, bookmark);
-    }
+    bookmarkActivator(i, blog.activeBookmark, bookmark);
   });
 }
 
