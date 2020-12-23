@@ -8,3 +8,5 @@
 
 	blog.delta = delta;
 	blog.newPaddingBottom.style.paddingBottom = `${delta}px`;
+
+	cssText: "padding-bottom: 0px;"

@@ -11,15 +11,19 @@ const blog = {
   delta: 0,
   newPaddingBottom: document.getElementById('blog-w'),
   paddingTop: 30,
-	pageYCoordinates:[]
+  pageYCoordinates: [10000000000000]
 }
 
 window.addEventListener('scroll', scrollManager);
 
-function setYCoordinates(scrollHeight){
-  let delta, paddingTop;
-  ( {delta, paddingTop} = blog );
-	blog.pageYCoordinates.push(scrollHeight-paddingTop-delta);
+function setYCoordinates(scrollHeight) {
+  let delta, paddingTop, coords;
+  ({
+    delta,
+    paddingTop
+  } = blog);
+  coords = (scrollHeight - paddingTop - delta);
+  blog.pageYCoordinates[0]=(coords);
 }
 
 function scrollManager() {
@@ -33,7 +37,8 @@ function scrollManager() {
   if (blog.posts.length > 0 && ((scrollTop / scrollTopMax) >= 1) && blog.activeBookmark < 4) {
     blog.posts.splice(0, 5);
     blog.activeBookmark++
-		setYCoordinates(scrollHeight);
+    // TODO: passare active bookmark come (Math.floor(scrollTop/(blog.pageYCoordinates[0])))
+    setYCoordinates(scrollHeight);
     // TODO: uniformare la logica per la gestione del selettore di pagina
     initPages();
   }
@@ -47,12 +52,14 @@ function debug(scrollTop, scrollTopMax, clientHeight, scrollHeight) {
   console.log('T/M:', Math.floor(((scrollTop) / (scrollTopMax - blog.delta))));
   console.log('clientHeight:', clientHeight, 'scrollHeight:', scrollHeight);
   console.log('ScrollTop:', scrollTop, 'scrollTopMax:', scrollTopMax);
-  console.log('TM/H:',(scrollTopMax/scrollHeight), 'T/H:',(scrollTop/scrollHeight));
-  console.log('(H-30)/5:',((scrollHeight-30)/5));
+  console.log('TM/H:', (scrollTopMax / scrollHeight), 'T/H:', (scrollTop / scrollHeight));
+  console.log('(H-30)/5:', ((scrollHeight - 30) / 5));
   console.log(blog.activeBookmark);
   console.log(blog.newPaddingBottom);
-	console.log(blog.pageYCoordinates);
-	console.log(blog.delta);
+  console.log(blog.pageYCoordinates);
+  console.log(blog.delta);
+  console.log(Math.floor(scrollTop/(blog.pageYCoordinates[0])));
+  // TODO: Mettere a posto il NaN iniziale
 }
 
 async function initBlog() {
@@ -83,7 +90,7 @@ function setBookmarks(scrollTop, scrollTopMax) {
     if (blog.posts.length > 0 && blog.activeBookmark != 4) {
       bookmarkActivator(i, blog.activeBookmark, bookmark);
     } else {
-      let newActiveBookmark = Math.floor(((scrollTop) / (scrollTopMax - blog.delta))*4)
+      let newActiveBookmark = Math.floor(((scrollTop) / (scrollTopMax - blog.delta)) * 4)
       bookmarkActivator(i, newActiveBookmark, bookmark);
     }
   });
@@ -124,10 +131,12 @@ function scrollingAdjustment() {
     clientHeight,
     scrollTopMax
   } = document.documentElement);
-// TODO: controllare la logica per la creazione dell'extra padding
-  (scrollHeight > clientHeight && scrollTopMax == 0 && blog.posts.length != 0) ? delta : delta =(window.outerHeight - clientHeight) ;
+  // TODO: controllare la logica per la creazione dell'extra padding
+  (scrollHeight == clientHeight && blog.posts.length != 0) ? delta = (window.outerHeight - clientHeight): delta;
   blog.delta = delta;
   blog.newPaddingBottom.style.paddingBottom = `${delta}px`;
+  // blog.newPaddingBottom.style.cssText= `padding-bottom: ${delta}px`;
+
 }
 
 initBlog();
