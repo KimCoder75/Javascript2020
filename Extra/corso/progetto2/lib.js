@@ -9,14 +9,17 @@ const blog = {
   totalPosts: 25,
   activeBookmark: 0,
   delta: 0,
-  newBottomPadding: '',
+  newPaddingBottom: document.getElementById('blog-w'),
+  paddingTop: 30,
 	pageYCoordinates:[]
 }
 
 window.addEventListener('scroll', scrollManager);
 
 function setYCoordinates(scrollHeight){
-	blog.pageYCoordinates.push(scrollHeight-30-blog.delta);
+  let delta, paddingTop;
+  ( {delta, paddingTop} = blog );
+	blog.pageYCoordinates.push(scrollHeight-paddingTop-delta);
 }
 
 function scrollManager() {
@@ -47,7 +50,7 @@ function debug(scrollTop, scrollTopMax, clientHeight, scrollHeight) {
   console.log('TM/H:',(scrollTopMax/scrollHeight), 'T/H:',(scrollTop/scrollHeight));
   console.log('(H-30)/5:',((scrollHeight-30)/5));
   console.log(blog.activeBookmark);
-  console.log(blog.newBottomPadding);
+  console.log(blog.newPaddingBottom);
 	console.log(blog.pageYCoordinates);
 	console.log(blog.delta);
 }
@@ -121,10 +124,10 @@ function scrollingAdjustment() {
     clientHeight,
     scrollTopMax
   } = document.documentElement);
-
+// TODO: controllare la logica per la creazione dell'extra padding
   (scrollHeight > clientHeight && scrollTopMax == 0 && blog.posts.length != 0) ? delta : delta =(window.outerHeight - clientHeight) ;
-	blog.delta = delta;
-  blog.newBottomPadding = document.getElementById('blog-w').style.paddingBottom = `${delta}px`;
+  blog.delta = delta;
+  blog.newPaddingBottom.style.paddingBottom = `${delta}px`;
 }
 
 initBlog();

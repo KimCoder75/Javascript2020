@@ -3,3 +3,8 @@
 	Se scrollHeight > clientHeight ok
 	altrimenti
 	aumentare padding pari alla differenza tra window.outerHeight e document.documentElement.clientHeight
+
+
+
+	blog.delta = delta;
+	blog.newPaddingBottom.style.paddingBottom = `${delta}px`;
