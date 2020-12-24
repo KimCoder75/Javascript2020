@@ -41,7 +41,7 @@ function scrollManager() {
 		setYCoordinates(scrollHeight);
 		initPages();
 	}
-	debug(scrollTop, scrollTopMax, clientHeight, scrollHeight)
+	debug(scrollTop, scrollTopMax, clientHeight, scrollHeight);
 	setBookmarks(scrollTop, scrollTopMax);
 }
 
@@ -115,17 +115,16 @@ function initPages() {
 }
 
 function scrollingAdjustment() {
-	let scrollHeight, clientHeight, scrollTopMax, delta = 0;
+	let scrollHeight, clientHeight, paddingBottom = 0;
 	({
 		scrollHeight,
-		clientHeight,
-		scrollTopMax
+		clientHeight
 	} = document.documentElement);
 	if (scrollHeight == clientHeight && blog.posts.length != 0)  {
-		delta = (window.outerHeight - clientHeight);
+		paddingBottom = (window.outerHeight - clientHeight);
 	}
-	blog.delta = delta;
-	blog.postsW.style.paddingBottom = `${delta}px`;
+	blog.delta = paddingBottom;
+	blog.postsW.style.paddingBottom = `${paddingBottom}px`;
 	// blog.postsW.style.cssText= `padding-bottom: ${delta}px`;
 
 }
