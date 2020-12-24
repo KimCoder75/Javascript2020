@@ -9,7 +9,6 @@ const blog = {
 	totalPosts: 25,
 	activeBookmark: 0,
 	delta: 0,
-	newPaddingBottom: document.getElementById('blog-w'),
 	paddingTop: 30,
 	firstPageYCoordinate: [Infinity]
 }
@@ -25,7 +24,7 @@ function setYCoordinates(scrollHeight) {
 	coordsY = (scrollHeight - paddingTop - delta);
 	(blog.firstPageYCoordinate[0] === Infinity) ?
 	blog.firstPageYCoordinate[0] = (coordsY):
-		blog.firstPageYCoordinate.push(coordsY);
+	blog.firstPageYCoordinate.push(coordsY);
 }
 
 function scrollManager() {
@@ -50,7 +49,7 @@ function debug(scrollTop, scrollTopMax, clientHeight, scrollHeight) {
 	console.clear();
 	console.log('clientHeight:', clientHeight, 'scrollHeight:', scrollHeight);
 	console.log('ScrollTop:', scrollTop, 'scrollTopMax:', scrollTopMax);
-	console.log('Padding Bottom:', blog.newPaddingBottom);
+	console.log('Padding Bottom:', blog.postsW);
 	console.log('Padding Bottom', blog.delta);
 	console.log('Y Page Reference:', blog.firstPageYCoordinate[0]);
 	console.log('All Pages References:', blog.firstPageYCoordinate);
@@ -124,8 +123,8 @@ function scrollingAdjustment() {
 	} = document.documentElement);
 	(scrollHeight == clientHeight && blog.posts.length != 0) ? delta = (window.outerHeight - clientHeight): delta;
 	blog.delta = delta;
-	blog.newPaddingBottom.style.paddingBottom = `${delta}px`;
-	// blog.newPaddingBottom.style.cssText= `padding-bottom: ${delta}px`;
+	blog.postsW.style.paddingBottom = `${delta}px`;
+	// blog.postsW.style.cssText= `padding-bottom: ${delta}px`;
 
 }
 
