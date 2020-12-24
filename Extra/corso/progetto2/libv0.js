@@ -28,14 +28,15 @@ function setYCoordinates(scrollHeight) {
 }
 
 function scrollManager() {
-	let scrollTop, scrollTopMax, clientHeight, scrollHeight;
+	let scrollTop, scrollTopMax, clientHeight, scrollHeight, yFirstPageRef;
 	({
 		scrollTop,
 		scrollTopMax,
 		clientHeight,
 		scrollHeight
 	} = document.documentElement);
-	blog.activeBookmark = ~~(scrollTop / blog.firstPageYCoordinate[0]).toFixed(1);
+	yFirstPageRef = (blog.firstPageYCoordinate[0]).toFixed(1)
+	blog.activeBookmark = ~~(scrollTop / yFirstPageRef);
 	if (blog.posts.length > 0 && ((scrollTop / scrollTopMax) >= 1)) {
 		blog.posts.splice(0, 5);
 		setYCoordinates(scrollHeight);
@@ -54,7 +55,7 @@ function debug(scrollTop, scrollTopMax, clientHeight, scrollHeight) {
 	console.log('Y Page Reference:', blog.firstPageYCoordinate[0]);
 	console.log('All Pages References:', blog.firstPageYCoordinate);
 	console.log('Active bookmark:', blog.activeBookmark);
-	console.log('+(scrollTop/(blog.firstPageYCoordinate[0])).toFixed(1):', +(scrollTop / (blog.firstPageYCoordinate[0])).toFixed(1));
+	console.log('(scrollTop/(blog.firstPageYCoordinate[0])).toFixed(1):', +((scrollTop / (blog.firstPageYCoordinate[0])).toFixed(1)));
 }
 
 async function initBlog() {
@@ -121,6 +122,7 @@ function scrollingAdjustment() {
 		clientHeight,
 		scrollTopMax
 	} = document.documentElement);
+	// (scrollHeight == clientHeight && blog.posts.length != 0) ? delta = (window.outerHeight - clientHeight): delta;
 	if (scrollHeight == clientHeight && blog.posts.length != 0)  {
 		delta = (window.outerHeight - clientHeight);
 	}

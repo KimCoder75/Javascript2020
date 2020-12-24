@@ -4,9 +4,30 @@
 	altrimenti
 	aumentare padding pari alla differenza tra window.outerHeight e document.documentElement.clientHeight
 
+~~ (doppia tilde) è un doppio operatore bitwise NOT.
 
+Viene usato come sostituto più veloce di Math.floor() per i numeri positivi, in quanto taglia la parte decimale, restituendo il numero intero.
+Per i numeri negativi non restituisce lo stesso risultato di Math.floor().
 
+function scrollingAdjustment() {
+	let scrollHeight, clientHeight, scrollTopMax, delta = 0;
+	({
+		scrollHeight,
+		clientHeight,
+		scrollTopMax
+	} = document.documentElement);
+	(scrollHeight == clientHeight && blog.posts.length != 0) ? delta = (window.outerHeight - clientHeight): delta;
 	blog.delta = delta;
-	blog.newPaddingBottom.style.paddingBottom = `${delta}px`;
+	blog.postsW.style.paddingBottom = `${delta}px`;
+	// blog.postsW.style.cssText= `padding-bottom: ${delta}px`;
 
-	cssText: "padding-bottom: 0px;"
+}
+
+  function scrollingAdjustment() {
+    let scrollHeight, clientHeight, scrollTopMax;
+    ({ scrollHeight, clientHeight, scrollTopMax } = document.documentElement);
+    if(scrollHeight == clientHeight && blog.posts.length != 0) {
+        blog.delta = window.outerHeight - clientHeight;
+    }
+    blog.newPaddingBottom.style.paddingBottom = `${blog.delta}px`;
+  }
