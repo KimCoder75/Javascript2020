@@ -1,6 +1,6 @@
 /*jshint -W030,-W033,-W119,-W104*/
 /*jshint expr:true*/
-/* Chrome, Firefox version */
+/* Firefox version - debug R 1.1 24-01-2020 */
 const blog = {
 	postPerPage: 5,
 	totalPages: 0,
@@ -29,27 +29,27 @@ function setYCoordinates(scrollHeight) {
 }
 
 function scrollManager() {
-	let scrollTop, clientHeight, scrollHeight,scrollMax;
+	let scrollTop, scrollTopMax, clientHeight, scrollHeight;
 	({
 		scrollTop,
+		scrollTopMax,
 		clientHeight,
 		scrollHeight
 	} = document.documentElement);
-	scrollMax = (scrollHeight - clientHeight);
 	blog.activeBookmark = ~~(scrollTop / blog.firstPageYCoordinate[0]).toFixed(1);
-	if (blog.posts.length > 0 && ((scrollTop / scrollMax) >= 1)) {
+	if (blog.posts.length > 0 && ((scrollTop / scrollTopMax) >= 1)) {
 		blog.posts.splice(0, 5);
 		setYCoordinates(scrollHeight);
 		initPages();
 	}
-	debug(scrollTop, scrollMax, clientHeight, scrollHeight);
-	setBookmarks(scrollTop, scrollMax);
+	debug(scrollTop, scrollTopMax, clientHeight, scrollHeight);
+	setBookmarks(scrollTop, scrollTopMax);
 }
 
-function debug(scrollTop, scrollMax, clientHeight, scrollHeight) {
+function debug(scrollTop, scrollTopMax, clientHeight, scrollHeight) {
 	console.clear();
 	console.log('clientHeight:', clientHeight, 'scrollHeight:', scrollHeight);
-	console.log('ScrollTop:', scrollTop, 'scrollMax:', scrollMax);
+	console.log('ScrollTop:', scrollTop, 'scrollTopMax:', scrollTopMax);
 	console.log('Padding Bottom:', blog.postsW);
 	console.log('Padding Bottom', blog.delta);
 	console.log('Y Page Reference:', blog.firstPageYCoordinate[0]);
@@ -80,7 +80,7 @@ function initBookmark() {
 	}
 }
 
-function setBookmarks(scrollTop, scrollMax) {
+function setBookmarks(scrollTop, scrollTopMax) {
 	let bookmarks = document.querySelectorAll('span.position')
 	bookmarks.forEach((bookmark, i) => {
 		bookmarkActivator(i, blog.activeBookmark, bookmark);
@@ -129,5 +129,6 @@ function scrollingAdjustment() {
 	// blog.postsW.style.cssText= `padding-bottom: ${delta}px`;
 
 }
+
 
 initBlog();
