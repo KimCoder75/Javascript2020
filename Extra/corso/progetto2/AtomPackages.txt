@@ -1,7 +1,7 @@
 todo 0.6.0 reergymerey
 pigments 0.40.6 abe33
-open-in-browser 0.5.2 magbicaleman
 minimap-pigments 0.2.2 abe33
+open-in-browser 0.5.2 magbicaleman
 minimap 4.35.7 atom-minimap
 linter-ui-default 2.2.1 stellbrain
 linter-jshint 3.1.19 AtomLinter
