@@ -121,22 +121,19 @@ function initPages() {
 
 // TODO: trovare il valore di inizializzazione di margin bottom
 function scrollingAdjustment() {
-	let scrollHeight, clientHeight, scrollMax, delta, firstPageYCoordinate;
+	let scrollHeight, clientHeight, scrollMax, delta, firstPageYCoordinate, paddingTop;
 	({
 		scrollHeight,
 		clientHeight
 	} = document.documentElement);
-	({firstPageYCoordinate} = blog);
-	delta = 0;
-	scrollMax = (scrollHeight - clientHeight);
+	({firstPageYCoordinate, paddingTop} = blog);
 	if (scrollHeight == clientHeight && blog.posts.length != 0)  {
-		delta = (window.outerHeight - clientHeight);
+		blog.paddingBottomW = (window.outerHeight - clientHeight);
 	}
-	else if (firstPageYCoordinate[3] && scrollMax < (firstPageYCoordinate[3])) {
-		delta = (firstPageYCoordinate[3] - scrollMax);
+	else if (clientHeight - firstPageYCoordinate - paddingTop > 0) {
+		blog.paddingBottomW = (clientHeight - firstPageYCoordinate - paddingTop);
 	}
-	blog.paddingBottomW = delta;
-	blog.postsW.style.paddingBottom = `${delta}px`;
+	blog.postsW.style.paddingBottom = `${blog.paddingBottomW}px`;
 
 }
 
