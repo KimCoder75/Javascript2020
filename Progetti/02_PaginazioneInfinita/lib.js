@@ -60,6 +60,8 @@ function debug(scrollTop, scrollMax, clientHeight, scrollHeight) {
 	console.log('(scrollTop/(blog.firstPageYCoordinate[0])):', (scrollTop / (blog.firstPageYCoordinate[0])));
 	console.log('clientHeight - blog.firstPageYCoordinate - blog.paddingTop',(clientHeight - blog.firstPageYCoordinate[0] - blog.paddingTop));
   console.log('clientHeight - blog.firstPageYCoordinate - blog.paddingTop > 0',(clientHeight - blog.firstPageYCoordinate[0] - blog.paddingTop)>0);
+	console.log('blog.posts.length:',blog.posts.length);
+	console.log('blog.firstPageYCoordinate.length:', blog.firstPageYCoordinate.length);
 }
 
 async function initBlog() {
