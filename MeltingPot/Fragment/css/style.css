@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+body {
+  position: relative;
+  min-height: 100vh;
+  font-family: Lato, sans-serif;
+}
