@@ -94,33 +94,33 @@ function setBookmarks(scrollTop, scrollMax) {
 }
 
 function initPages() {
-	if (blog.posts.length !== 0) {
-		for (let i = 0; i < blog.postPerPage; i++) {
+  if (blog.posts.length !== 0) {
+    for (let i = 0; i < blog.postPerPage; i++) {
 
-			const article = document.createElement('article'),
-				h3 = document.createElement('h3'),
-				div1 = document.createElement('div'),
-				div2 = document.createElement('div');
+      const
+        article = document.createElement('article'),
+        h3 = document.createElement('h3'),
+        div1 = document.createElement('div'),
+        div2 = document.createElement('div');
 
-			article.setAttribute('class', 'blog-post');
-			h3.setAttribute('class', 'title');
-			div1.setAttribute('class', 'body');
-			div2.setAttribute('class', 'id');
+      article.setAttribute('class', 'blog-post');
+      h3.setAttribute('class', 'title');
+      div1.setAttribute('class', 'body');
+      div2.setAttribute('class', 'id');
 
-			h3.innerText = blog.posts[i].title;
-			div1.innerText = blog.posts[i].body;
-			div2.innerText = blog.posts[i].id;
+      h3.innerText = blog.posts[i].title;
+      div1.innerText = blog.posts[i].body;
+      div2.innerText = blog.posts[i].id;
 
-			article.appendChild(h3);
-			article.appendChild(div1);
-			article.appendChild(div2);
+      article.appendChild(h3);
+      article.appendChild(div1);
+      article.appendChild(div2);
 
-			blog.postsW.appendChild(article);
-		}
-		scrollingAdjustment();
-	}
+      blog.postsW.appendChild(article);
+    }
+    scrollingAdjustment();
+  }
 }
-
 // TODO: trovare il valore di inizializzazione di margin bottom
 function scrollingAdjustment() {
 	let scrollHeight, clientHeight, scrollMax, delta, firstPageYCoordinate;
