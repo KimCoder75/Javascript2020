@@ -98,10 +98,10 @@ function initPages() {
   if (blog.posts.length !== 0) {
     for (let i = 0; i < blog.postPerPage; i++) {
 
-      const article = createNewItem('article', 'blog-post',''),
-        h3 = createNewItem('h3', 'title', blog.posts[i].title),
-        div1 = createNewItem('div', 'body', blog.posts[i].body),
-        div2 = createNewItem('div', 'id', blog.posts[i].id);
+      const article = createNewDOMElement('article', 'blog-post',''),
+        h3 = createNewDOMElement('h3', 'title', blog.posts[i].title),
+        div1 = createNewDOMElement('div', 'body', blog.posts[i].body),
+        div2 = createNewDOMElement('div', 'id', blog.posts[i].id);
 
       //N.B. append non supportato in IE
       article.append(h3, div1, div2);
@@ -111,7 +111,7 @@ function initPages() {
   }
 }
 
-function createNewItem(type, classList, innerTxt) {
+function createNewDOMElement(type, classList, innerTxt) {
   const newItem = document.createElement(type);
   newItem.setAttribute('class', classList);
   newItem.innerText = innerTxt;
