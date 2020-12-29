@@ -9,25 +9,54 @@
 Viene usato come sostituto più veloce di Math.floor() per i numeri positivi, in quanto taglia la parte decimale, restituendo il numero intero.
 Per i numeri negativi non restituisce lo stesso risultato di Math.floor().
 
-function scrollingAdjustment() {
-	let scrollHeight, clientHeight, scrollTopMax, delta = 0;
-	({
-		scrollHeight,
-		clientHeight,
-		scrollTopMax
-	} = document.documentElement);
-	(scrollHeight == clientHeight && blog.posts.length != 0) ? delta = (window.outerHeight - clientHeight): delta;
-	blog.delta = delta;
-	blog.postsW.style.paddingBottom = `${delta}px`;
-	// blog.postsW.style.cssText= `padding-bottom: ${delta}px`;
+function initPages() {
+  if (blog.posts.length !== 0) {
+    for (let i = 0; i < blog.postPerPage; i++) {
 
+      const
+        article = document.createElement('article'),
+        h3 = document.createElement('h3'),
+        div1 = document.createElement('div'),
+        div2 = document.createElement('div');
+
+      article.setAttribute('class', 'blog-post');
+      h3.setAttribute('class', 'title');
+      div1.setAttribute('class', 'body');
+      div2.setAttribute('class', 'id');
+
+      article.innerText = '';
+      h3.innerText = blog.posts[i].title;
+      div1.innerText = blog.posts[i].body;
+      div2.innerText = blog.posts[i].id;
+
+      article.appendChild(h3);
+      article.appendChild(div1);
+      article.appendChild(div2);
+
+      blog.postsW.appendChild(article);
+    }
+  }
 }
 
-  function scrollingAdjustment() {
-    let scrollHeight, clientHeight, scrollTopMax;
-    ({ scrollHeight, clientHeight, scrollTopMax } = document.documentElement);
-    if(scrollHeight == clientHeight && blog.posts.length != 0) {
-        blog.delta = window.outerHeight - clientHeight;
+function initPages() {
+  if (blog.posts.length !== 0) {
+    for (let i = 0; i < blog.postPerPage; i++) {
+
+      const article = createNewItem('article', 'blog-post'),
+        h3 = createNewItem('h3', 'title', blog.posts[i].title),
+        div1 = createNewItem('div', 'body', blog.posts[i].body),
+        div2 = createNewItem('div', 'id', blog.posts[i].id);
+
+      //N.B. append purtroppo non supportato in IE
+      article.append(h3, div1, div2);
+      blog.postsW.append(article);
     }
-    blog.newPaddingBottom.style.paddingBottom = `${blog.delta}px`;
   }
+}
+
+function createNewItem(type, classList, innerTxt = '') {
+  const newItem = document.createElement(type);
+  newItem.setAttribute('class', classList);
+  newItem.innerText = innerTxt;
+  return newItem;
+}
