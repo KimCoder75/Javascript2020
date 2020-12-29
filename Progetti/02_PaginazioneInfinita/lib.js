@@ -83,7 +83,8 @@ function initPages() {
   if (blog.posts.length !== 0) {
     for (let i = 0; i < blog.postPerPage; i++) {
 
-      const article = createNewDOMElement('article', 'blog-post', ''),
+      const
+      article = createNewDOMElement('article', 'blog-post', ''),
         h3 = createNewDOMElement('h3', 'title', blog.posts[i].title),
         div1 = createNewDOMElement('div', 'body', blog.posts[i].body),
         div2 = createNewDOMElement('div', 'id', blog.posts[i].id);
