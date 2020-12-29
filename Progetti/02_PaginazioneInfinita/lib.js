@@ -8,7 +8,7 @@ const blog = {
   bookmarksW: document.getElementById('page-position-w'),
   postsW: document.getElementById('blog-w'),
   posts: [],
-  totalPosts: 25,
+  totalPosts: 100,
   activeBookmark: 0,
   paddingBottomW: 0,
   paddingTop: 30,
@@ -108,20 +108,23 @@ function createNewDOMElement(type, classList, innerTxt) {
 }
 // TODO: trovare il valore di inizializzazione di margin bottom
 function scrollingAdjustment() {
-  let scrollHeight, clientHeight, scrollMax, delta, firstPageYCoordinate;
+  let scrollHeight, clientHeight, scrollMax, delta, firstPageYCoordinate, totalPosts, postPerPage, ref;
   ({
     scrollHeight,
     clientHeight
   } = document.documentElement);
   ({
-    firstPageYCoordinate
+    firstPageYCoordinate,
+    totalPosts,
+    postPerPage
   } = blog);
+  ref = ((totalPosts/postPerPage)-2);
   delta = 0;
   scrollMax = (scrollHeight - clientHeight);
   if (scrollHeight == clientHeight && blog.posts.length != 0) {
     delta = (window.outerHeight - clientHeight);
-  } else if (firstPageYCoordinate[3] && scrollMax < (firstPageYCoordinate[3])) {
-    delta = (firstPageYCoordinate[3] - scrollMax);
+  } else if (firstPageYCoordinate[ref] && scrollMax < (firstPageYCoordinate[ref])) {
+    delta = (firstPageYCoordinate[ref] - scrollMax);
   }
   blog.paddingBottomW = delta;
   blog.postsW.style.paddingBottom = `${delta}px`;
