@@ -1,7 +1,6 @@
 /*jshint -W030,-W033,-W119,-W104*/
 /*jshint expr:true*/
-/* Chrome, Firefox, Opera, Edge version */
-/* createDocumentFragment() per creazione DOM*/
+/* Chrome, Firefox version */
 const blog = {
   postPerPage: 5,
   totalPages: 0,
@@ -12,8 +11,7 @@ const blog = {
   activeBookmark: 0,
   paddingBottomW: 0,
   paddingTop: 30,
-  firstPageYCoordinate: [Infinity],
-  fragment: document.createDocumentFragment()
+  firstPageYCoordinate: [Infinity]
 }
 
 window.addEventListener('scroll', scrollManager);
@@ -83,16 +81,15 @@ function initPages() {
   if (blog.posts.length !== 0) {
     for (let i = 0; i < blog.postPerPage; i++) {
 
-      const article = createNewDOMElement('article', 'blog-post', ''),
+      const article = createNewDOMElement('article', 'blog-post',''),
         h3 = createNewDOMElement('h3', 'title', blog.posts[i].title),
         div1 = createNewDOMElement('div', 'body', blog.posts[i].body),
         div2 = createNewDOMElement('div', 'id', blog.posts[i].id);
 
       //N.B. append non supportato in IE
       article.append(h3, div1, div2);
-
+      blog.postsW.append(article);
     }
-    blog.postsW.append(blog.fragment);
     scrollingAdjustment();
   }
 }
@@ -102,7 +99,6 @@ function createNewDOMElement(type, classList, innerTxt) {
   const newItem = document.createElement(type);
   newItem.setAttribute('class', classList);
   newItem.innerText = innerTxt;
-  blog.fragment.appendChild(newItem);
   return newItem;
 }
 // TODO: trovare il valore di inizializzazione di margin bottom
