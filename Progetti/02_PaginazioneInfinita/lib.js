@@ -38,14 +38,13 @@ function scrollManager() {
     scrollHeight
   } = document.documentElement);
   scrollMax = (scrollHeight - clientHeight);
-  // blog.activeBookmark = ~~(scrollTop / blog.firstPageYCoordinate[0]).toFixed(1);
   blog.activeBookmark = ~~(scrollTop / blog.firstPageYCoordinate[0]);
   if (blog.posts.length > 0 && ((scrollTop / scrollMax) >= 1)) {
     blog.posts.splice(0, 5);
     setYCoordinates(scrollHeight);
     initPages();
   }
-  // debug(scrollTop, scrollMax, clientHeight, scrollHeight);
+  debug(scrollTop, scrollMax, clientHeight, scrollHeight);
   setBookmarks(scrollTop, scrollMax);
 }
 
@@ -64,11 +63,13 @@ function bookmarkActivator(index, ref, anchor) {
 }
 
 function initBookmark() {
+  let fragment = document.createDocumentFragment();
   for (let i = 0; i < blog.totalPages; i++) {
     let span = document.createElement('span');
     bookmarkActivator(i, 0, span);
-    blog.bookmarksW.appendChild(span)
+    fragment.appendChild(span);
   }
+  blog.bookmarksW.append(fragment);
 }
 
 function setBookmarks(scrollTop, scrollMax) {
@@ -108,22 +109,22 @@ function createNewDOMElement(type, classList, innerTxt) {
 }
 // TODO: trovare il valore di inizializzazione di margin bottom
 function scrollingAdjustment() {
-  let scrollHeight, clientHeight, scrollMax, delta, firstPageYCoordinate, totalPosts, postPerPage, ref;
+  let scrollHeight, clientHeight, scrollMax, delta, firstPageYCoordinate, ref, totalPages;
   ({
     scrollHeight,
     clientHeight
   } = document.documentElement);
   ({
     firstPageYCoordinate,
-    totalPosts,
-    postPerPage
+    totalPages
   } = blog);
-  ref = ((totalPosts/postPerPage)-2);
+  ref = ((totalPages)-2);
   delta = 0;
   scrollMax = (scrollHeight - clientHeight);
-  if (scrollHeight == clientHeight && blog.posts.length != 0) {
+  if (scrollMax == 0 && blog.posts.length != 0) {
     delta = (window.outerHeight - clientHeight);
-  } else if (firstPageYCoordinate[ref] && scrollMax < (firstPageYCoordinate[ref])) {
+  // } else if (firstPageYCoordinate[ref] && scrollMax < (firstPageYCoordinate[ref])) {
+  } else if (scrollMax < firstPageYCoordinate[ref]) {
     delta = (firstPageYCoordinate[ref] - scrollMax);
   }
   blog.paddingBottomW = delta;
@@ -131,21 +132,21 @@ function scrollingAdjustment() {
 
 }
 
-// function debug(scrollTop, scrollMax, clientHeight, scrollHeight) {
-//   console.clear();
-//   console.log('clientHeight:', clientHeight, 'scrollHeight:', scrollHeight);
-//   console.log('ScrollTop:', scrollTop, 'scrollMax:', scrollMax);
-//   console.log('Padding Bottom:', blog.postsW);
-//   console.log('Padding Bottom', blog.paddingBottomW);
-//   console.log('Y Page Reference:', blog.firstPageYCoordinate[0]);
-//   console.log('All Pages References:', blog.firstPageYCoordinate);
-//   console.log('Active bookmark:', blog.activeBookmark);
-//   console.log('+(scrollTop/(blog.firstPageYCoordinate[0])).toFixed(1):', +(scrollTop / (blog.firstPageYCoordinate[0])).toFixed(1));
-//   console.log('(scrollTop/(blog.firstPageYCoordinate[0])):', (scrollTop / (blog.firstPageYCoordinate[0])));
-//   console.log('clientHeight - blog.firstPageYCoordinate - blog.paddingTop', (clientHeight - blog.firstPageYCoordinate[0] - blog.paddingTop));
-//   console.log('clientHeight - blog.firstPageYCoordinate - blog.paddingTop > 0', (clientHeight - blog.firstPageYCoordinate[0] - blog.paddingTop) > 0);
-//   console.log('blog.posts.length:', blog.posts.length);
-//   console.log('blog.firstPageYCoordinate.length:', blog.firstPageYCoordinate.length);
-// }
+function debug(scrollTop, scrollMax, clientHeight, scrollHeight) {
+  console.clear();
+  console.log('clientHeight:', clientHeight, 'scrollHeight:', scrollHeight);
+  console.log('ScrollTop:', scrollTop, 'scrollMax:', scrollMax);
+  console.log('Padding Bottom:', blog.postsW);
+  console.log('Padding Bottom', blog.paddingBottomW);
+  console.log('Y Page Reference:', blog.firstPageYCoordinate[0]);
+  console.log('All Pages References:', blog.firstPageYCoordinate);
+  console.log('Active bookmark:', blog.activeBookmark);
+  console.log('+(scrollTop/(blog.firstPageYCoordinate[0])).toFixed(1):', +(scrollTop / (blog.firstPageYCoordinate[0])).toFixed(1));
+  console.log('(scrollTop/(blog.firstPageYCoordinate[0])):', (scrollTop / (blog.firstPageYCoordinate[0])));
+  console.log('clientHeight - blog.firstPageYCoordinate - blog.paddingTop', (clientHeight - blog.firstPageYCoordinate[0] - blog.paddingTop));
+  console.log('clientHeight - blog.firstPageYCoordinate - blog.paddingTop > 0', (clientHeight - blog.firstPageYCoordinate[0] - blog.paddingTop) > 0);
+  console.log('blog.posts.length:', blog.posts.length);
+  console.log('blog.firstPageYCoordinate.length:', blog.firstPageYCoordinate.length);
+}
 
 initBlog();
