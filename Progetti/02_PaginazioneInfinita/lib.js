@@ -8,7 +8,7 @@ const blog = {
   bookmarksW: document.getElementById('page-position-w'),
   postsW: document.getElementById('blog-w'),
   posts: [],
-  totalPosts: 100,
+  totalPosts: 25,
   activeBookmark: 0,
   paddingBottomW: 0,
   paddingTop: 30,
@@ -27,7 +27,7 @@ function setYCoordinates(scrollHeight) {
   coordsY = (scrollHeight - paddingTop - paddingBottomW);
   (blog.firstPageYCoordinate[0] === Infinity) ?
   blog.firstPageYCoordinate[0] = (coordsY):
-    blog.firstPageYCoordinate.push(coordsY);
+  blog.firstPageYCoordinate.push(coordsY);
 }
 
 function scrollManager() {
@@ -44,7 +44,7 @@ function scrollManager() {
     setYCoordinates(scrollHeight);
     initPages();
   }
-  debug(scrollTop, scrollMax, clientHeight, scrollHeight);
+  // debug(scrollTop, scrollMax, clientHeight, scrollHeight);
   setBookmarks(scrollTop, scrollMax);
 }
 
@@ -123,7 +123,6 @@ function scrollingAdjustment() {
   scrollMax = (scrollHeight - clientHeight);
   if (scrollMax == 0 && blog.posts.length != 0) {
     delta = (window.outerHeight - clientHeight);
-  // } else if (firstPageYCoordinate[ref] && scrollMax < (firstPageYCoordinate[ref])) {
   } else if (scrollMax < firstPageYCoordinate[ref]) {
     delta = (firstPageYCoordinate[ref] - scrollMax);
   }
@@ -132,21 +131,21 @@ function scrollingAdjustment() {
 
 }
 
-function debug(scrollTop, scrollMax, clientHeight, scrollHeight) {
-  console.clear();
-  console.log('clientHeight:', clientHeight, 'scrollHeight:', scrollHeight);
-  console.log('ScrollTop:', scrollTop, 'scrollMax:', scrollMax);
-  console.log('Padding Bottom:', blog.postsW);
-  console.log('Padding Bottom', blog.paddingBottomW);
-  console.log('Y Page Reference:', blog.firstPageYCoordinate[0]);
-  console.log('All Pages References:', blog.firstPageYCoordinate);
-  console.log('Active bookmark:', blog.activeBookmark);
-  console.log('+(scrollTop/(blog.firstPageYCoordinate[0])).toFixed(1):', +(scrollTop / (blog.firstPageYCoordinate[0])).toFixed(1));
-  console.log('(scrollTop/(blog.firstPageYCoordinate[0])):', (scrollTop / (blog.firstPageYCoordinate[0])));
-  console.log('clientHeight - blog.firstPageYCoordinate - blog.paddingTop', (clientHeight - blog.firstPageYCoordinate[0] - blog.paddingTop));
-  console.log('clientHeight - blog.firstPageYCoordinate - blog.paddingTop > 0', (clientHeight - blog.firstPageYCoordinate[0] - blog.paddingTop) > 0);
-  console.log('blog.posts.length:', blog.posts.length);
-  console.log('blog.firstPageYCoordinate.length:', blog.firstPageYCoordinate.length);
-}
+// function debug(scrollTop, scrollMax, clientHeight, scrollHeight) {
+//   console.clear();
+//   console.log('clientHeight:', clientHeight, 'scrollHeight:', scrollHeight);
+//   console.log('ScrollTop:', scrollTop, 'scrollMax:', scrollMax);
+//   console.log('Padding Bottom:', blog.postsW);
+//   console.log('Padding Bottom', blog.paddingBottomW);
+//   console.log('Y Page Reference:', blog.firstPageYCoordinate[0]);
+//   console.log('All Pages References:', blog.firstPageYCoordinate);
+//   console.log('Active bookmark:', blog.activeBookmark);
+//   console.log('+(scrollTop/(blog.firstPageYCoordinate[0])).toFixed(1):', +(scrollTop / (blog.firstPageYCoordinate[0])).toFixed(1));
+//   console.log('(scrollTop/(blog.firstPageYCoordinate[0])):', (scrollTop / (blog.firstPageYCoordinate[0])));
+//   console.log('clientHeight - blog.firstPageYCoordinate - blog.paddingTop', (clientHeight - blog.firstPageYCoordinate[0] - blog.paddingTop));
+//   console.log('clientHeight - blog.firstPageYCoordinate - blog.paddingTop > 0', (clientHeight - blog.firstPageYCoordinate[0] - blog.paddingTop) > 0);
+//   console.log('blog.posts.length:', blog.posts.length);
+//   console.log('blog.firstPageYCoordinate.length:', blog.firstPageYCoordinate.length);
+// }
 
 initBlog();
