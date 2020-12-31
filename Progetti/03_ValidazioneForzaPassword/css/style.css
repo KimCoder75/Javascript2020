@@ -1,0 +1,205 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
+
+:root {
+  --fs-root: 1.2rem;
+  --color-bg: #181d23;
+  --color-gray: #c7c7c7;
+  --color-main: #33a4fd;
+  --color-error: #e2513f;
+  --color-warning: #e49133;
+  --color-success: #2fa94f;
+  --padding-default-sm: 20px;
+  --padding-default-pc: 30px;  
+  --margin-bottom: 30px;
+}
+html {
+    font-size: var(--fs-root);
+}
+body, h1 {
+  padding: 0;
+  margin: 0;
+}
+body {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  font-family: "Lato", sans-serif;
+  background: rgb(23,107,173);
+  background: linear-gradient(90deg, rgba(23,107,173,1) 0%, rgba(25,119,194,1) 35%, rgba(51,164,253,1) 100%);
+}
+h1 {
+  font-family: Lato, sans-serif;
+  font-weight: 300;
+  text-align: center;
+  font-size: 1.4rem;
+  margin-bottom: var(--margin-bottom)
+}
+.disabled-submit {
+  background-color: #999 !important;
+  border: 1px solid #999;
+}
+.disabled-submit:hover {
+  cursor: default !important;
+  color: #ffffff !important;
+  border: 1px solid #999 !important;
+}
+.error {
+  color: var(--color-error);
+}
+.success {
+  color: var(--color-success);
+}
+.fs-small {
+  font-size: 0.75rem;
+}
+#notifica-registrazione {
+  font-size: 0.8rem;
+}
+.notification-error {
+  color: var(--color-error);
+  font-weight: bold;
+}
+.notification-success {
+  color: var(--color-success);
+  font-weight: bold;
+}
+
+/* MAIN WRAPPER */
+#main-wrapper {
+  background-color: white;
+  width: 100%;
+  margin: 20px;
+  padding: var(--padding-default-sm);
+  border-radius: 4px;
+}
+@media screen and (min-width: 768px) {
+  #main-wrapper {
+    width: 60%;
+    padding: var(--padding-default-pc);
+    margin-top: 50px;
+  }
+}
+@media screen and (min-width: 1170px) {
+  #main-wrapper {
+    width: 50%;
+    margin-top: 80px;
+  }
+}
+/* end MAIN WRAPPER */
+
+/* STILE FORM */
+#wrapper-input {
+  font-size: 0.9rem;
+  color:#444;
+}
+#form-registrazione a {
+  text-decoration: none;
+  color: var(--color-main);
+}
+#form-registrazione input {
+  margin-bottom:var(--margin-bottom);
+}
+#form-registrazione input::placeholder {
+  color:#333;
+  font-weight: 400;
+  font-size: 0.8rem
+}
+#form-registrazione input[type='text'],
+#form-registrazione input[type='email'],
+#form-registrazione input[type='password']
+ {
+  font-size: 0.8rem;
+  display: block;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  color: var(--color-main);
+  font-weight: bold;
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  background-color: #ffffff;
+  border:none;
+  border-bottom: 1px solid var(--color-gray);
+  appearance: none;
+  transition: all .2s ease-in
+}
+#form-registrazione input[type='submit'] {
+  appearance: none;
+  border:none;
+  padding: 0.8rem;
+}
+#form-registrazione input:focus-within,
+#form-registrazione input:focus,
+#form-registrazione input:active
+{
+  border-color: transparent;
+  outline: none;
+  border-bottom: 1px solid var(--color-main);
+}
+#form-registrazione input[type='submit'] {
+  font-variant: small-caps;
+  letter-spacing: 1px;
+}
+#form-registrazione input[type='submit']:hover {
+  background-color: #ffffff;
+  color: var(--color-main);
+  border:1px solid var(--color-main);
+  cursor: pointer
+}
+
+#form-registrazione input.error,
+#form-registrazione textarea.error,
+#form-registrazione select.error {
+  border-color: var(--color-error);
+  border-width: 2px;
+}
+#form-registrazione input[type="button"],
+#form-registrazione input[type="submit"],
+#form-registrazione button {
+  display: inline-block;
+  width: auto;
+}
+#form-registrazione input[type="submit"],
+#form-registrazione button {
+  color: #ffffff;
+  background-color: var(--color-main);
+  border-color: var(--color-main);
+}
+#form-registrazione input[type="submit"] {
+  transition: all 500ms;
+}
+
+/* end STILE FORM */
+
+/* FORZA PASSWORD */
+#password {
+  position: relative;
+}
+#password > span {
+  position: absolute;
+  bottom: 4px;
+  width:65px;
+  height: 6px;
+  background-color: var(--color-gray);
+  border-radius: 4px;
+  transition: .4s all ease-in;
+}
+#password > span#l_1 {
+  right: 140px;
+}
+#password > span#l_1.active {
+  background-color: var(--color-error);
+}
+#password > span#l_2 {
+  right: 70px;
+}
+#password > span#l_2.active {
+  background-color: var(--color-warning);
+}
+#password > span#l_3 {
+  right: 0;
+}
+#password > span#l_3.active {
+  background-color: var(--color-success);
+}
+/* end FORZA PASSWORD */
