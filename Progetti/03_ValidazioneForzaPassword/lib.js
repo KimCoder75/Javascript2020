@@ -4,7 +4,7 @@
 const _v = {
   hasError: false,
   isValidPassword: false,
-  emailPattern:'/^[^\s@]+@[^\s@]+\.[^\s@]{2,4}$/'
+  emailPattern:/^[^\s@]+@[^\s@]+\.[^\s@]{2,4}$/
 
 };
 
@@ -27,23 +27,41 @@ function submitForm(){
 
 function checkValidation(){
   try {
-    // controllo tutti i campi obbligatori siano compilati
     requiredFields();
-    // controllare che la mail sia valida
+    // controllo tutti i campi obbligatori siano compilati
     isValidEmail();
+  // controllare che la mail sia valida
+    checkPassword();
     // controllo validità password
     // password e conferma password siano uguali
-    checkPassword();
-    //controlli superati
+
     _v.notificationItem.textContent='La registrazione è avvenuta correttamente.'
+    resetForm();
+      //controlli superati
   } catch (e) {
-    v.notificationItem.textContent=e.message;
+    _v.notificationItem.textContent = e.message;
 
   }
 }
 
+function resetForm(){
+  _v.form.reset();
+  resetPasswordStrength();
+  _v.formItems.forEach((item) => {
+    item.classList.remove('error');
+  });
+
+}
+
+function resetPasswordStrength(){
+  _v.passwordStrength.forEach(span => {
+    span.classList.remove('active');
+  });
+}
+
 function requiredFields(){
   let error;
+  _v.hasError = false;
   _v.formItems.forEach(item => {
     error = false;
     if (item.type !== 'checkbox' && item.required && item.value ==='') {
@@ -55,12 +73,34 @@ function requiredFields(){
     if (error) {
       _v.hasError = true;
       item.classList.add('error');
-
     }
-
   });
-
+  if (_v.hasError) {
+    throw new Error('Compilare i campi obbligatori');
+  }
 }
+
+function isValidEmail(){
+  if (!(_v.emailPattern.test(_v.form.email.value))) {
+    throw new Error('Email indicata non valida');
+  }
+}
+
+function checkPassword(){
+  const
+  pwd = _v.form.password.value,
+  re_pwd = _v.form.re_password.value;
+
+  if (!_v.isValidPassword) {
+    throw new Error('La password non è valida.');
+  }
+  if (pwd !== re_pwd) {
+    throw new Error('Le password non coincidono.');
+  }
+}
+
+
+
 /*
 * 8 caratteri -> valida ma non sicura -> attivo il primo span
 * 8 caratteri + un simbolo -> valida mediamente sicura -> attivo il secondo span
@@ -73,10 +113,7 @@ function checkPasswordStrength(){
       isHigh: false
     },
     pwd = e.target.value;
-    _v.passwordStrength.forEach(span => {
-      span.classList.remove('active');
-      console.log(span.classList);
-    });
+    resetPasswordStrength();
 
     if (pwd.length >= 8) {
       _v.passwordStrength[0].classList.add('active');
