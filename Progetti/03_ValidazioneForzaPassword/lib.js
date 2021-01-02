@@ -13,6 +13,10 @@ function formValidation(form, notifica){
   _v.notificationItem = document.querySelector(`${notifica}`);
   _v.passwordStrength = document.querySelectorAll('#password > span');
   _v.formItems = Array.from(_v.form.elements);
+  console.log('_v.form.elements',_v.form.elements);
+  console.log('_v.passwordStrength',_v.passwordStrength);
+  console.log('_v.formItems',_v.formItems);
+
   submitForm();
   checkPasswordStrength();
 }

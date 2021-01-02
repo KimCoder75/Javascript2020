@@ -1,0 +1,15 @@
+HTMLFormControlsCollection
+
+from.elements fornisce una
+HTMLCollection solo degli elementi input chiamata
+HTMLFormControlsCollection
+
+come la HTMLCollection è
+accessibile tramite
+indice,
+id o
+nome
+
+può essere iterata dopo essere stata trasformata in array mediante il metodo
+
+Array.from(HTMLFormControlsCollection)
