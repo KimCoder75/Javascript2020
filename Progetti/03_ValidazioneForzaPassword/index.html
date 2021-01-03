@@ -1,34 +1,43 @@
+<!-- doc type html -->
 <!DOCTYPE html>
-<html lang="it">
 
+<!-- tag html-->
+<html lang="it">
+<!-- tag head -->
 <head>
+  <!-- codifica caratteri charset utf8 -->
   <meta charset="UTF-8">
+  <!-- title -->
   <title>Progetto 3</title>
+  <!-- link rel shortcut e stylesheet-->
   <link rel="shortcut icon" href="#">
   <link rel="stylesheet" href="./css/style.css">
 </head>
-
+<!-- tag body-->
 <body>
-
+<!-- wrapper principale -->
   <div id="main-wrapper">
 
     <h1>Registrazione</h1>
-
+    <!-- form da cui si prendono tutti i tag input tramite document.querySelector('#form-registrazione').elements -->
+    <!-- novalidate specifica che i dati del modulo (input) non devono essere convalidati al momento dell'invio. -->
     <form action="#" id="form-registrazione" method="post" novalidate>
+      <!-- wrapper contenente gli input text, email, div con password, re password, checkbox -->
       <div id="wrapper-input">
 
-        <input type="text" name="nome" placeholder="Nome" value="" id="a"required>
+        <input type="text" name="nome" placeholder="Nome" value="" id="a" required>
         <input type="email" name="email" placeholder="Email" value="" id="b" required>
-
+      <!-- div con id =password contenente password con span da selezionare con querySelectorAll('#password > span')
+       in questo caso il # si riferisce all'attributo name e non a id-->
         <div id="password">
-          <input type="password" name="password" placeholder="Password (min. 8 caratteri)" value="" id="c"required>
+          <input type="password" name="password" placeholder="Password (min. 8 caratteri)" value="" id="c" required>
           <span id="l_1"></span>
           <span id="l_2"></span>
           <span id="l_3"></span>
         </div>
 
-        <input type="password" name="re_password" placeholder="Conferma password" value="" id="d"required>
-        <input type="checkbox" name="terms" id="e"required>
+        <input type="password" name="re_password" placeholder="Conferma password" value="" id="d" required>
+        <input type="checkbox" name="terms" id="e" required>
         <span class="fs-small">Ho letto e accetto il <a href="#">trattamento dei dati</a>.</span>
 
       </div>
@@ -41,9 +50,7 @@
 
   <script type="module" charset="utf-8">
     import formValidation from './lib.js';
-    document.addEventListener('DOMContentLoaded', function(){
-      formValidation('#form-registrazione','#notifica-registrazione');
-    })
+    document.addEventListener('DOMContentLoaded', formValidation('#form-registrazione','#notifica-registrazione'));
   </script>
 </body>
 
