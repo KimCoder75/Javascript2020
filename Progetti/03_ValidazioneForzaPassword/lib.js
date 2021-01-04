@@ -46,24 +46,10 @@ function checkValidation(){
       //controlli superati
   } catch (e) {
     _v.notificationItem.textContent = e.message;
-
   }
 }
 
-function resetForm(){
-  _v.form.reset();
-  resetPasswordStrength();
-  _v.formItems.forEach((item) => {
-    item.classList.remove('error');
-  });
-
-}
-
-function resetPasswordStrength(){
-  _v.passwordStrength.forEach(span => {
-    span.classList.remove('active');
-  });
-}
+//------------------------------------------------------------------------------
 
 function requiredFields(){
   let error;
@@ -105,7 +91,7 @@ function checkPassword(){
   }
 }
 
-
+//------------------------------------------------------------------------------
 
 /*
 * 8 caratteri -> valida ma non sicura -> attivo il primo span
@@ -144,5 +130,20 @@ function regexCount(pattern, password){
   return (password.match(pattern) || []).length;
 }
 
+
+function resetForm(){
+  _v.form.reset();
+  resetPasswordStrength();
+  _v.formItems.forEach((item) => {
+    item.classList.remove('error');
+  });
+
+}
+
+function resetPasswordStrength(){
+  _v.passwordStrength.forEach(span => {
+    span.classList.remove('active');
+  });
+}
 
 export default formValidation;

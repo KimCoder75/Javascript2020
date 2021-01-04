@@ -13,3 +13,13 @@ nome
 può essere iterata dopo essere stata trasformata in array mediante il metodo
 
 Array.from(HTMLFormControlsCollection)
+
+
+Per la tua sicurezza, la password dovrà:
+
+    Avere una lunghezza minima di 8 caratteri e massima di 16
+    Contenere almeno un carattere minuscolo [a-z]
+    Contenere almeno un carattere maiuscolo [A-Z]
+    Contenere almeno un carattere numerico [0-9]
+    Contenere almeno un carattere speciale (es. $, !, %)
+    Non deve contenere più di due caratteri identici consecutivi
