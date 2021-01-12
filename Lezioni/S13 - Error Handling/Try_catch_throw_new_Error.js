@@ -24,9 +24,23 @@ let message = document.getElementById('main-Wrapper');
 try {
   let numero = ~~(Math.random()*11);
   console.log(numero);
-  if(numero==6 || numero==9){
-    numero = undefined;
-  }
+
+  // switch (numero) {
+  //   case 6:
+  //   case 9:
+  //     numero = NaN;
+  //     break;
+  //   default: numero;
+  // }
+  //
+  // if(numero==6 || numero==9){
+  //   numero = NaN;
+  // }
+  // (numero==6 || numero==9) ? numero = NaN : numero;
+  if([6,9].includes(numero)){
+    numero = NaN;
+}
+
   funzione1(numero);
 }
 catch (e) {
@@ -35,8 +49,10 @@ catch (e) {
 
 
 function funzione1(numero){
+
   if (20/numero) {
-    message.textContent= (`20/${numero} vale ${(20/numero).toFixed(2)}`);
+    message.textContent= (`20/${numero} vale ${(20/numero).toFixed(2)} `);
+
   }
   else {
     throw new Error(`Il risultato non è un numero!`);
