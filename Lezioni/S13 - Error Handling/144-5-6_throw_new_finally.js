@@ -48,6 +48,4 @@ try {
 } catch (err) {
   console.log(err.infoErroreRichiesta);
 
-} finally {
-
 }
