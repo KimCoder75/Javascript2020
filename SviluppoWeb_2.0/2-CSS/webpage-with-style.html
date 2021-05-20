@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="it">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+      .red{
+        color: red;
+      }
+      .large{
+        font-size: 200%;
+      }
+      .underlined{
+        text-decoration: underline;
+      }
+      .clear-float{
+        clear: both;
+      }
+      #first-section{
+        color: #4285F4;
+        background-color: #CEF6CE;
+        width: 200px;
+        position: relative;
+        left: 100px;
+        top: 100px;
+      }
+      #second-section{
+        background-color: #8AB4F7;
+        width: 200px;
+        z-index: 2;
+        opacity: 0.6;
+
+      }
+      #green{
+        color:green;
+      }
+
+    </style>
+    <title>Web page with style</title>
+  </head>
+
+  <body>
+    <div id="first-section">
+      <p>The quick brown fox jumped over the lazy dog.</p>
+      <p>Wow, i love CSS!</p>
+    </div>
+    <div id="second-section">
+      <p id="green">This should be green! <span class="underlined">And this should be underlined!</span></p>
+      <h1 class="red">CSS is Cool!</h1>
+  </div>
+  <p>This paragraph is not floated</p>
+
+
+  </body>
+</html>
