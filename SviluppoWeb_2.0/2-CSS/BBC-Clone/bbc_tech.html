@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
   <title>Technology - BBC News</title>
   <style type="text/css">
 
@@ -162,9 +164,14 @@
     .no-border{
       border:none !important;
     }
-
-
-
+    #down-arrow-r{
+      width: 16px;
+      position:relative;
+      top:12px;
+    }
+    .special{
+      font-family: 'Source Sans Pro';
+    }
 
   </style>
 </head>
@@ -213,7 +220,7 @@
 
 <div id="menu-bar-container">
   <div id="menu-bar">
-    <h1>NEWS</h1>
+    <h1 class="special">NEWS</h1>
     <div id="local-news">
       <a href="">Find local news</a>
       <img src="images/pointer.png" alt="">
@@ -225,7 +232,7 @@
       <a href="">Home</a>
       <a href="">UK</a>
       <a href="">World</a>
-      <a href="">Business</a>
+      <a  href="">Business</a>
       <a href="">Politics</a>
       <a href="">Tech</a>
       <a href="">Science</a>
@@ -234,6 +241,7 @@
       <a href="">Entertainment & Arts</a>
       <a href="">Video & Audio</a>
       <a class="no-border" href="">More</a>
+      <img id="down-arrow-r" src="images/down-arrow.png" alt="">
     </div>
   </div>
 
