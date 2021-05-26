@@ -11,7 +11,7 @@
     body{
       margin: 0px;
       padding: 0px;
-      font-family: Helvetica,Arial,sans-serif;
+      font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
     }
     #topbar{
       width:1000px;
@@ -38,7 +38,7 @@
     }
     .topbar-menu{
       font-weight: bold;
-      padding:14px 10px;
+      padding:10px 10px;
       height:12px;
 
     }
@@ -50,6 +50,7 @@
     #linea{
       float:left;
       margin-left:20px;
+      height: 40px;
     }
     #bell{
       height: 20px;
@@ -62,8 +63,9 @@
       float:left;
     }
     #arrow{
-      vertical-align: middle;
       margin-left: 1px;
+      position:relative;
+      top:-4px;
 
     }
     #search-box{
@@ -75,13 +77,13 @@
       margin-left: 5px;
       margin-top: 8px;
       float:left;
-      width: 130px
+      width: 170px
     }
     #magnify-glass{
       background-color:#E4E4E4;
       position: relative;
       top:12px;
-      padding: 6px 6px 3px 6px;
+      padding: 4px 6px 2px 6px;
       border:none;
     }
     .clear{
@@ -114,18 +116,18 @@
     #local-news{
       border:1px #BB4545 solid;
       float:right;
-      width: 220px;
+      width: 160px;
       padding: 2px 8px 2px 16px;
-      margin-top:8px;
-
+      margin-top:15px;
 
     }
     #local-news a {
       color:white;
+      font-style: italic;
       text-decoration: none;
-      font-size:25px;
+      font-size:20px;
       position:relative;
-      top:-9px
+      top:-6px
     }
 
     #local-news a:hover {
@@ -133,7 +135,9 @@
 
     }
     #local-news img{
-      height: 40px;
+      height: 30px;
+      position: relative;
+      top:3px;
     }
 
     #menu-bar-2-container{
@@ -146,7 +150,7 @@
       width: 1000px;
       margin: 0 auto;
       height: 40px;
-      margin-top:10px;
+      margin-top:9px;
     }
 
     #menu-bar-2 a{
@@ -155,7 +159,8 @@
       text-decoration: none;
       top:10px;
       padding: 0 8px;
-      border-right: 1px solid #BB4545
+      border-right: 1px solid #BB4545;
+      margin-left:5px;
     }
     #menu-bar-2 a:hover{
       text-decoration: underline;
@@ -169,9 +174,100 @@
       position:relative;
       top:12px;
     }
-    .special{
-      font-family: 'Source Sans Pro';
+
+    #page-container{
+      width: 1000px;
+      margin: 0 auto;
     }
+    h2 {
+      font-weight: bold;
+      font-size: 20px;
+      margin-left: 12px;
+      border-bottom: 3px solid #BB4545;
+      padding-bottom: 4px;
+      width: 105px;
+      margin-top:10px;
+
+    }
+    h3 a {
+      color: grey;
+      text-decoration: none;
+      font-size: 30px;
+      margin-left: 12px;
+      position: relative;
+      top:-30px;
+    }
+    h3 a:hover{
+      color:#1167a8;
+    }
+    #article-summary{
+      color: #5a5a5a;
+      margin-left: 12px;
+      position: relative;
+      top:-30px;
+      width: 250px;
+      float: left;
+
+    }
+    #clock{
+      width: 22px;
+      position: relative;
+      top:6px;
+      padding-right: 5px;
+    }
+    #clock-line{
+      margin-left: -5px;
+      margin-top: -8px;
+    }
+    #tech{
+      color:#BB4545;
+      font-weight: bold;
+      text-decoration: none;
+      padding-left:7px;
+
+    }
+    #tech:hover {
+      color: #1167a8;
+    }
+    #date{
+      padding-right: 5px;
+      border-right: 1px solid #CCCCCC;
+    }
+    #article-container{
+      margin:0;
+      padding:0;
+      float:left;
+      width: 700px;
+      border-right: 1px solid #E4E4E4;
+    }
+    #summary{
+      margin-top:-14px;
+    }
+    #main-image{
+      width:420px;
+      height:235px;
+      position: relative;
+      top:-40px;
+    }
+    #spacer{
+      border-top: 2px solid #BB4545;
+      width: 50px;
+      position:relative;
+      padding-top:2px;
+    }
+    .p-link {
+      text-decoration: none;
+      color:#5a5a5a;
+      padding:0;
+      position:relative;
+      top:-10px;
+    }
+    .p-link:hover {
+      color: #1167a8;
+    }
+
+
+
 
   </style>
 </head>
@@ -209,21 +305,21 @@
   </div>
   <div class="topbar-section topbar-menu">
     More
-    <img id="arrow" src="images/downArrow.png" alt="">
+    <img id="arrow" src="images/downArrow.png" >
   </div>
   <div class="topbar-section">
-    <input id="search-box" type="text" name="" value="Search">
-    <span id="magnify-glass"><a href="#"><img src="images/SearchLens.png" alt=""></a>
+    <input id="search-box" type="text"  value="Search">
+    <span id="magnify-glass"><a href="#"><img src="images/SearchLens.png" ></a>
   </div>
 </div>
 <div class="clear"></div>
 
 <div id="menu-bar-container">
   <div id="menu-bar">
-    <h1 class="special">NEWS</h1>
+    <h1>NEWS</h1>
     <div id="local-news">
       <a href="">Find local news</a>
-      <img src="images/pointer.png" alt="">
+      <img src="images/pointer.png" >
     </div>
   </div>
   <div class="clear"></div>
@@ -241,9 +337,42 @@
       <a href="">Entertainment & Arts</a>
       <a href="">Video & Audio</a>
       <a class="no-border" href="">More</a>
-      <img id="down-arrow-r" src="images/down-arrow.png" alt="">
+      <img id="down-arrow-r" src="images/down-arrow.png" >
     </div>
   </div>
+
+  <div class="clear"></div>
+  <div id="page-container">
+
+    <div id="main-article">
+      <h2>Technology</h2>
+      <div id="article-container">
+        <h3><a href="">Asda bug exposed payment details</a></h3>
+        <div id="article-summary">
+          <p id="summary">Security vulnerabilities that put customers at
+          risk have affected Asda's website for a couple of years, a security
+          expert has revealed.
+        </p>
+        <p id="clock-line">
+          <img src="images/clock.png" id="clock"><span id="date">26 May 2021 </span>
+          <a href="#" id="tech">Technology</a>
+        </p>
+        <p id="spacer"> </p>
+        <p>
+          <a class="p-link" href="#">Surveillance firm hit in hack attack</a><br>
+          <a class="p-link" href="#">eBay flaw has existed for months</a>
+        </p>
+
+
+        </div>
+        <img id="main-image" src="images/main-article-image.png">
+      </div>
+    </div>
+
+  </div>
+
+
+
 
 </div>
 </body>
